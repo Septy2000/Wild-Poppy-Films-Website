@@ -1,13 +1,29 @@
 import styled from "styled-components";
 
-export const Header = styled.header`
+export const Header = styled.header<{ $isMenuOpen: boolean }>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
-    @media (min-width: ${({ theme }) => theme.screen.medium}) {
+
+    height: 60px;
+    @media (min-width: ${({ theme }) => theme.screen.tablet}) {
         height: 112px;
+    }
+
+    path {
+        fill: ${({ $isMenuOpen, theme }) =>
+            $isMenuOpen
+                ? theme.colors.secondary.core_green_light_2
+                : theme.colors.neutral.neutral_1};
+    }
+
+    p {
+        color: ${({ $isMenuOpen, theme }) =>
+            $isMenuOpen
+                ? theme.colors.secondary.core_green_light_2
+                : theme.colors.neutral.neutral_1};
     }
     padding: 0 64px;
 `;
@@ -18,8 +34,6 @@ export const MenuRhsContainer = styled.div`
     align-items: center;
 `;
 
-export const MenuText = styled.p<{ $isMenuOpen: boolean }>`
-    color: ${({ $isMenuOpen, theme }) =>
-        $isMenuOpen ? theme.colors.neutral.core_green_light_2 : theme.colors.neutral.neutral_1};
+export const MenuText = styled.p`
     margin-right: 16px;
 `;

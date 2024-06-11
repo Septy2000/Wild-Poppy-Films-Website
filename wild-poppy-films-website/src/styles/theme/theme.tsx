@@ -10,6 +10,10 @@ const theme = {
             celadon_blue: "#6DC8EF",
             celadon_blue_light_1: "#ABE6FF",
             celadon_blue_dark_1: "#187299",
+            core_green: "rgb(97, 161, 68)",
+            core_green_light_1: "rgb(137, 207, 105)",
+            core_green_light_2: "#CDFF63",
+            core_green_dark_1: "rgb(54, 128, 21)",
         },
         shaded: {
             core_green: "rgba(97, 161, 68, 0.40)",
@@ -40,16 +44,11 @@ const theme = {
             info: "#203D75",
         },
     },
-    margin: {
-        small: "28px",
-        medium: "38px",
-        large: "64px",
-    },
 
     screen: {
-        small: "744px",
-        medium: "1200px",
-        large: "1440px",
+        mobile: "743px",
+        tablet: "1199px",
+        desktop: "1440px",
     },
 };
 

@@ -8,10 +8,6 @@ const GlobalStyles = createGlobalStyle`
         font-family: "Helvetica", sans-serif, Arial;
         // to change font
     }
-    
-    body {
-        background: #fff9f0;
-    }
 
     html body {
         width: 100%;
