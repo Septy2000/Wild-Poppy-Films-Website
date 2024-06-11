@@ -8,7 +8,14 @@ export const Header = styled.header<{ $isModalOpen: boolean }>`
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
 
     height: 60px;
+    padding: 0 20px;
+
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
+        padding: 0 40px;
+    }
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        padding: 0 64px;
         height: 112px;
     }
 
@@ -25,7 +32,6 @@ export const Header = styled.header<{ $isModalOpen: boolean }>`
                 ? theme.colors.secondary.core_green_light_2
                 : theme.colors.neutral.neutral_1};
     }
-    padding: 0 64px;
 `;
 
 export const MenuRhsContainer = styled.div`

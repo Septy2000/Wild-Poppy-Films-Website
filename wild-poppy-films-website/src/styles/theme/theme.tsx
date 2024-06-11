@@ -76,9 +76,9 @@ const theme = {
     },
 
     screen: {
-        mobile: "743px",
-        tablet: "1199px",
-        desktop: "1440px",
+        // this defines the minimum width of the screen for each type
+        tablet: "744px",
+        desktop: "1200px",
     },
 };
 
