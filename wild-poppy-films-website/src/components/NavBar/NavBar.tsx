@@ -1,23 +1,54 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import * as Styled from "./NavBar.styled";
-import WildPoppyAltXlLogo from "@/icons/logo/wp-logo-alt-xl.svg";
-import MenuOpenIcon from "@/icons/navigation/menu-icon-open-mobile.svg";
-import MenuCloseIcon from "@/icons/navigation/menu-icon-close-mobile.svg";
+
 export default function NavBar() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
+    const [isTransparent, setIsTransparent] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
 
-    function toggleModal() {
+    const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            setIsHidden(true);
+        } else {
+            setIsHidden(false);
+        }
+
+        if (currentScrollY < 50) {
+            setIsTransparent(true);
+        } else {
+            setIsTransparent(false);
+        }
+
+        setLastScrollY(currentScrollY);
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [lastScrollY]);
+
+    const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
-    }
+    };
 
     return (
-        // Gotta move isMenuOpen to the whole navbar as a param
-        <Styled.Header $isModalOpen={isModalOpen}>
-            <WildPoppyAltXlLogo />
+        <Styled.Header
+            $isModalOpen={isModalOpen}
+            $isHidden={isHidden}
+            $isTransparent={isTransparent}
+        >
+            <Styled.WildPoppyAltXsLogo />
+            <Styled.WildPoppyAltXlLogo />
             <Styled.MenuRhsContainer onClick={toggleModal}>
                 <Styled.MenuText>{isModalOpen ? "CLOSE" : "MENU"}</Styled.MenuText>
-                {isModalOpen ? <MenuCloseIcon /> : <MenuOpenIcon />}
+                {isModalOpen ? <Styled.MenuCloseIcon /> : <Styled.MenuOpenIcon />}
             </Styled.MenuRhsContainer>
         </Styled.Header>
     );
