@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.header<{ $isMenuOpen: boolean }>`
+export const Header = styled.header<{ $isModalOpen: boolean }>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -13,15 +13,15 @@ export const Header = styled.header<{ $isMenuOpen: boolean }>`
     }
 
     path {
-        fill: ${({ $isMenuOpen, theme }) =>
-            $isMenuOpen
+        fill: ${({ $isModalOpen, theme }) =>
+            $isModalOpen
                 ? theme.colors.secondary.core_green_light_2
                 : theme.colors.neutral.neutral_1};
     }
 
     p {
-        color: ${({ $isMenuOpen, theme }) =>
-            $isMenuOpen
+        color: ${({ $isModalOpen, theme }) =>
+            $isModalOpen
                 ? theme.colors.secondary.core_green_light_2
                 : theme.colors.neutral.neutral_1};
     }
@@ -32,6 +32,10 @@ export const MenuRhsContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+    }
 `;
 
 export const MenuText = styled.p`
