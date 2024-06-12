@@ -16,11 +16,14 @@ export const Header = styled.header<HeaderProps>`
     justify-content: space-between;
     align-items: center;
 
+    // need to make background transparent when over content
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
-    color: ${({ theme }) => theme.colors.neutral.neutral_1};
+    color: ${({ $isModalOpen, theme }) =>
+        $isModalOpen ? theme.colors.secondary.core_green_light_2 : theme.colors.neutral.neutral_1};
 
     transition: top 0.3s, background 0.3s, color 0.3s;
 
+    // mobile
     padding: 10px 20px;
     position: fixed;
     top: ${({ $isHidden }) => ($isHidden ? "-60px" : "0")};
@@ -42,18 +45,12 @@ export const Header = styled.header<HeaderProps>`
                 ? theme.colors.secondary.core_green_light_2
                 : theme.colors.neutral.neutral_1};
     }
-
-    p {
-        color: ${({ $isModalOpen, theme }) =>
-            $isModalOpen
-                ? theme.colors.secondary.core_green_light_2
-                : theme.colors.neutral.neutral_1};
-    }
 `;
 
 export const MenuRhsContainer = styled.div`
     display: flex;
     flex-direction: row;
+    user-select: none;
     align-items: center;
     &:hover {
         cursor: pointer;
