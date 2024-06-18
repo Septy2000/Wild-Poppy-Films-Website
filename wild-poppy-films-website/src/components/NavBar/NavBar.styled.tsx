@@ -20,30 +20,35 @@ export const Header = styled.header<HeaderProps>`
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
     color: ${({ $isModalOpen, theme }) =>
         $isModalOpen ? theme.colors.secondary.core_green_light_2 : theme.colors.neutral.neutral_1};
-
-    transition: top 0.3s, background 0.3s, color 0.3s;
-
-    // mobile
-    padding: 10px 20px;
     position: fixed;
-    top: ${({ $isHidden }) => ($isHidden ? "-60px" : "0")};
+    transition: top 0.3s, background 0.3s, color 0.3s;
     width: 100%;
     z-index: 1000;
-
-    @media (min-width: ${({ theme }) => theme.screen.tablet}) {
-        padding: 16px 40px;
-    }
-
-    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
-        padding: 24px 64px;
-        top: ${({ $isHidden }) => ($isHidden ? "-112px" : "0")};
-    }
 
     path {
         fill: ${({ $isModalOpen, theme }) =>
             $isModalOpen
                 ? theme.colors.secondary.core_green_light_2
                 : theme.colors.neutral.neutral_1};
+    }
+
+    // mobile
+    height: 60px;
+    padding: 10px 20px;
+    top: ${({ $isHidden }) => ($isHidden ? "-60px" : "0")};
+
+    // tablet
+    @media (min-width: ${({ theme }) => theme.screen.tablet}) {
+        height: 96px;
+        padding: 16px 40px;
+        top: ${({ $isHidden }) => ($isHidden ? "96px" : "0")};
+    }
+
+    // desktop
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        height: 112px;
+        padding: 24px 64px;
+        top: ${({ $isHidden }) => ($isHidden ? "-112px" : "0")};
     }
 `;
 

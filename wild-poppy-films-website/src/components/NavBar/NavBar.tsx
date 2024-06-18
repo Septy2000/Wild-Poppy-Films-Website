@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import * as Styled from "./NavBar.styled";
+import Modal from "./Modal/Modal";
 
 export default function NavBar() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,17 +40,20 @@ export default function NavBar() {
     };
 
     return (
-        <Styled.Header
-            $isModalOpen={isModalOpen}
-            $isHidden={isHidden}
-            $isTransparent={isTransparent}
-        >
-            <Styled.WildPoppyAltXsLogo />
-            <Styled.WildPoppyAltXlLogo />
-            <Styled.MenuRhsContainer onClick={toggleModal}>
-                <Styled.MenuText>{isModalOpen ? "CLOSE" : "MENU"}</Styled.MenuText>
-                {isModalOpen ? <Styled.MenuCloseIcon /> : <Styled.MenuOpenIcon />}
-            </Styled.MenuRhsContainer>
-        </Styled.Header>
+        <React.Fragment>
+            <Styled.Header
+                $isModalOpen={isModalOpen}
+                $isHidden={isHidden}
+                $isTransparent={isTransparent}
+            >
+                <Styled.WildPoppyAltXsLogo />
+                <Styled.WildPoppyAltXlLogo />
+                <Styled.MenuRhsContainer onClick={toggleModal}>
+                    <Styled.MenuText>{isModalOpen ? "CLOSE" : "MENU"}</Styled.MenuText>
+                    {isModalOpen ? <Styled.MenuCloseIcon /> : <Styled.MenuOpenIcon />}
+                </Styled.MenuRhsContainer>
+            </Styled.Header>
+            <Modal isVisible={isModalOpen} onClose={toggleModal} />
+        </React.Fragment>
     );
 }
