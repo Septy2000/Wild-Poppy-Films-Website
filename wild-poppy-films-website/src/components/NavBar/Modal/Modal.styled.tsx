@@ -2,12 +2,20 @@ import styled from "styled-components";
 
 export const Overlay = styled.div`
     position: fixed;
-    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 9998;
+
+    top: 60px;
+    @media (min-width: ${({ theme }) => theme.screen.tablet}) {
+        top: 96px;
+    }
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        top: 112px;
+    }
 `;
 
 export const Container = styled.div<{ $isVisible: boolean }>`
@@ -16,7 +24,7 @@ export const Container = styled.div<{ $isVisible: boolean }>`
     bottom: 0;
     overflow-y: auto;
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s;
     z-index: 9999;
 
     padding: 20px 48px;

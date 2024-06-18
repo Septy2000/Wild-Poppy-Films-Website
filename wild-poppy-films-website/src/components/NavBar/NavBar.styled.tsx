@@ -41,7 +41,7 @@ export const Header = styled.header<HeaderProps>`
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
         height: 96px;
         padding: 16px 40px;
-        top: ${({ $isHidden }) => ($isHidden ? "96px" : "0")};
+        top: ${({ $isHidden }) => ($isHidden ? "-96px" : "0")};
     }
 
     // desktop
