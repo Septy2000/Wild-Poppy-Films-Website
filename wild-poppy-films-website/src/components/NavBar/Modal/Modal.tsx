@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import * as Styled from "./Modal.styled";
+import ModalLinkButton from "@/components/Buttons/ModalLinkButton/ModalLinkButton";
+import ModalSocialButton from "@/components/Buttons/ModalSocialButton/ModalSocialButton";
 
 export default function Modal({ isVisible, onClose }: { isVisible: boolean; onClose: () => void }) {
     const menuItems: { label: string; link: string }[] = [
@@ -31,18 +33,13 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
             <Styled.Container $isVisible={isVisible}>
                 <Styled.Content>
                     <Styled.PagesContainer>
-                        {menuItems.map((item) => (
-                            <Styled.PageItem key={item.label} onClick={onClose}>
-                                <Styled.PageName>{item.label}</Styled.PageName>
-                                <Styled.RightFwdIconStyled />
-                            </Styled.PageItem>
+                        {menuItems.map((item, id) => (
+                            <ModalLinkButton key={id} label={item.label} link={item.link} />
                         ))}
                     </Styled.PagesContainer>
                     <Styled.SocialsContainer>
-                        {socialItems.map((item, index) => (
-                            <Styled.SocialItem key={index} href={item.link} target="_blank">
-                                {item.icon}
-                            </Styled.SocialItem>
+                        {socialItems.map((item, id) => (
+                            <ModalSocialButton key={id} icon={item.icon} link={item.link} />
                         ))}
                     </Styled.SocialsContainer>
                 </Styled.Content>

@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import RightFwdIcon from "@/icons/navigation/right-fwd-icon.svg";
 import FacebookIcon from "@/icons/social/fb-icon.svg";
 import InstagramIcon from "@/icons/social/ig-icon.svg";
 import LinkedInIcon from "@/icons/social/linkedin-icon.svg";
@@ -65,6 +64,7 @@ export const PagesContainer = styled.div`
     flex-direction: column;
     align-items: flex-end;
     margin-bottom: 20px;
+    gap: 16px;
 `;
 
 export const SocialsContainer = styled.div`
@@ -79,46 +79,11 @@ export const SocialsContainer = styled.div`
     }
 `;
 
-export const PageItem = styled.p`
-    margin: 10px 0;
-    color: ${({ theme }) => theme.colors.neutral.neutral_1};
-    cursor: pointer;
-    &:hover {
-        opacity: 60%;
-    }
-`;
-
-export const PageName = styled.span`
-    margin-right: 10px;
-`;
-
-export const SocialItem = styled(Link)`
-    text-decoration: none;
-    display: flex;
-    width: 38px;
-    height: 38px;
-    border-radius: 16%;
-    align-items: center;
-    justify-content: center;
-
-    background: transparent;
-    &:hover {
-        background: ${({ theme }) => theme.colors.neutral.neutral_11};
-        opacity: 60%;
-    }
-`;
-
 // icons
 
 const IconStylingCss = css`
     path {
         fill: ${({ theme }) => theme.colors.primary.poppy_red};
-    }
-`;
-
-export const RightFwdIconStyled = styled(RightFwdIcon)`
-    &:hover {
-        opacity: 60%;
     }
 `;
 
