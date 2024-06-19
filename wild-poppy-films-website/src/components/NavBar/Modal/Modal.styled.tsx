@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import RightFwdIcon from "@/icons/navigation/right-fwd-icon.svg";
+import FacebookIcon from "@/icons/social/fb-icon.svg";
+import InstagramIcon from "@/icons/social/ig-icon.svg";
+import LinkedInIcon from "@/icons/social/linkedin-icon.svg";
+import YouTubeIcon from "@/icons/social/yt-icon.svg";
+import XIcon from "@/icons/social/x-icon.svg";
+import Link from "next/link";
 
 export const Overlay = styled.div`
     position: fixed;
@@ -53,47 +60,86 @@ export const Content = styled.div`
     padding: 20px;
 `;
 
-export const ItemsContainer = styled.div`
+export const PagesContainer = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     margin-bottom: 20px;
 `;
 
-export const SocialItemsContainer = styled.div`
+export const SocialsContainer = styled.div`
     display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 8px;
+
+    flex-direction: row;
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        flex-direction: column;
+    }
 `;
 
-export const MenuContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-`;
-
-export const MenuItem = styled.p`
+export const PageItem = styled.p`
     margin: 10px 0;
     color: ${({ theme }) => theme.colors.neutral.neutral_1};
     cursor: pointer;
     &:hover {
-        color: ${({ theme }) => theme.colors.secondary.core_green_light_2};
+        opacity: 60%;
     }
 `;
 
-export const SocialIcons = styled.div`
+export const PageName = styled.span`
+    margin-right: 10px;
+`;
+
+export const SocialItem = styled(Link)`
+    text-decoration: none;
     display: flex;
-    flex-direction: row;
+    width: 38px;
+    height: 38px;
+    border-radius: 16%;
+    align-items: center;
     justify-content: center;
-    margin-top: 20px;
+
+    background: transparent;
+    &:hover {
+        background: ${({ theme }) => theme.colors.neutral.neutral_11};
+        opacity: 60%;
+    }
 `;
 
-export const SocialIcon = styled.img`
-    margin: 0 10px;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    &:hover {
-        opacity: 0.7;
+// icons
+
+const IconStylingCss = css`
+    path {
+        fill: ${({ theme }) => theme.colors.primary.poppy_red};
     }
+`;
+
+export const RightFwdIconStyled = styled(RightFwdIcon)`
+    &:hover {
+        opacity: 60%;
+    }
+`;
+
+export const FacebookIconStyled = styled(FacebookIcon)`
+    ${IconStylingCss}
+`;
+
+export const InstagramIconStyled = styled(InstagramIcon)`
+    ${IconStylingCss}
+`;
+
+export const LinkedInIconStyled = styled(LinkedInIcon)`
+    ${IconStylingCss}
+`;
+
+export const YouTubeIconStyled = styled(YouTubeIcon)`
+    path:nth-child(1) {
+        fill: ${({ theme }) => theme.colors.primary.poppy_red};
+    }
+`;
+
+export const XIconStyled = styled(XIcon)`
+    ${IconStylingCss}
 `;
