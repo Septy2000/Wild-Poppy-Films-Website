@@ -4,7 +4,6 @@ import InstagramIcon from "@/icons/social/ig-icon.svg";
 import LinkedInIcon from "@/icons/social/linkedin-icon.svg";
 import YouTubeIcon from "@/icons/social/yt-icon.svg";
 import XIcon from "@/icons/social/x-icon.svg";
-import Link from "next/link";
 
 export const Overlay = styled.div`
     position: fixed;
@@ -62,20 +61,28 @@ export const Content = styled.div`
 export const PagesContainer = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     margin-bottom: 20px;
     gap: 16px;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
 `;
 
 export const SocialsContainer = styled.div`
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
     gap: 8px;
 
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
     }
 `;
 
