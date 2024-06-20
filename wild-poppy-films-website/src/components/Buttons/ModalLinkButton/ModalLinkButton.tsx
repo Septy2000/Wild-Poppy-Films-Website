@@ -10,18 +10,19 @@ export default function ModalLinkButton({
     delay,
 }: ModalLinkButtonProps) {
     const [isModalDisplayed, setIsModalDisplayed] = useState(true);
-    const timeOuts = useRef<NodeJS.Timeout[]>([]);
+    const buttonDisappearTimeout = useRef<NodeJS.Timeout | null>(null);
 
+    // make the button disappear after the modal animation is finished
+    // 500ms is the duration of the modal animation
     useEffect(() => {
         if (!isVisible) {
-            console.log("close");
-            const disappearTimeout = setTimeout(() => {
+            buttonDisappearTimeout.current = setTimeout(() => {
                 setIsModalDisplayed(false);
             }, 500);
-            timeOuts.current.push(disappearTimeout);
         } else {
-            console.log("open");
-            timeOuts.current.forEach((id) => clearTimeout(id));
+            if (buttonDisappearTimeout.current) {
+                clearTimeout(buttonDisappearTimeout.current);
+            }
             setIsModalDisplayed(true);
         }
     }, [isVisible]);

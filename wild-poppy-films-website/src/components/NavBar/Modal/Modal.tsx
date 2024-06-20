@@ -6,7 +6,7 @@ import ModalSocialButton from "@/components/Buttons/ModalSocialButton/ModalSocia
 export default function Modal({ isVisible, onClose }: { isVisible: boolean; onClose: () => void }) {
     const selfRef = useRef<HTMLDivElement>(null);
     const [translateX, setTranslateX] = useState(0);
-    const delayPerItem = 0.1;
+    const delayPerLinkItem = 0.1;
 
     const menuItems: { label: string; link: string }[] = [
         { label: "FILMS", link: "/films" },
@@ -52,7 +52,7 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
                                 link={item.link}
                                 translateX={translateX}
                                 isVisible={isVisible}
-                                delay={id * delayPerItem}
+                                delay={(id + 1) * delayPerLinkItem}
                             />
                         ))}
                     </Styled.PagesContainer>
