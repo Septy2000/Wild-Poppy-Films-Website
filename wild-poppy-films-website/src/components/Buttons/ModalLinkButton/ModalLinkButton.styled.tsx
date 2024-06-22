@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { keyframes, css } from "styled-components";
 import Link from "next/link";
 import RightFwdIcon from "@/icons/navigation/right-fwd-icon.svg";

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import * as Styled from "./ModalLinkButton.styled";
 import { ModalLinkButtonProps } from "@/_types/components";
@@ -26,10 +28,6 @@ export default function ModalLinkButton({
             setIsModalDisplayed(true);
         }
     }, [isVisible]);
-
-    useEffect(() => {
-        console.log(isModalDisplayed);
-    }, [isModalDisplayed]);
 
     return (
         <Styled.Container href={link}>

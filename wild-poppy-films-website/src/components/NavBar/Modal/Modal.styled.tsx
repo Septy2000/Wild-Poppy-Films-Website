@@ -1,3 +1,4 @@
+"use client";
 import styled, { css } from "styled-components";
 import FacebookIcon from "@/icons/social/fb-icon.svg";
 import InstagramIcon from "@/icons/social/ig-icon.svg";

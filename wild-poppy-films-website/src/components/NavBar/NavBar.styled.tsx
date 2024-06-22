@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "styled-components";
 import WpAltXlLogo from "@/icons/logo/wp-logo-alt-xl.svg";
 import WpAltXsLogo from "@/icons/logo/wp-logo-alt-xs.svg";
