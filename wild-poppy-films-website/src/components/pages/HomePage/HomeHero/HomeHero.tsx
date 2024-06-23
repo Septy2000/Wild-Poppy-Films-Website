@@ -59,6 +59,14 @@ export default function HomeHero() {
         });
     }
 
+    useEffect(() => {
+        const intervalId = setInterval(showNextImage, contentCycleDurationMs);
+
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, [currentMovieIndex]);
+
     function showPreviousMovie() {
         const moviesCount = movies.length;
 
@@ -91,10 +99,8 @@ export default function HomeHero() {
                 <GlassOverFrame />
             </Styled.ContentContainer>
             <HomeHeroContentOverlay
-                movieIndex={currentMovieIndex}
-                movieTitle={movies[currentMovieIndex].title}
-                movieYear={movies[currentMovieIndex].year}
-                moviesCount={movies.length}
+                movies={movies}
+                currentMovieIndex={currentMovieIndex}
                 showNextMovie={showNextMovie}
                 showPreviousMovie={showPreviousMovie}
             />

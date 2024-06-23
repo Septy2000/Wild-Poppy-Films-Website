@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 import ForwardIcon from "@/icons/navigation/home-hero-forward-icon-mobile.svg";
 import BackIcon from "@/icons/navigation/home-hero-back-icon-mobile.svg";
@@ -25,16 +25,29 @@ export const MovieControlsContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+`;
 
-    padding: 12px auto;
+export const ControlIconContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: transparent;
+    padding: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    &:hover {
+        z-index: 3;
+        background: ${({ theme }) => theme.colors.neutral_shaded.neutral_6};
+    }
 `;
 
 export const MovieBackIcon = styled(BackIcon)`
-    cursor: pointer;
+    z-index: 4;
 `;
 
 export const MovieForwardIcon = styled(ForwardIcon)`
-    cursor: pointer;
+    z-index: 4;
 `;
 
 export const MovieTitleAndCounterContainer = styled.div`
@@ -47,22 +60,37 @@ export const MovieTitleAndCounterContainer = styled.div`
     padding: 0 20px;
 `;
 
-export const MovieTitleContainer = styled.div`
+export const MovieTitleAndYearWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    height: 2rem;
+    overflow: hidden;
+`;
+
+export const MovieTitleAndYearContainer = styled.div<{ $movieIndex: number; $isSelected: boolean }>`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+
+    transition: transform 0.2s ease-in-out;
+    transform: translateY(${({ $movieIndex }) => -100 * $movieIndex}%);
 `;
 
-export const MovieTitle = styled.h2`
+export const MovieTitle = styled.p`
     font-size: 24px;
     font-weight: 400;
+    line-height: 1.2;
     color: ${({ theme }) => theme.colors.neutral.neutral_1};
+    margin-right: 4px;
 `;
 
 export const MovieYear = styled.p`
     font-size: 14px;
     font-weight: 400;
+    line-height: 1.6;
     color: ${({ theme }) => theme.colors.secondary.celadon_blue};
     opacity: 40%;
 `;

@@ -1,27 +1,38 @@
+import React, { useEffect, useState } from "react";
 import { HomeHeroContentOverlayProps } from "@/_types/components";
 import * as Styled from "./HomeHeroContentOverlay.styled";
 import CircularProgress from "@/components/CircularCounter/CircularCounter";
 
 export default function HomeHeroContentOverlay({
-    movieTitle,
-    movieYear,
-    movieIndex,
-    moviesCount,
+    currentMovieIndex,
+    movies,
     showNextMovie,
     showPreviousMovie,
 }: HomeHeroContentOverlayProps) {
     return (
         <Styled.Container>
             <Styled.MovieControlsContainer>
-                <Styled.MovieBackIcon onClick={showPreviousMovie} />
-                <Styled.MovieForwardIcon onClick={showNextMovie} />
+                <Styled.ControlIconContainer onClick={showPreviousMovie}>
+                    <Styled.MovieBackIcon />
+                </Styled.ControlIconContainer>
+                <Styled.ControlIconContainer onClick={showNextMovie}>
+                    <Styled.MovieForwardIcon />
+                </Styled.ControlIconContainer>
             </Styled.MovieControlsContainer>
             <Styled.MovieTitleAndCounterContainer>
-                <Styled.MovieTitleContainer>
-                    <Styled.MovieTitle>{movieTitle}</Styled.MovieTitle>
-                    <Styled.MovieYear>{movieYear}</Styled.MovieYear>
-                </Styled.MovieTitleContainer>
-                <CircularProgress currentIndex={movieIndex + 1} total={moviesCount} />
+                <Styled.MovieTitleAndYearWrapper>
+                    {movies.map((movie, index) => (
+                        <Styled.MovieTitleAndYearContainer
+                            key={index}
+                            $movieIndex={currentMovieIndex}
+                            $isSelected={index === currentMovieIndex}
+                        >
+                            <Styled.MovieTitle>{movie.title}</Styled.MovieTitle>
+                            <Styled.MovieYear>{movie.year}</Styled.MovieYear>
+                        </Styled.MovieTitleAndYearContainer>
+                    ))}
+                </Styled.MovieTitleAndYearWrapper>
+                <CircularProgress currentIndex={currentMovieIndex + 1} total={movies.length} />
             </Styled.MovieTitleAndCounterContainer>
         </Styled.Container>
     );
