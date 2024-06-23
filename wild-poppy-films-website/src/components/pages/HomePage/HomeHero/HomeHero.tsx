@@ -44,45 +44,50 @@ export default function HomeHero() {
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    useEffect(() => {
-        const intervalImage = setInterval(() => {
-            setCurrentImageIndex((prevImageIndex) => {
-                if (prevImageIndex === content[currentMovieIndex].images.desktop.length - 1) {
-                    return 0;
-                }
-                return prevImageIndex + 1;
-            });
-        }, contentCycleDurationMs);
+    function showNextImage() {
+        const moviesCount = content.length;
+        const imagesCountForCurrentMovie = content[currentMovieIndex].images.desktop.length;
 
-        return () => clearInterval(intervalImage);
-    }, [currentImageIndex]);
+        setCurrentImageIndex((currentIndex) => {
+            if (currentIndex === imagesCountForCurrentMovie - 1) {
+                setCurrentMovieIndex((currentMovieIndex + 1) % moviesCount);
+                return 0;
+            }
+            return currentIndex + 1;
+        });
+    }
 
-    useEffect(() => {
-        if (currentImageIndex === 2) {
-            const intervalMovie = setInterval(() => {
-                setCurrentMovieIndex((prevMovieIndex) => {
-                    if (prevMovieIndex === content.length - 1) {
-                        return 0;
-                    }
-                    return prevMovieIndex + 1;
-                });
-            }, contentCycleDurationMs);
-            return () => clearInterval(intervalMovie);
-        }
-    }, [currentImageIndex]);
+    function showPreviousImage() {
+        const moviesCount = content.length;
+        const imagesCountForCurrentMovie = content[currentMovieIndex].images.desktop.length;
 
-    useEffect(() => {
-        console.log("currentMovieIndex", currentMovieIndex);
-        console.log("currentImageIndex", currentImageIndex);
-    }, [currentMovieIndex, currentImageIndex]);
+        setCurrentImageIndex((currentIndex) => {
+            if (currentIndex === 0) {
+                setCurrentMovieIndex((currentMovieIndex - 1 + moviesCount) % moviesCount);
+                return imagesCountForCurrentMovie - 1;
+            }
+            return currentIndex - 1;
+        });
+    }
 
     return (
-        <React.Fragment>
-            <Styled.StyledImage
-                src={content[currentMovieIndex].images.desktop[currentImageIndex]}
-                alt={content[currentMovieIndex].title}
-                priority
-            />
-        </React.Fragment>
+        <Styled.Container>
+            <Styled.ContentContainer>
+                {content.map((movie) =>
+                    movie.images.desktop.map((image, imageIndex) => (
+                        <Styled.StyledImage
+                            key={`${movie.title}-${imageIndex}`}
+                            src={image}
+                            alt={movie.title}
+                            $imageIndex={
+                                currentImageIndex + currentMovieIndex * movie.images.desktop.length
+                            }
+                        />
+                    ))
+                )}
+            </Styled.ContentContainer>
+            <button onClick={showPreviousImage}>Previous</button>
+            <button onClick={showNextImage}>Next</button>
+        </Styled.Container>
     );
 }
