@@ -1,5 +1,6 @@
+"use client";
 import styled from "styled-components";
 
 export const Container = styled.div`
-    background: ${({ theme }) => theme.colors.neutral.neutral_14};
+    height: 1600px;
 `;

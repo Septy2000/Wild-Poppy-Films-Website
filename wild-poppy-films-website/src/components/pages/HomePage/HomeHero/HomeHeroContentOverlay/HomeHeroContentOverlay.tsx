@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import React from "react";
 import { HomeHeroContentOverlayProps } from "@/_types/components";
 import * as Styled from "./HomeHeroContentOverlay.styled";
 import CircularProgress from "@/components/CircularCounter/CircularCounter";

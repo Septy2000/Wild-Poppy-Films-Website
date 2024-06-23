@@ -6,7 +6,8 @@ export const GlassOverFrame = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    height: 101%; // Fix problem for sub-pixel rendering where a small gap is visible at the bottom
+    width: 100%;
     background: linear-gradient(
         to bottom,
         rgba(1, 7, 0, 0.25) 0%,

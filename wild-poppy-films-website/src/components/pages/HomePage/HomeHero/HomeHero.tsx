@@ -90,6 +90,7 @@ export default function HomeHero() {
                             key={`${movie.title}-${imageIndex}`}
                             src={image}
                             alt={movie.title}
+                            priority
                             $imageIndex={
                                 currentImageIndex + currentMovieIndex * movie.images.desktop.length
                             }
