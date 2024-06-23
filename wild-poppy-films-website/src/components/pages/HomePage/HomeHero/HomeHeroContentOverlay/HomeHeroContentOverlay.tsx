@@ -1,5 +1,6 @@
 import { HomeHeroContentOverlayProps } from "@/_types/components";
 import * as Styled from "./HomeHeroContentOverlay.styled";
+import CircularProgress from "@/components/CircularCounter/CircularCounter";
 
 export default function HomeHeroContentOverlay({
     movieTitle,
@@ -20,7 +21,7 @@ export default function HomeHeroContentOverlay({
                     <Styled.MovieTitle>{movieTitle}</Styled.MovieTitle>
                     <Styled.MovieYear>{movieYear}</Styled.MovieYear>
                 </Styled.MovieTitleContainer>
-                <div>{`${movieIndex + 1} / ${moviesCount}`}</div>
+                <CircularProgress currentIndex={movieIndex + 1} total={moviesCount} />
             </Styled.MovieTitleAndCounterContainer>
         </Styled.Container>
     );

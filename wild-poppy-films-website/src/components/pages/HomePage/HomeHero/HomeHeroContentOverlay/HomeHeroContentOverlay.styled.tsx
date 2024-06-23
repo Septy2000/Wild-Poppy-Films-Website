@@ -16,6 +16,7 @@ export const Container = styled.div`
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr;
     grid-template-areas: "." "controls" "movie-title-and-counter";
+    user-select: none;
 `;
 
 export const MovieControlsContainer = styled.div`
