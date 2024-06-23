@@ -18,6 +18,7 @@ export const ContentContainer = styled.div`
 
 export const StyledImage = styled(Image)<{ $imageIndex: number }>`
     object-fit: cover;
+    aspect-ratio: 5 / 3;
     width: 100%;
     height: 100%;
     display: block;

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import * as Styled from "./HomeHero.styled";
 import { HomeHeroMovie } from "@/_types/common";
+import { GlassOverFrame } from "@/components/GlassOverFrame/GlassOverFrame.styled";
 // Images for content cycle
 
 // Cutezatorii
@@ -57,17 +58,18 @@ export default function HomeHero() {
         });
     }
 
-    function showPreviousImage() {
+    function showPreviousMovie() {
         const moviesCount = content.length;
-        const imagesCountForCurrentMovie = content[currentMovieIndex].images.desktop.length;
 
-        setCurrentImageIndex((currentIndex) => {
-            if (currentIndex === 0) {
-                setCurrentMovieIndex((currentMovieIndex - 1 + moviesCount) % moviesCount);
-                return imagesCountForCurrentMovie - 1;
-            }
-            return currentIndex - 1;
-        });
+        setCurrentMovieIndex((currentMovieIndex - 1 + moviesCount) % moviesCount);
+        setCurrentImageIndex(0);
+    }
+
+    function showNextMovie() {
+        const moviesCount = content.length;
+
+        setCurrentMovieIndex((currentMovieIndex + 1) % moviesCount);
+        setCurrentImageIndex(0);
     }
 
     return (
@@ -86,8 +88,7 @@ export default function HomeHero() {
                     ))
                 )}
             </Styled.ContentContainer>
-            <button onClick={showPreviousImage}>Previous</button>
-            <button onClick={showNextImage}>Next</button>
+            <GlassOverFrame />
         </Styled.Container>
     );
 }
