@@ -5,3 +5,12 @@ export interface ModalLinkButtonProps {
     isVisible: boolean;
     delay: number;
 }
+
+export interface HomeHeroContentOverlayProps {
+    movieTitle: string;
+    movieYear: string;
+    movieIndex: number;
+    moviesCount: number;
+    showNextMovie: () => void;
+    showPreviousMovie: () => void;
+}

@@ -19,7 +19,8 @@ export const Header = styled.header<HeaderProps>`
     align-items: center;
 
     // need to make background transparent when over content
-    background: ${({ theme }) => theme.colors.neutral.neutral_14};
+    /* background: ${({ theme }) => theme.colors.neutral.neutral_14}; */
+    background: transparent;
     color: ${({ $isModalOpen, theme }) =>
         $isModalOpen ? theme.colors.secondary.core_green_light_2 : theme.colors.neutral.neutral_1};
     position: fixed;

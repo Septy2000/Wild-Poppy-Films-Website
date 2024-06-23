@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
@@ -18,7 +18,7 @@ export const ContentContainer = styled.div`
 
 export const StyledImage = styled(Image)<{ $imageIndex: number }>`
     object-fit: cover;
-    aspect-ratio: 5 / 3;
+    /* aspect-ratio: 5 / 3; for desktop */
     width: 100%;
     height: 100%;
     display: block;
