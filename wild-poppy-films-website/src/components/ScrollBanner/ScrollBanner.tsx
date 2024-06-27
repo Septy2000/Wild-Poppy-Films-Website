@@ -1,8 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as Styled from "./ScrollBanner.styled";
 import { useInView } from "react-intersection-observer";
+import { ScrollBannerColorVariant } from "@/_types/styledComponents";
 
-export default function ScrollBanner({ displayTextList }: { displayTextList: string[] }) {
+export default function ScrollBanner({
+    displayTextList,
+    variant,
+}: {
+    displayTextList: string[];
+    variant: ScrollBannerColorVariant;
+}) {
     const containerY = useRef(0);
     const [currentScrollY, setCurrentScrollY] = useState(0);
     const [translateX, setTranslateX] = useState(0);
@@ -12,7 +19,10 @@ export default function ScrollBanner({ displayTextList }: { displayTextList: str
         initialInView: true,
     });
 
+    const scrollBarLength = useRef(0);
+
     useEffect(() => {
+        scrollBarLength.current = window.innerWidth / displayTextList[0].length;
         handleScroll();
         window.addEventListener("scroll", handleScroll);
         return () => {
@@ -36,11 +46,11 @@ export default function ScrollBanner({ displayTextList }: { displayTextList: str
     }
 
     return (
-        <Styled.Container ref={ref}>
+        <Styled.Container ref={ref} $variant={variant}>
             <Styled.TextContainer ref={containerRef} $translateX={translateX}>
                 {[...Array(30)].map((_, i) =>
                     displayTextList.map((displayText, index) => (
-                        <Styled.Text key={index + i * displayTextList.length}>
+                        <Styled.Text key={index + i * displayTextList.length} $variant={variant}>
                             {displayText}
                         </Styled.Text>
                     ))

@@ -8,7 +8,7 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, ref) => {
 
     return (
         <Styled.Container ref={ref}>
-            <ScrollBanner displayTextList={scrollBannerDisplayTextList} />
+            <ScrollBanner displayTextList={scrollBannerDisplayTextList} variant="black" />
         </Styled.Container>
     );
 });

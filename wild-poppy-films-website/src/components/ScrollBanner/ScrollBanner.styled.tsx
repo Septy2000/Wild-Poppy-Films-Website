@@ -1,13 +1,25 @@
 "use client";
 import styled from "styled-components";
+import { ScrollBannerColorVariant } from "@/_types/styledComponents";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $variant: ScrollBannerColorVariant }>`
     display: flex;
     align-items: center;
     width: 100%;
     height: 48px;
     overflow: hidden;
-    background: ${({ theme }) => theme.colors.neutral.neutral_14};
+    background: ${({ theme, $variant }) => {
+        switch ($variant) {
+            case "black":
+                return theme.colors.neutral.neutral_14;
+            case "green":
+                return theme.colors.secondary.core_green_light_2;
+            case "red":
+                return theme.colors.primary.poppy_red;
+            default:
+                return theme.colors.neutral.neutral_14;
+        }
+    }};
     color: #fff;
 `;
 
@@ -22,13 +34,34 @@ export const TextContainer = styled.div.attrs<{ $translateX: number }>((props) =
     justify-content: center;
     will-change: transform;
     width: 200%;
-    /* overflow: hidden; */
 `;
 
-export const Text = styled.span`
-    color: ${({ theme }) => theme.colors.neutral.neutral_4};
+export const Text = styled.span<{ $variant: ScrollBannerColorVariant }>`
+    color: ${({ theme, $variant }) => {
+        switch ($variant) {
+            case "black":
+                return theme.colors.neutral.neutral_4;
+            case "green":
+                return theme.colors.neutral.neutral_1;
+            case "red":
+                return theme.colors.neutral.neutral_4;
+            default:
+                return theme.colors.neutral.neutral_14;
+        }
+    }};
     &:nth-child(3n) {
-        color: ${({ theme }) => theme.colors.primary.poppy_red};
+        color: ${({ theme, $variant }) => {
+            switch ($variant) {
+                case "black":
+                    return theme.colors.primary.poppy_red;
+                case "green":
+                    return theme.colors.primary.poppy_red;
+                case "red":
+                    return theme.colors.secondary.core_green_light_2;
+                default:
+                    return theme.colors.neutral.neutral_14;
+            }
+        }};
     }
 
     &::after {

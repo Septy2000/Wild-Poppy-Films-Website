@@ -3,3 +3,5 @@ export interface ModalLinkButtonStyledProps {
     $isVisible: boolean;
     $delay: number;
 }
+
+export type ScrollBannerColorVariant = "black" | "red" | "green";
