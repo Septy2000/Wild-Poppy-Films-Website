@@ -1,9 +1,6 @@
 "use client";
 import styled from "styled-components";
 
-import ForwardIcon from "@/icons/navigation/home-hero-forward-icon-mobile.svg";
-import BackIcon from "@/icons/navigation/home-hero-back-icon-mobile.svg";
-
 export const Container = styled.div`
     position: absolute;
     top: 0;
@@ -22,25 +19,6 @@ export const MovieControlsContainer = styled.div`
     justify-content: space-between;
     align-items: center;
 `;
-
-export const ControlIconContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: transparent;
-    padding: 6px;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
-    &:hover {
-        z-index: 3;
-        background: ${({ theme }) => theme.colors.neutral_shaded.neutral_6};
-    }
-`;
-
-export const MovieBackIcon = styled(BackIcon)``;
-
-export const MovieForwardIcon = styled(ForwardIcon)``;
 
 export const MovieTitleAndCounterContainer = styled.div`
     grid-area: film-title-and-counter;

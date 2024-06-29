@@ -7,7 +7,6 @@ import HomePageFilmsBackgroundDesktop from "@/images/home-page/films/home-films-
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-image: url(${HomePageFilmsBackgroundMobile.src});
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
         background-image: url(${HomePageFilmsBackgroundTablet.src});

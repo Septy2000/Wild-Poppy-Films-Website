@@ -3,6 +3,7 @@ import React from "react";
 import { HomeHeroContentOverlayProps } from "@/_types/components";
 import * as Styled from "./HomeHeroContentOverlay.styled";
 import CircularProgress from "@/components/CircularCounter/CircularCounter";
+import HomeHeroContentControlButton from "@/components/Buttons/HomeHeroContentControlButton/HomeHeroContentControlButton";
 
 export default function HomeHeroContentOverlay({
     currentMovieIndex,
@@ -13,12 +14,8 @@ export default function HomeHeroContentOverlay({
     return (
         <Styled.Container>
             <Styled.MovieControlsContainer>
-                <Styled.ControlIconContainer onClick={showPreviousMovie}>
-                    <Styled.MovieBackIcon />
-                </Styled.ControlIconContainer>
-                <Styled.ControlIconContainer onClick={showNextMovie}>
-                    <Styled.MovieForwardIcon />
-                </Styled.ControlIconContainer>
+                <HomeHeroContentControlButton onClick={showPreviousMovie} direction="left" />
+                <HomeHeroContentControlButton onClick={showNextMovie} direction="right" />
             </Styled.MovieControlsContainer>
             <Styled.MovieTitleAndCounterContainer>
                 <Styled.MovieTitleAndYearWrapper>
