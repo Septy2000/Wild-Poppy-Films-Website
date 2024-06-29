@@ -1,4 +1,4 @@
-import { HomeHeroMovie } from "./common";
+import { HomeHeroFilm } from "./common";
 
 export interface ModalLinkButtonProps {
     label: string;
@@ -10,7 +10,7 @@ export interface ModalLinkButtonProps {
 
 export interface HomeHeroContentOverlayProps {
     currentMovieIndex: number;
-    movies: HomeHeroMovie[];
+    films: HomeHeroFilm[];
     showNextMovie: () => void;
     showPreviousMovie: () => void;
 }

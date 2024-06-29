@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import * as Styled from "./HomeHero.styled";
-import { HomeHeroMovie } from "@/_types/common";
+import { HomeHeroFilm } from "@/_types/common";
 import { GlassOverFrame } from "@/components/GlassOverFrame/GlassOverFrame.styled";
 import HomeHeroContentOverlay from "@/components/pages/HomePage/HomeHero/HomeHeroContentOverlay/HomeHeroContentOverlay";
 // Images for content cycle
@@ -23,7 +23,7 @@ import HoeigMobile2 from "@/images/home-page/hero/hoeig/hoeig-2-mobile.png";
 import HoeigMobile3 from "@/images/home-page/hero/hoeig/hoeig-3-mobile.png";
 
 export default function HomeHero() {
-    const movies: HomeHeroMovie[] = [
+    const films: HomeHeroFilm[] = [
         {
             title: "Cutezatorii",
             year: "2023",
@@ -47,8 +47,8 @@ export default function HomeHero() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     function showNextImage() {
-        const moviesCount = movies.length;
-        const imagesCountForCurrentMovie = movies[currentMovieIndex].images.desktop.length;
+        const moviesCount = films.length;
+        const imagesCountForCurrentMovie = films[currentMovieIndex].images.desktop.length;
 
         setCurrentImageIndex((currentIndex) => {
             if (currentIndex === imagesCountForCurrentMovie - 1) {
@@ -68,14 +68,14 @@ export default function HomeHero() {
     }, [currentMovieIndex]);
 
     function showPreviousMovie() {
-        const moviesCount = movies.length;
+        const moviesCount = films.length;
 
         setCurrentMovieIndex((currentMovieIndex - 1 + moviesCount) % moviesCount);
         setCurrentImageIndex(0);
     }
 
     function showNextMovie() {
-        const moviesCount = movies.length;
+        const moviesCount = films.length;
 
         setCurrentMovieIndex((currentMovieIndex + 1) % moviesCount);
         setCurrentImageIndex(0);
@@ -84,15 +84,15 @@ export default function HomeHero() {
     return (
         <Styled.Container>
             <Styled.ContentContainer>
-                {movies.map((movie) =>
-                    movie.images.mobile.map((image, imageIndex) => (
+                {films.map((film) =>
+                    film.images.mobile.map((image, imageIndex) => (
                         <Styled.StyledImage
-                            key={`${movie.title}-${imageIndex}`}
+                            key={`${film.title}-${imageIndex}`}
                             src={image}
-                            alt={movie.title}
+                            alt={film.title}
                             priority
                             $imageIndex={
-                                currentImageIndex + currentMovieIndex * movie.images.desktop.length
+                                currentImageIndex + currentMovieIndex * film.images.desktop.length
                             }
                         />
                     ))
@@ -100,7 +100,7 @@ export default function HomeHero() {
                 <GlassOverFrame />
             </Styled.ContentContainer>
             <HomeHeroContentOverlay
-                movies={movies}
+                films={films}
                 currentMovieIndex={currentMovieIndex}
                 showNextMovie={showNextMovie}
                 showPreviousMovie={showPreviousMovie}

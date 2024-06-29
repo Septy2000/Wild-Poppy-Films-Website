@@ -12,7 +12,7 @@ export const Container = styled.div`
     bottom: 0;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: "." "controls" "movie-title-and-counter";
+    grid-template-areas: "." "controls" "film-title-and-counter";
     user-select: none;
 `;
 
@@ -43,7 +43,7 @@ export const MovieBackIcon = styled(BackIcon)``;
 export const MovieForwardIcon = styled(ForwardIcon)``;
 
 export const MovieTitleAndCounterContainer = styled.div`
-    grid-area: movie-title-and-counter;
+    grid-area: film-title-and-counter;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

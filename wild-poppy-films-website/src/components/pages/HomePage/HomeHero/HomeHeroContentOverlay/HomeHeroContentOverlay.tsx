@@ -6,7 +6,7 @@ import CircularProgress from "@/components/CircularCounter/CircularCounter";
 
 export default function HomeHeroContentOverlay({
     currentMovieIndex,
-    movies,
+    films,
     showNextMovie,
     showPreviousMovie,
 }: HomeHeroContentOverlayProps) {
@@ -22,18 +22,18 @@ export default function HomeHeroContentOverlay({
             </Styled.MovieControlsContainer>
             <Styled.MovieTitleAndCounterContainer>
                 <Styled.MovieTitleAndYearWrapper>
-                    {movies.map((movie, index) => (
+                    {films.map((film, index) => (
                         <Styled.MovieTitleAndYearContainer
                             key={index}
                             $movieIndex={currentMovieIndex}
                             $isSelected={index === currentMovieIndex}
                         >
-                            <Styled.MovieTitle>{movie.title}</Styled.MovieTitle>
-                            <Styled.MovieYear>{movie.year}</Styled.MovieYear>
+                            <Styled.MovieTitle>{film.title}</Styled.MovieTitle>
+                            <Styled.MovieYear>{film.year}</Styled.MovieYear>
                         </Styled.MovieTitleAndYearContainer>
                     ))}
                 </Styled.MovieTitleAndYearWrapper>
-                <CircularProgress currentIndex={currentMovieIndex + 1} total={movies.length} />
+                <CircularProgress currentIndex={currentMovieIndex + 1} total={films.length} />
             </Styled.MovieTitleAndCounterContainer>
         </Styled.Container>
     );

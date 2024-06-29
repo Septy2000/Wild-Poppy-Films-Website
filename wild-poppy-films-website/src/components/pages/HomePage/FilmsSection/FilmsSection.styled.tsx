@@ -2,5 +2,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    height: 1600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const FilmsContainer = styled.div`
+    padding: 20px 48px;
 `;
