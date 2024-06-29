@@ -4,8 +4,6 @@ import Image from "next/image";
 export const Container = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     border-radius: 16px;
     background: ${({ theme }) => theme.colors.neutral.neutral_1};
     margin-bottom: 16px;
@@ -29,40 +27,39 @@ export const FilmImagePlaceholder = styled.div`
     height: 96px;
     border-radius: 4px;
     background: black;
+    flex-shrink: 0;
 `;
 
 export const FilmInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100%;
     justify-content: space-between;
+    align-items: start;
+    margin-left: 16px;
+`;
+
+export const FilmTitleAndYearContainer = styled.div``;
+
+export const FilmTitle = styled.span`
+    color: ${({ theme }) => theme.colors.neutral.neutral_14};
+    font-size: 14px;
+`;
+
+export const FilmYear = styled.span`
+    color: ${({ theme }) => theme.colors.secondary_shaded.celadon_blue_dark_1};
+    font-size: 8px;
+    margin-left: 4px;
+`;
+
+export const FilmDescriptionContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     align-items: start;
 `;
 
-export const FilmTitleAndYearContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-end;
-`;
+export const FilmProductionContainer = styled.div``;
 
-export const FilmTitle = styled.p`
-    color: ${({ theme }) => theme.colors.neutral.neutral_14};
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-`;
-
-export const FilmYear = styled.p`
-    color: ${({ theme }) => theme.colors.secondary_shaded.celadon_blue_dark_1};
-    font-size: 8px;
-    font-style: normal;
-    font-weight: 400;
-`;
-
-export const FilmDescriptionContainer = styled.div``;
-
-export const DefaultText = styled.p`
+export const DefaultText = styled.span`
     color: ${({ theme }) => theme.colors.neutral.neutral_9};
     font-size: 10px;
     font-style: normal;

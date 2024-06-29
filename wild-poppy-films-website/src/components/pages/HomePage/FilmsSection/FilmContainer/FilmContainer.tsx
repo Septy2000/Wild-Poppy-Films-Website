@@ -11,13 +11,22 @@ export default function FilmContainer({ film }: { film: Film }) {
                     <Styled.FilmTitle>{film.title}</Styled.FilmTitle>
                     <Styled.FilmYear>{film.year}</Styled.FilmYear>
                 </Styled.FilmTitleAndYearContainer>
-                <Styled.FilmInfoContainer>
+                <Styled.FilmDescriptionContainer>
                     <Styled.DefaultText>{film.genre}</Styled.DefaultText>
-                    <Styled.DefaultText>{"PROD BY. "}</Styled.DefaultText>
-                    {film.production.map((producer, id) => (
-                        <Styled.ProductionText key={id}>{producer}</Styled.ProductionText>
-                    ))}
-                </Styled.FilmInfoContainer>
+                    <Styled.FilmProductionContainer>
+                        <Styled.DefaultText>{"PROD. BY "}</Styled.DefaultText>
+                        {film.production.map((producer, index) => (
+                            <React.Fragment key={index}>
+                                <Styled.ProductionText>{producer}</Styled.ProductionText>
+                                {index < film.production.length - 1 && (
+                                    <Styled.DefaultText key={`and-${index}`}>
+                                        {" & "}
+                                    </Styled.DefaultText>
+                                )}
+                            </React.Fragment>
+                        ))}
+                    </Styled.FilmProductionContainer>
+                </Styled.FilmDescriptionContainer>
             </Styled.FilmInfoContainer>
         </Styled.Container>
     );

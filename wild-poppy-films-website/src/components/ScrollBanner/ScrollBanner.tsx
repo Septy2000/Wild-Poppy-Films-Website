@@ -19,10 +19,11 @@ export default function ScrollBanner({
         initialInView: true,
     });
 
-    const scrollBarLength = useRef(0);
+    const [scrollBarLength, setScrollBarLength] = useState(0);
 
     useEffect(() => {
-        scrollBarLength.current = window.innerWidth / displayTextList[0].length;
+        setScrollBarLength(Math.round(window.innerWidth / displayTextList[0].length));
+
         handleScroll();
         window.addEventListener("scroll", handleScroll);
         return () => {
@@ -36,7 +37,7 @@ export default function ScrollBanner({
             // value "50" is the max percentage of the translateX
             setTranslateX((1 - containerYPositionPercentage) * 50 * -1);
         }
-    }, [currentScrollY]);
+    }, [currentScrollY, inView]);
 
     function handleScroll() {
         setCurrentScrollY(window.scrollY);
@@ -48,7 +49,7 @@ export default function ScrollBanner({
     return (
         <Styled.Container ref={ref} $variant={variant}>
             <Styled.TextContainer ref={containerRef} $translateX={translateX}>
-                {[...Array(30)].map((_, i) =>
+                {[...Array(scrollBarLength)].map((_, i) =>
                     displayTextList.map((displayText, index) => (
                         <Styled.Text key={index + i * displayTextList.length} $variant={variant}>
                             {displayText}
