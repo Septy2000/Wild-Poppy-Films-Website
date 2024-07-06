@@ -15,7 +15,9 @@ export const Container = styled.div`
 export const StyledDownwardIcon = styled(DownwardIcon)`
     width: 20px;
     height: 16px;
-    fill: ${({ theme }) => theme.colors.neutral.neutral_9};
+    path {
+        fill: ${({ theme }) => theme.colors.neutral.neutral_9};
+    }
 `;
 
 export const Spacer = styled.div`

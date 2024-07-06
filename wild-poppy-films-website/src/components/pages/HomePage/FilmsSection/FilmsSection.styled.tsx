@@ -8,6 +8,9 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     background-image: url(${HomePageFilmsBackgroundMobile.src});
+
+    padding: 48px 20px;
+
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
         background-image: url(${HomePageFilmsBackgroundTablet.src});
     }
@@ -16,6 +19,4 @@ export const Container = styled.div`
     }
 `;
 
-export const FilmsContainer = styled.div`
-    padding: 48px 20px 16px 20px;
-`;
+export const FilmsContainer = styled.div``;

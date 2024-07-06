@@ -5,3 +5,5 @@ export interface ModalLinkButtonStyledProps {
 }
 
 export type ScrollBannerColorVariant = "black" | "red" | "green";
+
+export type PrimaryButtonColorVariant = "red" | "green";

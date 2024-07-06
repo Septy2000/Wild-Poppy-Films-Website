@@ -11,15 +11,19 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, ref) => {
     const filmsCtaText = "view all";
 
     return (
-        <Styled.Container ref={ref}>
+        <React.Fragment>
             <ScrollBanner displayTextList={scrollBannerDisplayTextList} variant="black" />
-            <Styled.FilmsContainer>
-                {films.map((film, id) => (
-                    <FilmContainer film={film} key={id} />
-                ))}
-            </Styled.FilmsContainer>
-            <PrimaryButton href="/films">{filmsCtaText}</PrimaryButton>
-        </Styled.Container>
+            <Styled.Container ref={ref}>
+                <Styled.FilmsContainer>
+                    {films.map((film, id) => (
+                        <FilmContainer film={film} key={id} />
+                    ))}
+                </Styled.FilmsContainer>
+                <PrimaryButton href="/films" variant="red">
+                    {filmsCtaText}
+                </PrimaryButton>
+            </Styled.Container>
+        </React.Fragment>
     );
 });
 FilmsSection.displayName = "FilmsSection";
