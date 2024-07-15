@@ -1,29 +1,52 @@
 import Image from "next/image";
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import PoppyLogoSketch from "@/icons/logo/poppy-logo-sketch.svg";
 
 export const Container = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr; // 2 columns
-    grid-template-rows: repeat(3, auto); // 3 rows
-    flex-grow: 1;
-    row-gap: 16px;
-    column-gap: 24px;
+    overflow: hidden;
     padding: 48px 20px 120px 20px;
-    align-items: start;
-    justify-items: center;
-    justify-content: center;
-
-    // Select every element in the first column
-    & > :nth-child(2n + 1) {
-        margin-top: 28px;
-        align-items: start;
-    }
 `;
 
-export const CarouselItem = styled(Image)`
+export const CarouselContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+`;
+
+export const CarouselLeft = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 28px;
+    justify-items: flex-start;
+    align-items: start;
+`;
+
+export const CarouselRight = styled(CarouselLeft)`
+    margin-top: 0;
+`;
+
+const slideIn = (initialX: number) => keyframes`
+  from {
+    transform: translateX(${initialX}px);
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
+
+const slideAnimation = (translateX: number, delay: number) => css`
+    transform: translateX(${translateX}px);
+    animation: ${slideIn(translateX)} 0.2s ease-in-out forwards;
+    animation-delay: ${delay}s;
+`;
+
+export const CarouselItem = styled(Image)<{ $translateX: number; $delay: number }>`
     width: 128px;
     height: 128px;
+    margin-bottom: 16px;
+
+    ${({ $translateX, $delay }) => slideAnimation($translateX, $delay)}
 `;
 
 export const PoppyLogo = styled(PoppyLogoSketch)`

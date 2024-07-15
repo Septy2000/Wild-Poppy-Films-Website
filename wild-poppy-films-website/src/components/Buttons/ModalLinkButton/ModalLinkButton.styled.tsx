@@ -31,7 +31,7 @@ const slideIn = (initialX: number) => keyframes`
 
 const slideAnimation = (translateX: number, delay: number) => css`
     transform: translateX(${translateX}px);
-    animation: ${slideIn(translateX)} 0.2s ease forwards;
+    animation: ${slideIn(translateX)} 0.2s ease-in-out forwards;
     animation-delay: ${delay}s;
 `;
 
