@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import styled, { keyframes, css } from "styled-components";
 import PoppyLogoSketch from "@/icons/logo/poppy-logo-sketch.svg";

@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import * as Styled from "./ScrollBanner.styled";
 import { useInView } from "react-intersection-observer";

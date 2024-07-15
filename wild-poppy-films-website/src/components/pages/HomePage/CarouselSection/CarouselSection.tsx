@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import * as Styled from "./CarouselSection.styled";
