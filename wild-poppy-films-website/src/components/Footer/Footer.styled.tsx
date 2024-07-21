@@ -10,7 +10,6 @@ import XIcon from "@/icons/social/x-icon.svg";
 export const Container = styled.footer`
     display: flex;
     flex-direction: column;
-
     border-radius: 16px 16px 0 0;
     padding: 48px 20px 40px 20px;
     background: ${({ theme }) => theme.colors.neutral.neutral_14};

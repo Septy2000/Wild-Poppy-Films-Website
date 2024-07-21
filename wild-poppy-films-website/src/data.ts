@@ -25,7 +25,7 @@ export const films: Film[] = [
         genre: "COMEDY",
         production: ["DELIA DUMONT", "DARIA POPESCO"],
         status: "available",
-        link: undefined,
+        link: "https://www.youtube.com",
         cover: undefined,
     },
 ];

@@ -52,7 +52,7 @@ export const CarouselItem = styled(Image)<{ $translateX: number; $delay: number 
 
 export const PoppyLogo = styled(PoppyLogoSketch)`
     position: relative;
-    top: -300px;
+    top: -200px;
     right: -80px;
     z-index: -1;
 `;
