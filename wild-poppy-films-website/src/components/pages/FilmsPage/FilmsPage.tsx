@@ -27,6 +27,18 @@ export function FilmsPage() {
         console.log(selectedFilmFilter);
     }, [selectedFilmFilter]);
 
+    // Filter films based on the selected filter
+    const filteredFilms = films.filter((film) => {
+        if (selectedFilmFilter === "all") {
+            return true;
+        } else if (selectedFilmFilter === "available") {
+            return film.status === "available";
+        } else if (selectedFilmFilter === "coming_soon") {
+            return film.status === "coming_soon" || film.status === "in_production";
+        }
+        return false;
+    });
+
     return (
         <Styled.Container>
             <div style={{ height: "100px" }}></div>
@@ -42,7 +54,7 @@ export function FilmsPage() {
                 ))}
             </Styled.FilmsFilterContainer>
             <Styled.FilmsContainer>
-                {films.map((film, index) => (
+                {filteredFilms.map((film, index) => (
                     <FilmContainerLarge key={index} film={film} />
                 ))}
             </Styled.FilmsContainer>

@@ -15,6 +15,7 @@ export const Container = styled.div`
 
     // mobile
     padding: 16px;
+    width: 100%;
 `;
 
 export const FilmImage = styled(Image)`
