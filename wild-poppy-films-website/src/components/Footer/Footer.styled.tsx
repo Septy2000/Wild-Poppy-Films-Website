@@ -11,8 +11,13 @@ export const Container = styled.footer`
     display: flex;
     flex-direction: column;
     border-radius: 16px 16px 0 0;
-    padding: 48px 20px 40px 20px;
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
+    // mobile
+    padding: 48px 24px;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        padding: 48px 128px;
+    }
 `;
 
 export const Separator = styled.div`
@@ -20,13 +25,36 @@ export const Separator = styled.div`
     width: 100%;
     margin: 24px 0;
     background: ${({ theme }) => theme.colors.secondary_shaded.celadon_blue};
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        display: none;
+    }
+`;
+
+export const SeparatorDesktop = styled(Separator)`
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        display: block;
+    }
+`;
+export const TopFooterContainer = styled.div`
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
 `;
 
 export const LogoSocialsContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    // mobile
     align-items: start;
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        justify-content: space-between;
+        align-items: end;
+    }
 `;
 
 export const WildPoppyLogoAltXl = styled(WPLogoAltXl)`
@@ -50,6 +78,41 @@ export const PagesContainer = styled.div`
 
     align-items: flex-start;
     justify-content: flex-start;
+`;
+
+export const LegalContainer = styled.div`
+    display: flex;
+    gap: 8px;
+
+    // mobile
+    flex-direction: column;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+`;
+
+export const BottomFooterContainer = styled.div`
+    display: flex;
+    gap: 32px;
+
+    // mobile
+    flex-direction: column;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+`;
+
+export const CopyrightText = styled.span`
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 15px */
+    letter-spacing: -0.22px;
+    color: ${({ theme }) => theme.colors.neutral.neutral_4};
 `;
 
 const IconStylingCss = css`
@@ -78,25 +141,4 @@ export const YouTubeIconStyled = styled(YouTubeIcon)`
 
 export const XIconStyled = styled(XIcon)`
     ${IconStylingCss}
-`;
-
-export const LegalContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-`;
-
-export const ColFlexContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-`;
-
-export const CopyrightText = styled.span`
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; /* 15px */
-    letter-spacing: -0.22px;
-    color: ${({ theme }) => theme.colors.neutral.neutral_4};
 `;

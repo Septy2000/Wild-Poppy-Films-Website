@@ -14,4 +14,5 @@ export const LegalButton = styled(Link)`
     padding: 4px 0;
     align-items: center;
     color: ${({ theme }) => theme.colors.neutral.neutral_3};
+    margin-right: 16px;
 `;

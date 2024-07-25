@@ -5,6 +5,7 @@ import { LegalButton } from "@/components/Buttons/LegalButton/LegalButton.styled
 
 export default function Footer() {
     const pagesItems: { label: string; link: string }[] = [
+        { label: "HOME", link: "/" },
         { label: "FILMS", link: "/films" },
         { label: "OUR TEAM", link: "/our-team" },
         { label: "CONTACT", link: "/contact" },
@@ -20,28 +21,31 @@ export default function Footer() {
     ];
     return (
         <Styled.Container>
-            <Styled.LogoSocialsContainer>
-                <Styled.WildPoppyLogoAltXl />
-                <Styled.SocialsContainer>
-                    {socialItems.map((item, id) => (
-                        <ModalSocialButton key={id} icon={item.icon} link={item.link} />
+            <Styled.TopFooterContainer>
+                <Styled.LogoSocialsContainer>
+                    <Styled.WildPoppyLogoAltXl />
+                    <Styled.SocialsContainer>
+                        {socialItems.map((item, id) => (
+                            <ModalSocialButton key={id} icon={item.icon} link={item.link} />
+                        ))}
+                    </Styled.SocialsContainer>
+                </Styled.LogoSocialsContainer>
+                <Styled.Separator />
+                <Styled.PagesContainer>
+                    {pagesItems.map((page, id) => (
+                        <ModalLinkButton key={id} label={page.label} link={page.link} />
                     ))}
-                </Styled.SocialsContainer>
-            </Styled.LogoSocialsContainer>
-            <Styled.Separator />
-            <Styled.PagesContainer>
-                {pagesItems.map((page, id) => (
-                    <ModalLinkButton key={id} label={page.label} link={page.link} />
-                ))}
-            </Styled.PagesContainer>
-            <Styled.Separator />
-            <Styled.LegalContainer>
-                <Styled.ColFlexContainer>
+                </Styled.PagesContainer>
+            </Styled.TopFooterContainer>
+
+            <Styled.SeparatorDesktop />
+            <Styled.BottomFooterContainer>
+                <Styled.LegalContainer>
                     <LegalButton href={"/terms-and-conditions"}>{`TERMS & CONDITIONS`}</LegalButton>
                     <LegalButton href={"/cookie-policy"}>{`COOKIE POLICY`}</LegalButton>
-                </Styled.ColFlexContainer>
+                </Styled.LegalContainer>
                 <Styled.CopyrightText>{"©️ WILD POPPY FILMS, 2024"}</Styled.CopyrightText>
-            </Styled.LegalContainer>
+            </Styled.BottomFooterContainer>
         </Styled.Container>
     );
 }
