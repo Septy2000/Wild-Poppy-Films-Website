@@ -10,6 +10,7 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
     const delayPerLinkItem = 0.1;
 
     const menuItems: { label: string; link: string }[] = [
+        { label: "HOME", link: "/" },
         { label: "FILMS", link: "/films" },
         { label: "OUR TEAM", link: "/our-team" },
         { label: "CONTACT", link: "/contact" },
@@ -42,12 +43,13 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
 
     return (
         <React.Fragment>
-            {isVisible && <Styled.Overlay onClick={onClose} />}
+            <Styled.Overlay onClick={onClose} $isVisible={isVisible} />
             <Styled.Container $isVisible={isVisible} ref={selfRef}>
                 <Styled.Content>
                     <Styled.PagesContainer>
                         {menuItems.map((item, id) => (
                             <ModalLinkButton
+                                onClick={onClose}
                                 key={id}
                                 label={item.label}
                                 link={item.link}

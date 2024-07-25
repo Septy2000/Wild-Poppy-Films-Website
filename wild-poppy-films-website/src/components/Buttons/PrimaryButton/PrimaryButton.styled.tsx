@@ -40,7 +40,7 @@ export const Text = styled.p<{ $variant: PrimaryButtonColorVariant }>`
         font-size: 20px;
         color: ${({ theme }) => theme.colors.neutral.neutral_14};
 
-        &:hover {
+        ${Container}:hover & {
             color: ${({ theme }) => theme.colors.primary.poppy_red};
         }
     }
@@ -62,7 +62,7 @@ export const StyledRightArrowIcon = styled(RightArrowIcon)<{ $variant: PrimaryBu
             fill: ${({ theme }) => theme.colors.neutral.neutral_14};
         }
 
-        &:hover {
+        ${Container}:hover & {
             path {
                 fill: ${({ theme }) => theme.colors.primary.poppy_red};
             }

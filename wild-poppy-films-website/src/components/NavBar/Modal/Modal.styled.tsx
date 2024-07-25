@@ -6,12 +6,16 @@ import LinkedInIcon from "@/icons/social/linkedin-icon.svg";
 import YouTubeIcon from "@/icons/social/yt-icon.svg";
 import XIcon from "@/icons/social/x-icon.svg";
 
-export const Overlay = styled.div`
+export const Overlay = styled.div<{ $isVisible: boolean }>`
     position: fixed;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.4);
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+    visibility: ${({ $isVisible }) => ($isVisible ? "visible" : "hidden")};
+    background-color: rgba(0, 0, 0, 0.4);
+
     z-index: 9998;
 
     top: 60px;

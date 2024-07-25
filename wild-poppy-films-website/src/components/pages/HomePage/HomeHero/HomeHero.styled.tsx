@@ -20,7 +20,7 @@ export const StyledImage = styled(Image)<{ $imageIndex: number }>`
     object-fit: cover;
     /* aspect-ratio: 5 / 3; for desktop */
     width: 100%;
-    height: 100%;
+    height: 85vh;
     display: block;
     flex-grow: 0;
     flex-shrink: 0;

@@ -4,6 +4,7 @@ import * as Styled from "./HomeHero.styled";
 import { HomeHeroFilm } from "@/_types/common";
 import { GlassOverFrame } from "@/components/GlassOverFrame/GlassOverFrame.styled";
 import HomeHeroContentOverlay from "@/components/pages/HomePage/HomeHero/HomeHeroContentOverlay/HomeHeroContentOverlay";
+import useIsMobile from "@/hooks/useIsMobile";
 // Images for content cycle
 
 // Cutezatorii
@@ -46,6 +47,8 @@ export default function HomeHero() {
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+    const isMobile = useIsMobile();
+
     function showNextImage() {
         const moviesCount = films.length;
         const imagesCountForCurrentMovie = films[currentMovieIndex].images.desktop.length;
@@ -85,17 +88,20 @@ export default function HomeHero() {
         <Styled.Container>
             <Styled.ContentContainer>
                 {films.map((film) =>
-                    film.images.mobile.map((image, imageIndex) => (
-                        <Styled.StyledImage
-                            key={`${film.title}-${imageIndex}`}
-                            src={image}
-                            alt={film.title}
-                            priority
-                            $imageIndex={
-                                currentImageIndex + currentMovieIndex * film.images.desktop.length
-                            }
-                        />
-                    ))
+                    (isMobile ? film.images.mobile : film.images.desktop).map(
+                        (image, imageIndex) => (
+                            <Styled.StyledImage
+                                key={`${film.title}-${imageIndex}`}
+                                src={image}
+                                alt={film.title}
+                                priority
+                                $imageIndex={
+                                    currentImageIndex +
+                                    currentMovieIndex * film.images.desktop.length
+                                }
+                            />
+                        )
+                    )
                 )}
                 <GlassOverFrame />
             </Styled.ContentContainer>

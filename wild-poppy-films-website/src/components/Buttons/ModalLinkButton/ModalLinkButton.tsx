@@ -5,11 +5,12 @@ import * as Styled from "./ModalLinkButton.styled";
 import { ModalLinkButtonProps } from "@/_types/components";
 
 export default function ModalLinkButton({
+    onClick = () => {},
     label,
     link,
-    translateX,
-    isVisible,
-    delay,
+    translateX = 0,
+    isVisible = true,
+    delay = 0,
 }: ModalLinkButtonProps) {
     const [isModalDisplayed, setIsModalDisplayed] = useState(true);
     const buttonDisappearTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -30,7 +31,12 @@ export default function ModalLinkButton({
     }, [isVisible]);
 
     return (
-        <Styled.Container href={link}>
+        <Styled.Container
+            href={link}
+            onClick={() => {
+                onClick();
+            }}
+        >
             {isModalDisplayed && (
                 <React.Fragment>
                     <Styled.Label $translateX={translateX} $isVisible={isVisible} $delay={delay}>

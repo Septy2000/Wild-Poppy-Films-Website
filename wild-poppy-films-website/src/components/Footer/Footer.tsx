@@ -31,14 +31,7 @@ export default function Footer() {
             <Styled.Separator />
             <Styled.PagesContainer>
                 {pagesItems.map((page, id) => (
-                    <ModalLinkButton
-                        key={id}
-                        label={page.label}
-                        link={page.link}
-                        translateX={0}
-                        isVisible={true}
-                        delay={0}
-                    />
+                    <ModalLinkButton key={id} label={page.label} link={page.link} />
                 ))}
             </Styled.PagesContainer>
             <Styled.Separator />

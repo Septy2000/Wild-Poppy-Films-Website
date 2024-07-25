@@ -9,7 +9,7 @@ export const Container = styled.div`
     align-items: center;
     cursor: pointer;
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
-    height: 96px;
+    height: 10vh;
 `;
 
 export const StyledDownwardIcon = styled(DownwardIcon)`

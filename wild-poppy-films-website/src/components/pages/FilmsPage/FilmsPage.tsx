@@ -23,10 +23,6 @@ export function FilmsPage() {
         },
     ];
 
-    useEffect(() => {
-        console.log(selectedFilmFilter);
-    }, [selectedFilmFilter]);
-
     // Filter films based on the selected filter
     const filteredFilms = films.filter((film) => {
         if (selectedFilmFilter === "all") {

@@ -6,7 +6,7 @@ export const Container = styled.div<{ $variant: ScrollBannerColorVariant }>`
     display: flex;
     align-items: center;
     width: 100%;
-    height: 48px;
+    height: 5vh;
     overflow: hidden;
     background: ${({ theme, $variant }) => {
         switch ($variant) {
