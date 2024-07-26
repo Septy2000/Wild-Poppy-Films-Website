@@ -21,6 +21,7 @@ export const Container = styled.div<{ $variant: ScrollBannerColorVariant }>`
         }
     }};
     color: #fff;
+    padding: 1.25rem 0;
 `;
 
 export const TextContainer = styled.div.attrs<{ $translateX: number }>((props) => ({
@@ -70,9 +71,13 @@ export const Text = styled.span<{ $variant: ScrollBannerColorVariant }>`
     }
 
     font-family: Kagins;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
     letter-spacing: -0.22px;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        font-size: 1.75rem;
+    }
 `;

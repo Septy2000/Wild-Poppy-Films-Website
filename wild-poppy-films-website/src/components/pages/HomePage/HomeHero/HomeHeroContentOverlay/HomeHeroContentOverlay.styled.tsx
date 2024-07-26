@@ -65,6 +65,7 @@ export const MovieInstanceContainer = styled.div`
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         padding: 1.5rem 2rem;
+        cursor: pointer;
     }
 `;
 
