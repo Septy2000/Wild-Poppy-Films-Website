@@ -41,6 +41,22 @@ export default function HomeHero() {
                 desktop: [HoeigDesktop1, HoeigDesktop2, HoeigDesktop3],
             },
         },
+        {
+            title: "Cutezatorii",
+            year: "2023",
+            images: {
+                mobile: [CutezatoriiMobile1, CutezatoriiMobile2, CutezatoriiMobile3],
+                desktop: [CutezatoriiDesktop1, CutezatoriiDesktop2, CutezatoriiDesktop3],
+            },
+        },
+        {
+            title: "Hoeig",
+            year: "2022",
+            images: {
+                mobile: [HoeigMobile1, HoeigMobile2, HoeigMobile3],
+                desktop: [HoeigDesktop1, HoeigDesktop2, HoeigDesktop3],
+            },
+        },
     ];
     const contentCycleDurationMs = 3000;
 
@@ -84,33 +100,42 @@ export default function HomeHero() {
         setCurrentImageIndex(0);
     }
 
+    function setMovieIndex(index: number) {
+        setCurrentMovieIndex(index);
+        setCurrentImageIndex(0);
+    }
+
     return (
-        <Styled.Container>
-            <Styled.ContentContainer>
-                {films.map((film) =>
-                    (isMobile ? film.images.mobile : film.images.desktop).map(
-                        (image, imageIndex) => (
-                            <Styled.StyledImage
-                                key={`${film.title}-${imageIndex}`}
-                                src={image}
-                                alt={film.title}
-                                priority
-                                $imageIndex={
-                                    currentImageIndex +
-                                    currentMovieIndex * film.images.desktop.length
-                                }
-                            />
+        <React.Fragment>
+            <Styled.Container>
+                <Styled.ContentContainer>
+                    {films.map((film) =>
+                        (isMobile ? film.images.mobile : film.images.desktop).map(
+                            (image, imageIndex) => (
+                                <Styled.StyledImage
+                                    key={`${film.title}-${imageIndex}`}
+                                    src={image}
+                                    alt={film.title}
+                                    priority
+                                    $imageIndex={
+                                        currentImageIndex +
+                                        currentMovieIndex * film.images.desktop.length
+                                    }
+                                />
+                            )
                         )
-                    )
-                )}
-                <GlassOverFrame />
-            </Styled.ContentContainer>
-            <HomeHeroContentOverlay
-                films={films}
-                currentMovieIndex={currentMovieIndex}
-                showNextMovie={showNextMovie}
-                showPreviousMovie={showPreviousMovie}
-            />
-        </Styled.Container>
+                    )}
+                    <GlassOverFrame />
+                </Styled.ContentContainer>
+                <HomeHeroContentOverlay
+                    films={films}
+                    currentMovieIndex={currentMovieIndex}
+                    showNextMovie={showNextMovie}
+                    showPreviousMovie={showPreviousMovie}
+                    setCurrentMovieIndex={setMovieIndex}
+                />
+            </Styled.Container>
+            <Styled.Spacer />
+        </React.Fragment>
     );
 }

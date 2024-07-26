@@ -10,6 +10,7 @@ export default function HomeHeroContentOverlay({
     films,
     showNextMovie,
     showPreviousMovie,
+    setCurrentMovieIndex,
 }: HomeHeroContentOverlayProps) {
     return (
         <Styled.Container>
@@ -20,14 +21,20 @@ export default function HomeHeroContentOverlay({
             <Styled.MovieTitleAndCounterContainer>
                 <Styled.MovieTitleAndYearWrapper>
                     {films.map((film, index) => (
-                        <Styled.MovieTitleAndYearContainer
+                        <Styled.MovieInstanceContainer
                             key={index}
-                            $movieIndex={currentMovieIndex}
-                            $isSelected={index === currentMovieIndex}
+                            onClick={() => setCurrentMovieIndex(index)}
                         >
-                            <Styled.MovieTitle>{film.title}</Styled.MovieTitle>
-                            <Styled.MovieYear>{film.year}</Styled.MovieYear>
-                        </Styled.MovieTitleAndYearContainer>
+                            <Styled.ForwardIconStyled $isSelected={index === currentMovieIndex} />
+                            <Styled.MovieTitleAndYearContainer
+                                key={index}
+                                $movieIndex={currentMovieIndex}
+                                $isSelected={index === currentMovieIndex}
+                            >
+                                <Styled.MovieTitle>{film.title}</Styled.MovieTitle>
+                                <Styled.MovieYear>{film.year}</Styled.MovieYear>
+                            </Styled.MovieTitleAndYearContainer>
+                        </Styled.MovieInstanceContainer>
                     ))}
                 </Styled.MovieTitleAndYearWrapper>
                 <CircularProgress currentIndex={currentMovieIndex + 1} total={films.length} />

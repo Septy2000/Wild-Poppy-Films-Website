@@ -14,4 +14,5 @@ export interface HomeHeroContentOverlayProps {
     films: HomeHeroFilm[];
     showNextMovie: () => void;
     showPreviousMovie: () => void;
+    setCurrentMovieIndex: (index: number) => void;
 }

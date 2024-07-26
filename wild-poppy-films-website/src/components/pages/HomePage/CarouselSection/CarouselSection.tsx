@@ -68,7 +68,6 @@ export default function CarouselSection() {
                             ))}
                     </Styled.CarouselRight>
                 </Styled.CarouselContainer>
-
                 <Styled.PoppyLogo />
             </Styled.Container>
         </React.Fragment>

@@ -10,6 +10,10 @@ export const Container = styled.div`
     cursor: pointer;
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
     height: 10vh;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        display: none;
+    }
 `;
 
 export const StyledDownwardIcon = styled(DownwardIcon)`

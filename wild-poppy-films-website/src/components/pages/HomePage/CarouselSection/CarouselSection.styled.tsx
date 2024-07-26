@@ -43,16 +43,16 @@ const slideAnimation = (translateX: number, delay: number) => css`
 `;
 
 export const CarouselItem = styled(Image)<{ $translateX: number; $delay: number }>`
-    width: 128px;
-    height: 128px;
-    margin-bottom: 16px;
+    width: 8rem;
+    height: 8rem;
+    margin-bottom: 1rem;
 
     ${({ $translateX, $delay }) => slideAnimation($translateX, $delay)}
 `;
 
 export const PoppyLogo = styled(PoppyLogoSketch)`
     position: relative;
-    top: -200px;
-    right: -80px;
+    top: -8rem;
+    right: -6rem;
     z-index: -1;
 `;

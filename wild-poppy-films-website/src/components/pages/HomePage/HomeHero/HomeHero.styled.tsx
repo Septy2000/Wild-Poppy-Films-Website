@@ -28,3 +28,13 @@ export const StyledImage = styled(Image)<{ $imageIndex: number }>`
 
     transition: translate 0.2s ease-in-out;
 `;
+
+export const Spacer = styled.div`
+    width: 100%;
+    background: ${({ theme }) => theme.colors.neutral.neutral_14};
+    height: 10vh;
+
+    @media (max-width: ${({ theme }) => theme.screen.desktop}) {
+        display: none;
+    }
+`;

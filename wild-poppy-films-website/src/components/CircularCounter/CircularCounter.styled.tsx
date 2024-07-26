@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
     position: relative;
     width: 32px;
     height: 32px;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        display: none;
+    }
 `;
 
 export const CircleProgress = styled.circle`
