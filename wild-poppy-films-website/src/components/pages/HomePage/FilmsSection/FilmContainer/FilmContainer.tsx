@@ -1,10 +1,14 @@
+"use client";
 import React from "react";
 import * as Styled from "./FilmContainer.styled";
 import { Film } from "@/_types/common";
+import { useRouter } from "next/navigation";
 
 export default function FilmContainer({ film }: { film: Film }) {
+    const router = useRouter();
+
     return (
-        <Styled.Container>
+        <Styled.Container onClick={() => router.push(`/films/${film.slug}`)}>
             <Styled.FilmImagePlaceholder />
             <Styled.FilmInfoContainer>
                 <Styled.FilmTitleAndYearContainer>
@@ -28,6 +32,7 @@ export default function FilmContainer({ film }: { film: Film }) {
                     </Styled.FilmProductionContainer>
                 </Styled.FilmDescriptionContainer>
             </Styled.FilmInfoContainer>
+            <Styled.BackArrowIconStyled />
         </Styled.Container>
     );
 }

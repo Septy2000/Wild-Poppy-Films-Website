@@ -12,11 +12,14 @@ export type HomeHeroFilm = {
 export type FilmStatus = "available" | "in_production" | "coming_soon";
 
 export type Film = {
+    id: number;
+    slug: string;
     title: string;
     year: string;
     genre?: string;
     production: string[];
     status: FilmStatus;
+    type: string;
     link?: string;
     cover?: StaticImageData[];
 };

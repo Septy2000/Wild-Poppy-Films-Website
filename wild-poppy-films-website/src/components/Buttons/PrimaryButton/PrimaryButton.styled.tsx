@@ -19,6 +19,7 @@ export const Container = styled(Link)`
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         width: 200px;
         padding: 16px 8px;
+        border-radius: 4px;
         background-color: ${({ theme }) => theme.colors.secondary.core_green_light_2};
 
         &:hover {
