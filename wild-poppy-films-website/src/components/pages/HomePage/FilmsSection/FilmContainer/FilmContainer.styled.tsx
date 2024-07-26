@@ -17,9 +17,6 @@ export const Container = styled.div`
         14px 10px 7px 0px rgba(0, 0, 0, 0.01), 8px 6px 6px 0px rgba(0, 0, 0, 0.05),
         4px 3px 4px 0px rgba(0, 0, 0, 0.09), 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
 
-    &:hover > svg {
-        display: block;
-    }
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         &::before {
             content: "";
@@ -39,6 +36,10 @@ export const Container = styled.div`
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         padding: 1.5rem;
         gap: 4rem;
+
+        &:hover > svg {
+            display: block;
+        }
     }
 `;
 

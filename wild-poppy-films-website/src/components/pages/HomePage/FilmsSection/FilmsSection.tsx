@@ -19,9 +19,11 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, ref) => {
                         <FilmContainer film={film} key={id} />
                     ))}
                 </Styled.FilmsContainer>
-                <PrimaryButton href="/films" variant="red">
-                    {filmsCtaText}
-                </PrimaryButton>
+                <Styled.CtaContainer>
+                    <PrimaryButton href={"/films"} variant="red">
+                        {filmsCtaText}
+                    </PrimaryButton>
+                </Styled.CtaContainer>
             </Styled.Container>
         </React.Fragment>
     );

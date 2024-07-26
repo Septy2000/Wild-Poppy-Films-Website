@@ -1,5 +1,6 @@
 import * as Styled from "./PrimaryButton.styled";
 import { PrimaryButtonColorVariant } from "@/_types/styledComponents";
+import { ParsedUrlQuery } from "querystring";
 
 export default function PrimaryButton({
     children,
@@ -7,7 +8,12 @@ export default function PrimaryButton({
     variant = "red",
 }: {
     children: string;
-    href: string;
+    href:
+        | {
+              pathname: string;
+              query?: ParsedUrlQuery;
+          }
+        | string;
     variant: PrimaryButtonColorVariant;
 }) {
     return (

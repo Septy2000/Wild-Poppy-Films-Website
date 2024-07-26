@@ -7,7 +7,7 @@ export default function DescriptionSection() {
     const scrollBannerDisplayTextList: string[] = ["growing everywhere", "in a poppyseed..."];
 
     const description: string = `
-        We are a young, female led, 
+        ...we are a young, female led, 
         independent production company dedicated to 
         supporting emerging storytellers to 
         develop conversation-sparking-question-raising 

@@ -10,7 +10,7 @@ export const Container = styled.div`
     align-items: center;
     background-image: url(${HomePageFilmsBackgroundMobile.src});
 
-    padding: 3rem 1.5rem;
+    padding: 3rem 1.25rem;
 
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
         background-image: url(${HomePageFilmsBackgroundTablet.src});
@@ -30,5 +30,15 @@ export const FilmsContainer = styled.div`
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         gap: 4rem;
         margin-bottom: 4rem;
+    }
+`;
+
+export const CtaContainer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        justify-content: center;
     }
 `;
