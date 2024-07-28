@@ -1,6 +1,7 @@
 "use client";
 import styled from "styled-components";
 import { ScrollBannerColorVariant } from "@/_types/styledComponents";
+import css from "styled-components";
 
 export const Container = styled.div<{ $variant: ScrollBannerColorVariant }>`
     display: flex;
@@ -50,6 +51,13 @@ export const Text = styled.span<{ $variant: ScrollBannerColorVariant }>`
                 return theme.colors.neutral.neutral_14;
         }
     }};
+
+    ${({ $variant, theme }) =>
+        $variant === "green" &&
+        `
+            text-shadow: -1px -1px 0 #aee096, 1px -1px 0 #aee096, -1px 1px 0 #aee096, 1px 1px 0 #aee096;
+        `}
+
     &:nth-child(3n) {
         color: ${({ theme, $variant }) => {
             switch ($variant) {
@@ -63,6 +71,7 @@ export const Text = styled.span<{ $variant: ScrollBannerColorVariant }>`
                     return theme.colors.neutral.neutral_14;
             }
         }};
+        text-shadow: none;
     }
 
     &::after {
@@ -70,7 +79,6 @@ export const Text = styled.span<{ $variant: ScrollBannerColorVariant }>`
         margin: 0 4px;
     }
 
-    font-family: Kagins;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
