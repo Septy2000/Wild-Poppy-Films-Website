@@ -1,17 +1,14 @@
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import * as Styled from "./Modal.styled";
 import ModalLinkButton from "@/components/Buttons/ModalLinkButton/ModalLinkButton";
 import ModalSocialButton from "@/components/Buttons/ModalSocialButton/ModalSocialButton";
 
 export default function Modal({ isVisible, onClose }: { isVisible: boolean; onClose: () => void }) {
-    const selfRef = useRef<HTMLDivElement>(null);
-    const [translateX, setTranslateX] = useState(0);
-
-    // 50ms delay between each link item
-    const delayPerLinkItem = 0.05;
-    const delayFromModalAnimationStart = 0.2;
+    const delayPerLinkItem = 0.1;
 
     const menuItems: { label: string; link: string }[] = [
+        { label: "HOME", link: "/" },
         { label: "FILMS", link: "/films" },
         { label: "OUR TEAM", link: "/our-team" },
         { label: "CONTACT", link: "/contact" },
@@ -34,28 +31,20 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
         }
     }, [isVisible]);
 
-    useEffect(() => {
-        if (selfRef.current) {
-            const selfWidth = selfRef.current.offsetWidth;
-
-            setTranslateX(selfWidth * -1);
-        }
-    }, [selfRef]);
-
     return (
         <React.Fragment>
-            {isVisible && <Styled.Overlay onClick={onClose} />}
-            <Styled.Container $isVisible={isVisible} ref={selfRef}>
+            <Styled.Overlay onClick={onClose} $isVisible={isVisible} />
+            <Styled.Container $isVisible={isVisible}>
                 <Styled.Content>
                     <Styled.PagesContainer>
                         {menuItems.map((item, id) => (
                             <ModalLinkButton
+                                onClick={onClose}
                                 key={id}
                                 label={item.label}
                                 link={item.link}
-                                translateX={translateX}
                                 isVisible={isVisible}
-                                delay={delayFromModalAnimationStart + (id + 1) * delayPerLinkItem}
+                                delay={(id + 1) * delayPerLinkItem}
                             />
                         ))}
                     </Styled.PagesContainer>

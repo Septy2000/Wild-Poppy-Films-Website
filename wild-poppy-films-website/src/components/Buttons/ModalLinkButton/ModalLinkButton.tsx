@@ -1,13 +1,15 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import * as Styled from "./ModalLinkButton.styled";
 import { ModalLinkButtonProps } from "@/_types/components";
 
 export default function ModalLinkButton({
+    onClick = () => {},
     label,
     link,
-    translateX,
-    isVisible,
-    delay,
+    isVisible = true,
+    delay = 0,
 }: ModalLinkButtonProps) {
     const [isModalDisplayed, setIsModalDisplayed] = useState(true);
     const buttonDisappearTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -27,22 +29,24 @@ export default function ModalLinkButton({
         }
     }, [isVisible]);
 
-    useEffect(() => {
-        console.log(isModalDisplayed);
-    }, [isModalDisplayed]);
-
     return (
-        <Styled.Container href={link}>
+        <Styled.Container
+            href={link}
+            onClick={() => {
+                onClick();
+            }}
+        >
             {isModalDisplayed && (
                 <React.Fragment>
-                    <Styled.Label $translateX={translateX} $isVisible={isVisible} $delay={delay}>
+                    <Styled.Label $axis={"X"} $direction={-1} $delay={delay} $isVisible={isVisible}>
                         {label}
                     </Styled.Label>
 
                     <Styled.RightFwdIconStyled
-                        $translateX={translateX}
-                        $isVisible={isVisible}
+                        $axis={"X"}
+                        $direction={-1}
                         $delay={delay}
+                        $isVisible={isVisible}
                     />
                 </React.Fragment>
             )}

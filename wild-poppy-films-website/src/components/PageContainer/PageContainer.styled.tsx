@@ -1,3 +1,4 @@
+"use client";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -5,8 +6,7 @@ export const Container = styled.div`
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin: 0 20px;
-    @media (min-width: ${({ theme }) => theme.screen.tablet}) /* (max-width: ${({ theme }) =>
-            theme.screen.desktop}) { */ {
+    @media (min-width: ${({ theme }) => theme.screen.tablet}) {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         gap: 20px;
