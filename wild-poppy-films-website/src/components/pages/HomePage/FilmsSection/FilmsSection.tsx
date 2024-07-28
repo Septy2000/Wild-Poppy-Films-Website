@@ -38,6 +38,11 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, filmsSectionRef) => {
                     <PrimaryButton
                         href={{ pathname: "/films", query: { sort: "coming_soon" } }}
                         variant="red"
+                        animated
+                        axis="Y"
+                        direction={1}
+                        delay={films.length * delayPerItem}
+                        inView={inView}
                     >
                         {filmsCtaText}
                     </PrimaryButton>

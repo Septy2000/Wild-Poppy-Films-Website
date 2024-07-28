@@ -1,5 +1,7 @@
 "use client";
 import styled from "styled-components";
+import { generateSlideAnimation } from "@/utils/animationUtils";
+import { AnimationProps } from "@/_types/styledComponents";
 
 export const Container = styled.div`
     padding: 3rem 1.25rem;
@@ -16,9 +18,12 @@ export const Container = styled.div`
     }
 `;
 
-export const DescriptionContainer = styled.div`
+export const DescriptionContainer = styled.div<{ $inView: boolean } & AnimationProps>`
     margin-bottom: 1.5rem;
     max-width: 47rem;
+
+    opacity: 0;
+    ${({ $inView, $axis, $direction }) => $inView && generateSlideAnimation($axis, $direction)}
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         margin-bottom: 4rem;

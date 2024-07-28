@@ -16,7 +16,7 @@ const generateSlideKeyframes = (axis: "X" | "Y", direction: 1 | -1) => keyframes
 export const generateSlideAnimation = (
     axis: "X" | "Y",
     direction: 1 | -1,
-    delay: number,
+    delay: number = 0,
     duration: number = 0.2,
     easing: string = "ease-in-out"
 ) => css`

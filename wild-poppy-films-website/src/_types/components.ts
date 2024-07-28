@@ -1,5 +1,7 @@
 import { HomeHeroFilm } from "./common";
 import { Film } from "./common";
+import { ParsedUrlQuery } from "querystring";
+import { PrimaryButtonColorVariant } from "./styledComponents";
 
 export interface ModalLinkButtonProps {
     label: string;
@@ -23,4 +25,20 @@ export interface FilmComponentProps {
     direction: 1 | -1;
     delay: number;
     inView: boolean;
+}
+
+export interface PrimaryButtonProps {
+    children: string;
+    href:
+        | {
+              pathname: string;
+              query?: ParsedUrlQuery;
+          }
+        | string;
+    variant: PrimaryButtonColorVariant;
+    animated?: boolean;
+    axis?: "X" | "Y";
+    direction?: 1 | -1;
+    delay?: number;
+    inView?: boolean;
 }

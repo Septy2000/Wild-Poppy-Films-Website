@@ -1,24 +1,26 @@
+import { PrimaryButtonProps } from "@/_types/components";
 import * as Styled from "./PrimaryButton.styled";
-import { PrimaryButtonColorVariant } from "@/_types/styledComponents";
-import { ParsedUrlQuery } from "querystring";
 
 export default function PrimaryButton({
     children,
     href,
     variant = "red",
-    
-}: {
-    children: string;
-    href:
-        | {
-              pathname: string;
-              query?: ParsedUrlQuery;
-          }
-        | string;
-    variant: PrimaryButtonColorVariant;
-}) {
+    animated = false,
+    axis = "X",
+    direction = 1,
+    delay = 0,
+    inView = true,
+}: PrimaryButtonProps) {
     return (
-        <Styled.Container href={href}>
+        <Styled.Container
+            href={href}
+            $animated={animated}
+            $axis={axis}
+            $direction={direction}
+            $delay={delay}
+            $variant={variant}
+            $inView={inView}
+        >
             <Styled.Text $variant={variant}>{children}</Styled.Text>
             <Styled.StyledRightArrowIcon $variant={variant} />
         </Styled.Container>

@@ -2,6 +2,7 @@ import React from "react";
 import * as Styled from "./DescriptionSection.styled";
 import ScrollBanner from "@/components/ScrollBanner/ScrollBanner";
 import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
+import { useInView } from "react-intersection-observer";
 
 export default function DescriptionSection() {
     const scrollBannerDisplayTextList: string[] = ["growing everywhere", "in a poppyseed..."];
@@ -17,16 +18,30 @@ export default function DescriptionSection() {
         films. 
     `;
 
+    const delayPerItem = 0.1;
+    const { ref, inView } = useInView({
+        threshold: 0.5,
+        triggerOnce: true,
+    });
+
     return (
         <React.Fragment>
             <ScrollBanner displayTextList={scrollBannerDisplayTextList} variant="red" />
-            <Styled.Container>
-                <Styled.DescriptionContainer>
+            <Styled.Container ref={ref}>
+                <Styled.DescriptionContainer $inView={inView} $axis={"Y"} $direction={1}>
                     <Styled.Description>{description}</Styled.Description>
                     <Styled.DescriptionGreen>{descriptionGreen}</Styled.DescriptionGreen>
                 </Styled.DescriptionContainer>
                 <Styled.CtaContainer>
-                    <PrimaryButton href="/our-team" variant="green">
+                    <PrimaryButton
+                        href="/our-team"
+                        variant="green"
+                        animated
+                        axis="Y"
+                        direction={1}
+                        delay={delayPerItem}
+                        inView={inView}
+                    >
                         our team
                     </PrimaryButton>
                 </Styled.CtaContainer>
