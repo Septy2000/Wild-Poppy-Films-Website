@@ -20,7 +20,10 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, ref) => {
                     ))}
                 </Styled.FilmsContainer>
                 <Styled.CtaContainer>
-                    <PrimaryButton href={"/films"} variant="red">
+                    <PrimaryButton
+                        href={{ pathname: "/films", query: { sort: "coming_soon" } }}
+                        variant="red"
+                    >
                         {filmsCtaText}
                     </PrimaryButton>
                 </Styled.CtaContainer>

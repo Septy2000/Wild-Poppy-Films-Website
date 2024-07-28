@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FilmContainerLarge from "@/components/pages/FilmsPage/FilmContainerLarge/FilmContainerLarge";
 import * as Styled from "./FilmsPage.styled";
 import { films } from "@/data";
+import { useSearchParams } from "next/navigation";
 
 type FilterOptions = "all" | "available" | "coming_soon";
 
@@ -23,6 +24,9 @@ export function FilmsPage() {
         },
     ];
 
+    const searchParams = useSearchParams();
+    const sort = searchParams.get("sort");
+
     // Filter films based on the selected filter
     const filteredFilms = films.filter((film) => {
         if (selectedFilmFilter === "all") {
@@ -35,6 +39,11 @@ export function FilmsPage() {
         return false;
     });
 
+    useEffect(() => {
+        if (sort) {
+            setSelectedFilmFilter(sort as FilterOptions);
+        }
+    }, [sort]);
     return (
         <Styled.Container>
             <div style={{ height: "100px" }}></div>
