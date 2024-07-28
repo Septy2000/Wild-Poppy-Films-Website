@@ -8,7 +8,6 @@ export default function ModalLinkButton({
     onClick = () => {},
     label,
     link,
-    translateX = 0,
     isVisible = true,
     delay = 0,
 }: ModalLinkButtonProps) {
@@ -39,14 +38,15 @@ export default function ModalLinkButton({
         >
             {isModalDisplayed && (
                 <React.Fragment>
-                    <Styled.Label $translateX={translateX} $isVisible={isVisible} $delay={delay}>
+                    <Styled.Label $axis={"X"} $direction={-1} $delay={delay} $isVisible={isVisible}>
                         {label}
                     </Styled.Label>
 
                     <Styled.RightFwdIconStyled
-                        $translateX={translateX}
-                        $isVisible={isVisible}
+                        $axis={"X"}
+                        $direction={-1}
                         $delay={delay}
+                        $isVisible={isVisible}
                     />
                 </React.Fragment>
             )}

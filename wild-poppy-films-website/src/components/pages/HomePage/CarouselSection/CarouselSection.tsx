@@ -19,18 +19,12 @@ export default function CarouselSection() {
     const rightCarouselItems: StaticImageData[] = [Carousel_2_1, Carousel_2_2, Carousel_2_3];
 
     const [translateX, setTranslateX] = useState(0);
-    const [wasContainerInView, setWasContainerInView] = useState(false);
     const delayPerItem = 0.1;
     const selfRef = useRef<HTMLDivElement>(null);
     const { ref, inView } = useInView({
         threshold: 0.01,
+        triggerOnce: true,
     });
-
-    useEffect(() => {
-        if (inView && !wasContainerInView) {
-            setWasContainerInView(true);
-        }
-    }, [inView, wasContainerInView]);
 
     useEffect(() => {
         if (selfRef.current) {
@@ -44,25 +38,27 @@ export default function CarouselSection() {
             <Styled.Container ref={selfRef}>
                 <Styled.CarouselContainer ref={ref}>
                     <Styled.CarouselLeft>
-                        {wasContainerInView &&
+                        {inView &&
                             leftCarouselItems.map((carouselItem, index) => (
                                 <Styled.CarouselItem
                                     key={index}
                                     src={carouselItem}
                                     alt={`carousel_item_${index}`}
-                                    $translateX={-1 * translateX}
-                                    $delay={index * delayPerItem}
+                                    $axis="X"
+                                    $direction={-1}
+                                    $delay={(1 + index) * delayPerItem}
                                 />
                             ))}
                     </Styled.CarouselLeft>
                     <Styled.CarouselRight>
-                        {wasContainerInView &&
+                        {inView &&
                             rightCarouselItems.map((carouselItem, index) => (
                                 <Styled.CarouselItem
                                     key={index}
                                     src={carouselItem}
                                     alt={`carousel_item_${index}`}
-                                    $translateX={translateX}
+                                    $axis="X"
+                                    $direction={1}
                                     $delay={index * delayPerItem}
                                 />
                             ))}

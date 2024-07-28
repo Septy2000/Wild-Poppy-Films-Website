@@ -5,8 +5,6 @@ import ModalLinkButton from "@/components/Buttons/ModalLinkButton/ModalLinkButto
 import ModalSocialButton from "@/components/Buttons/ModalSocialButton/ModalSocialButton";
 
 export default function Modal({ isVisible, onClose }: { isVisible: boolean; onClose: () => void }) {
-    const selfRef = useRef<HTMLDivElement>(null);
-    const [translateX, setTranslateX] = useState(0);
     const delayPerLinkItem = 0.1;
 
     const menuItems: { label: string; link: string }[] = [
@@ -33,18 +31,10 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
         }
     }, [isVisible]);
 
-    useEffect(() => {
-        if (selfRef.current) {
-            const selfWidth = selfRef.current.offsetWidth;
-
-            setTranslateX(selfWidth * -1);
-        }
-    }, [selfRef]);
-
     return (
         <React.Fragment>
             <Styled.Overlay onClick={onClose} $isVisible={isVisible} />
-            <Styled.Container $isVisible={isVisible} ref={selfRef}>
+            <Styled.Container $isVisible={isVisible}>
                 <Styled.Content>
                     <Styled.PagesContainer>
                         {menuItems.map((item, id) => (
@@ -53,7 +43,6 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
                                 key={id}
                                 label={item.label}
                                 link={item.link}
-                                translateX={translateX}
                                 isVisible={isVisible}
                                 delay={(id + 1) * delayPerLinkItem}
                             />

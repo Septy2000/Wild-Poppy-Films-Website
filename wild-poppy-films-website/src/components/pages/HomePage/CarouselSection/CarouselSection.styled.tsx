@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import PoppyLogoSketch from "@/icons/logo/poppy-logo-sketch.svg";
+import { generateSlideAnimation } from "@/utils/animationUtils";
+import { AnimationProps } from "@/_types/styledComponents";
 
 export const Container = styled.div`
     position: relative;
     padding: 3rem 1.25rem 7.5rem 1.25rem;
-
+    overflow: hidden;
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         padding: 7.5rem 8rem;
     }
@@ -44,32 +46,20 @@ export const CarouselRight = styled(CarouselLeft)`
     margin-top: 0;
 `;
 
-const slideIn = (initialX: number) => keyframes`
-  from {
-    transform: translateX(${initialX}px);
-  }
-  to {
-    transform: translateX(0);
-  }
-`;
-
-const slideAnimation = (translateX: number, delay: number) => css`
-    transform: translateX(${translateX}px);
-    animation: ${slideIn(translateX)} 0.2s ease-in-out forwards;
-    animation-delay: ${delay}s;
-`;
-
-export const CarouselItem = styled(Image)<{ $translateX: number; $delay: number }>`
+export const CarouselItem = styled(Image)<AnimationProps>`
     width: 8rem;
     height: 8rem;
     margin-bottom: 1rem;
 
-    ${({ $translateX, $delay }) => slideAnimation($translateX, $delay)}
+    ${({ $axis, $direction, $delay }) => generateSlideAnimation($axis, $direction, $delay)}
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         margin: 0;
         width: 18.5rem;
         height: 18.5rem;
+
+        ${({ $axis, $direction, $delay }) =>
+            generateSlideAnimation($axis, Math.abs($direction) as 1 | -1, $delay)}
     }
 `;
 

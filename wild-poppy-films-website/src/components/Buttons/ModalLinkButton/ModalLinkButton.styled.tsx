@@ -4,6 +4,8 @@ import styled, { keyframes, css } from "styled-components";
 import Link from "next/link";
 import RightFwdIcon from "@/icons/navigation/right-fwd-icon.svg";
 import { ModalLinkButtonStyledProps } from "@/_types/styledComponents";
+import { generateSlideAnimation } from "@/utils/animationUtils";
+import { AnimationProps } from "@/_types/styledComponents";
 
 export const Container = styled(Link)`
     display: flex;
@@ -20,30 +22,15 @@ export const Container = styled(Link)`
     margin-right: 9px;
 `;
 
-const slideIn = (initialX: number) => keyframes`
-  from {
-    transform: translateX(${initialX}px);
-  }
-  to {
-    transform: translateX(0);
-  }
-`;
-
-const slideAnimation = (translateX: number, delay: number) => css`
-    transform: translateX(${translateX}px);
-    animation: ${slideIn(translateX)} 0.2s ease-in-out forwards;
-    animation-delay: ${delay}s;
-`;
-
-export const Label = styled.p<ModalLinkButtonStyledProps>`
+export const Label = styled.p<ModalLinkButtonStyledProps & AnimationProps>`
     color: ${({ theme }) => theme.colors.neutral.neutral_1};
     // move the label outside of view to the left;
-    ${({ $translateX, $delay }) => slideAnimation($translateX, $delay)}
+    ${({ $axis, $direction, $delay }) => generateSlideAnimation($axis, $direction, $delay)}
 `;
 
-export const RightFwdIconStyled = styled(RightFwdIcon)<ModalLinkButtonStyledProps>`
+export const RightFwdIconStyled = styled(RightFwdIcon)<ModalLinkButtonStyledProps & AnimationProps>`
     path {
         fill: ${({ theme }) => theme.colors.neutral.neutral_1};
     }
-    ${({ $translateX, $delay }) => slideAnimation($translateX, $delay)}
+    ${({ $axis, $direction, $delay }) => generateSlideAnimation($axis, $direction, $delay)}
 `;

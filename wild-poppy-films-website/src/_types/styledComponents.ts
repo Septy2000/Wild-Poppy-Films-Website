@@ -1,5 +1,4 @@
 export interface ModalLinkButtonStyledProps {
-    $translateX: number;
     $isVisible: boolean;
     $delay: number;
 }
@@ -7,3 +6,9 @@ export interface ModalLinkButtonStyledProps {
 export type ScrollBannerColorVariant = "black" | "red" | "green";
 
 export type PrimaryButtonColorVariant = "red" | "green";
+
+export interface AnimationProps {
+    $axis: "X" | "Y";
+    $direction: 1 | -1;
+    $delay: number;
+}
