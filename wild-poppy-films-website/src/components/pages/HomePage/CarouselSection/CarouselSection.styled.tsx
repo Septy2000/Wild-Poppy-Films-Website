@@ -46,20 +46,22 @@ export const CarouselRight = styled(CarouselLeft)`
     margin-top: 0;
 `;
 
-export const CarouselItem = styled(Image)<AnimationProps>`
+export const CarouselItem = styled(Image)<{ $inView: boolean } & AnimationProps>`
     width: 8rem;
     height: 8rem;
     margin-bottom: 1rem;
 
-    ${({ $axis, $direction, $delay }) => generateSlideAnimation($axis, $direction, $delay)}
+    opacity: 0;
+    ${({ $axis, $direction, $delay, $inView }) =>
+        $inView && generateSlideAnimation($axis, $direction, $delay)}
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         margin: 0;
         width: 18.5rem;
         height: 18.5rem;
 
-        ${({ $axis, $direction, $delay }) =>
-            generateSlideAnimation($axis, Math.abs($direction) as 1 | -1, $delay)}
+        ${({ $axis, $direction, $delay, $inView }) =>
+            $inView && generateSlideAnimation($axis, Math.abs($direction) as 1 | -1, $delay)}
     }
 `;
 

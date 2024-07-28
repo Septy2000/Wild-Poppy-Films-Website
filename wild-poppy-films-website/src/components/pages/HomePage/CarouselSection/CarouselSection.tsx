@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import { useInView } from "react-intersection-observer";
 import * as Styled from "./CarouselSection.styled";
 import { StaticImageData } from "next/image";
@@ -18,50 +18,42 @@ export default function CarouselSection() {
 
     const rightCarouselItems: StaticImageData[] = [Carousel_2_1, Carousel_2_2, Carousel_2_3];
 
-    const [translateX, setTranslateX] = useState(0);
     const delayPerItem = 0.1;
-    const selfRef = useRef<HTMLDivElement>(null);
     const { ref, inView } = useInView({
-        threshold: 0.01,
+        threshold: 0.5,
         triggerOnce: true,
     });
 
-    useEffect(() => {
-        if (selfRef.current) {
-            const selfWidth = selfRef.current.offsetWidth;
-            setTranslateX(selfWidth);
-        }
-    }, [selfRef]);
     return (
         <React.Fragment>
             <ScrollBanner displayTextList={scrollBannerDisplayTextList} variant="green" />
-            <Styled.Container ref={selfRef}>
-                <Styled.CarouselContainer ref={ref}>
+            <Styled.Container ref={ref}>
+                <Styled.CarouselContainer>
                     <Styled.CarouselLeft>
-                        {inView &&
-                            leftCarouselItems.map((carouselItem, index) => (
-                                <Styled.CarouselItem
-                                    key={index}
-                                    src={carouselItem}
-                                    alt={`carousel_item_${index}`}
-                                    $axis="X"
-                                    $direction={-1}
-                                    $delay={(1 + index) * delayPerItem}
-                                />
-                            ))}
+                        {leftCarouselItems.map((carouselItem, index) => (
+                            <Styled.CarouselItem
+                                key={index}
+                                src={carouselItem}
+                                alt={`carousel_item_${index}`}
+                                $axis="X"
+                                $direction={-1}
+                                $delay={(1 + index) * delayPerItem}
+                                $inView={inView}
+                            />
+                        ))}
                     </Styled.CarouselLeft>
                     <Styled.CarouselRight>
-                        {inView &&
-                            rightCarouselItems.map((carouselItem, index) => (
-                                <Styled.CarouselItem
-                                    key={index}
-                                    src={carouselItem}
-                                    alt={`carousel_item_${index}`}
-                                    $axis="X"
-                                    $direction={1}
-                                    $delay={index * delayPerItem}
-                                />
-                            ))}
+                        {rightCarouselItems.map((carouselItem, index) => (
+                            <Styled.CarouselItem
+                                key={index}
+                                src={carouselItem}
+                                alt={`carousel_item_${index}`}
+                                $axis="X"
+                                $direction={1}
+                                $delay={index * delayPerItem}
+                                $inView={inView}
+                            />
+                        ))}
                     </Styled.CarouselRight>
                 </Styled.CarouselContainer>
                 <Styled.PoppyLogo />

@@ -6,6 +6,7 @@ export default function PrimaryButton({
     children,
     href,
     variant = "red",
+    
 }: {
     children: string;
     href:

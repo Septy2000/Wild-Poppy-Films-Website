@@ -4,12 +4,11 @@ import HomePageFilmsBackgroundMobile from "@/images/home-page/films/home-films-b
 import HomePageFilmsBackgroundTablet from "@/images/home-page/films/home-films-background-tablet.png";
 import HomePageFilmsBackgroundDesktop from "@/images/home-page/films/home-films-background-desktop.png";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $inView: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: center;
     background-image: url(${HomePageFilmsBackgroundMobile.src});
-
     padding: 3rem 1.25rem;
 
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
@@ -19,6 +18,8 @@ export const Container = styled.div`
         background-image: url(${HomePageFilmsBackgroundDesktop.src});
         padding: 7.5rem 8rem;
     }
+
+    overflow: hidden;
 `;
 
 export const FilmsContainer = styled.div`

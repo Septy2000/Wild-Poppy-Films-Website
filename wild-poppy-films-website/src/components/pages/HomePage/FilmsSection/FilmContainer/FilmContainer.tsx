@@ -1,14 +1,26 @@
 "use client";
 import React from "react";
 import * as Styled from "./FilmContainer.styled";
-import { Film } from "@/_types/common";
 import { useRouter } from "next/navigation";
+import { FilmComponentProps } from "@/_types/components";
 
-export default function FilmContainer({ film }: { film: Film }) {
+export default function FilmContainer({
+    film,
+    axis,
+    direction,
+    delay,
+    inView,
+}: FilmComponentProps) {
     const router = useRouter();
 
     return (
-        <Styled.Container onClick={() => router.push(`/films/${film.slug}`)}>
+        <Styled.Container
+            $axis={axis}
+            $direction={direction}
+            $delay={delay}
+            $inView={inView}
+            onClick={() => router.push(`/films/${film.slug}`)}
+        >
             <Styled.FilmImagePlaceholder />
             <Styled.FilmInfoContainer>
                 <Styled.FilmTitleAndYearContainer>

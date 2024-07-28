@@ -1,4 +1,5 @@
 import { HomeHeroFilm } from "./common";
+import { Film } from "./common";
 
 export interface ModalLinkButtonProps {
     label: string;
@@ -14,4 +15,12 @@ export interface HomeHeroContentOverlayProps {
     showNextMovie: () => void;
     showPreviousMovie: () => void;
     setCurrentMovieIndex: (index: number) => void;
+}
+
+export interface FilmComponentProps {
+    film: Film;
+    axis: "X" | "Y";
+    direction: 1 | -1;
+    delay: number;
+    inView: boolean;
 }

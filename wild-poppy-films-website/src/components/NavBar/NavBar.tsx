@@ -17,7 +17,6 @@ export default function NavBar() {
 
     function handleScroll() {
         const currentScrollY = window.scrollY;
-        console.log(pathname);
 
         if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
             setIsHidden(true);
