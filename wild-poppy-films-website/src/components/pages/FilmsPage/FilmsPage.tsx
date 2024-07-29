@@ -6,6 +6,8 @@ import { films } from "@/data";
 import { useSearchParams } from "next/navigation";
 import { FilterOptions } from "@/_types/common";
 import { useInView } from "react-intersection-observer";
+import PaginationControl from "@/components/PaginationControl/PaginationControl";
+import useIsMobile from "@/hooks/useIsMobile";
 
 export function FilmsPage() {
     const [selectedFilmFilter, setSelectedFilmFilter] = useState<FilterOptions>("all");
@@ -26,6 +28,10 @@ export function FilmsPage() {
 
     const searchParams = useSearchParams();
     const sort = searchParams.get("sort");
+
+    const currentPage = searchParams.get("page");
+    const filmsPerPage = 6;
+    const isMobile = useIsMobile();
 
     const delayPerItem = 0.1;
     const { ref, inView } = useInView({
@@ -52,18 +58,31 @@ export function FilmsPage() {
     }, [sort]);
     return (
         <Styled.Container>
-            <div style={{ height: "100px" }}></div>
-            <Styled.FilmsFilterContainer ref={ref}>
-                {filters.map((filter, index) => (
-                    <Styled.FilmsFilter
-                        key={index}
-                        onClick={() => setSelectedFilmFilter(filter.status)}
-                        $selected={selectedFilmFilter === filter.status}
-                    >
-                        {filter.label}
-                    </Styled.FilmsFilter>
-                ))}
-            </Styled.FilmsFilterContainer>
+            <div style={{ height: "300px" }}></div>
+            <Styled.TopFilmsPageControlsContainer>
+                {!isMobile && (
+                    <PaginationControl
+                        numberOfItems={filteredFilms.length}
+                        itemsPerPage={filmsPerPage}
+                        handlePreviousPage={() => {}}
+                        handleNextPage={() => {}}
+                        handlePageChange={() => {}}
+                        initialPage={currentPage ? parseInt(currentPage) : 1}
+                    />
+                )}
+                <Styled.FilmsFilterContainer ref={ref}>
+                    {filters.map((filter, index) => (
+                        <Styled.FilmsFilter
+                            key={index}
+                            onClick={() => setSelectedFilmFilter(filter.status)}
+                            $selected={selectedFilmFilter === filter.status}
+                        >
+                            {filter.label}
+                        </Styled.FilmsFilter>
+                    ))}
+                </Styled.FilmsFilterContainer>
+            </Styled.TopFilmsPageControlsContainer>
+
             <Styled.FilmsContainer>
                 {filteredFilms.map((film, index) => (
                     <FilmContainerLarge

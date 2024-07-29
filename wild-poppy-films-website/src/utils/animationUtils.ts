@@ -7,7 +7,7 @@ const generateSlideKeyframes = (axis: "X" | "Y", direction: 1 | -1) => keyframes
     transform: translate${axis}(${direction * 300}%);
   }
   to {
-    transform: translate${direction}(0);
+    transform: translate${axis}(0);
     opacity: 1;
   }
 `;
@@ -20,7 +20,6 @@ export const generateSlideAnimation = (
     duration: number = 0.2,
     easing: string = "ease-in-out"
 ) => css`
-    opacity: 0;
     animation: ${generateSlideKeyframes(axis, direction)} ${duration}s ${easing} forwards;
     animation-delay: ${delay}s;
 `;

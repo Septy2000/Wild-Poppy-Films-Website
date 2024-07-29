@@ -2,25 +2,38 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    margin: 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    margin: 0 1.25rem;
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        margin: 4rem;
+    }
 `;
 
 export const FilmsContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 1.5rem;
 `;
 
 export const FilmsFilterContainer = styled.div`
     display: flex;
     flex-direction: row;
-    width: 280px;
-    margin-bottom: 24px;
+    width: 17.5rem;
+`;
+
+export const TopFilmsPageControlsContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    margin-bottom: 2rem;
 `;
 
 export const FilmsFilter = styled.button<{ $selected: boolean }>`

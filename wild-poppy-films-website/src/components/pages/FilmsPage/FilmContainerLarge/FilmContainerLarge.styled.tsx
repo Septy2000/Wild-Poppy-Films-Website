@@ -14,7 +14,8 @@ export const MobileContainer = styled.div<{ $inView: boolean } & AnimationProps>
     opacity: 0;
     background: ${({ theme }) => theme.colors.neutral.neutral_1};
     box-shadow: ${({ theme }) => theme.box_shadow};
-    ${({ $inView, $axis, $direction }) => $inView && generateSlideAnimation($axis, $direction)}
+    ${({ $inView, $axis, $direction, $delay }) =>
+        $inView && generateSlideAnimation($axis, $direction, $delay)}
 
     // mobile
     padding: 1rem;

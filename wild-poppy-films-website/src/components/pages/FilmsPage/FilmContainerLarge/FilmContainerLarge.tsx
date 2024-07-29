@@ -3,7 +3,6 @@ import * as Styled from "./FilmContainerLarge.styled";
 import { Film } from "@/_types/common";
 import FilmsYoutubeCtaButton from "@/components/Buttons/FilmsYoutubeCtaButton/FilmsYoutubeCtaButton";
 import FilmFlail from "@/components/pages/FilmsPage/FilmContainerLarge/FilmFlail/FilmFlail";
-import { GlassOverFrame } from "@/components/GlassOverFrame/GlassOverFrame.styled";
 
 export default function FilmContainerLarge({
     film,

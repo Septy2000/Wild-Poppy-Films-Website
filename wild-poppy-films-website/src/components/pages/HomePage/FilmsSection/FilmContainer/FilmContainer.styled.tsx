@@ -17,7 +17,6 @@ export const Container = styled.div<{ $inView: boolean } & AnimationProps>`
     // mobile
     padding: 0.75rem;
     box-shadow: ${({ theme }) => theme.box_shadow};
-
     ${({ $axis, $direction, $delay, $inView }) =>
         $inView && generateSlideAnimation($axis, $direction, $delay)};
 

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import * as Styled from "./Modal.styled";
 import ModalLinkButton from "@/components/Buttons/ModalLinkButton/ModalLinkButton";
 import ModalSocialButton from "@/components/Buttons/ModalSocialButton/ModalSocialButton";
@@ -9,7 +9,7 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
 
     const menuItems: { label: string; link: string }[] = [
         { label: "HOME", link: "/" },
-        { label: "FILMS", link: "/films" },
+        { label: "FILMS", link: "/films?page=1" },
         { label: "OUR TEAM", link: "/our-team" },
         { label: "CONTACT", link: "/contact" },
         { label: "SUPPORT US", link: "/support-us" },
@@ -31,22 +31,41 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
         }
     }, [isVisible]);
 
+    const [arePageButtonsDisplayed, setArePageButtonsDisplayed] = useState(true);
+    const buttonDisappearTimeout = useRef<NodeJS.Timeout | null>(null);
+
+    // make the button disappear after the modal animation is finished
+    // 500ms is the duration of the modal animation
+    useEffect(() => {
+        if (!isVisible) {
+            buttonDisappearTimeout.current = setTimeout(() => {
+                setArePageButtonsDisplayed(false);
+            }, 500);
+        } else {
+            if (buttonDisappearTimeout.current) {
+                clearTimeout(buttonDisappearTimeout.current);
+            }
+            setArePageButtonsDisplayed(true);
+        }
+    }, [isVisible]);
+
     return (
         <React.Fragment>
             <Styled.Overlay onClick={onClose} $isVisible={isVisible} />
             <Styled.Container $isVisible={isVisible}>
                 <Styled.Content>
                     <Styled.PagesContainer>
-                        {menuItems.map((item, id) => (
-                            <ModalLinkButton
-                                onClick={onClose}
-                                key={id}
-                                label={item.label}
-                                link={item.link}
-                                isVisible={isVisible}
-                                delay={(id + 1) * delayPerLinkItem}
-                            />
-                        ))}
+                        {arePageButtonsDisplayed &&
+                            menuItems.map((item, id) => (
+                                <ModalLinkButton
+                                    onClick={onClose}
+                                    key={id}
+                                    label={item.label}
+                                    link={item.link}
+                                    isVisible={isVisible}
+                                    delay={(id + 1) * delayPerLinkItem}
+                                />
+                            ))}
                     </Styled.PagesContainer>
                     <Styled.SocialsContainer>
                         {socialItems.map((item, id) => (

@@ -6,7 +6,7 @@ import { LegalButton } from "@/components/Buttons/LegalButton/LegalButton.styled
 export default function Footer() {
     const pagesItems: { label: string; link: string }[] = [
         { label: "HOME", link: "/" },
-        { label: "FILMS", link: "/films" },
+        { label: "FILMS", link: "/films?page=1" },
         { label: "OUR TEAM", link: "/our-team" },
         { label: "CONTACT", link: "/contact" },
         { label: "SUPPORT US", link: "/support-us" },
