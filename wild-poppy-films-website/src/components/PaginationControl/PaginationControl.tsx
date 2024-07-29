@@ -1,35 +1,30 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as Styled from "./PaginationControl.styled";
+import { PaginationControlProps } from "@/_types/components";
+
 export default function PaginationControl({
     numberOfItems,
     itemsPerPage,
-    handlePreviousPage,
-    handleNextPage,
     handlePageChange,
     initialPage,
-}: {
-    numberOfItems: number;
-    itemsPerPage: number;
-    handlePreviousPage: () => void;
-    handleNextPage: () => void;
-    handlePageChange: (toPage: number) => void;
-    initialPage: number;
-}) {
-    const [currentPage, setCurrentPage] = useState(initialPage);
+}: PaginationControlProps) {
+    const currentPage = useRef(initialPage);
     const numberOfPages = Math.ceil(numberOfItems / itemsPerPage);
 
     useEffect(() => {
-        handlePageChange(currentPage);
+        handlePageChange(currentPage.current);
     }, [currentPage]);
 
     return (
         <Styled.Container>
             <Styled.PageControlContainer
                 $isSelected={false}
-                $isInactive={currentPage === 1}
+                $isInactive={currentPage.current === 1}
                 onClick={() => {
-                    currentPage !== 1 && handlePreviousPage();
+                    if (currentPage.current !== 1) {
+                        handlePageChange(currentPage.current - 1);
+                    }
                 }}
             >
                 <Styled.SimpleArrowLeftStyled />
@@ -38,9 +33,11 @@ export default function PaginationControl({
             {Array.from({ length: numberOfPages }).map((_, index) => (
                 <Styled.PageNumberContainer
                     key={index}
-                    $isSelected={currentPage === index + 1}
+                    $isSelected={currentPage.current === index + 1}
                     onClick={() => {
-                        currentPage !== index + 1 && setCurrentPage(index + 1);
+                        if ((currentPage.current = index + 1)) {
+                            handlePageChange(index + 1);
+                        }
                     }}
                 >
                     {index + 1}
@@ -49,9 +46,11 @@ export default function PaginationControl({
 
             <Styled.PageControlContainer
                 $isSelected={false}
-                $isInactive={currentPage === numberOfPages}
+                $isInactive={currentPage.current === numberOfPages}
                 onClick={() => {
-                    currentPage !== numberOfPages && handleNextPage();
+                    if (currentPage.current !== numberOfPages) {
+                        handlePageChange(currentPage.current + 1);
+                    }
                 }}
             >
                 <Styled.SimpleArrowRightStyled />

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import FilmContainerLarge from "@/components/pages/FilmsPage/FilmContainerLarge/FilmContainerLarge";
 import * as Styled from "./FilmsPage.styled";
 import { films } from "@/data";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { FilterOptions } from "@/_types/common";
 import { useInView } from "react-intersection-observer";
 import PaginationControl from "@/components/PaginationControl/PaginationControl";
@@ -28,6 +28,8 @@ export function FilmsPage() {
 
     const searchParams = useSearchParams();
     const sort = searchParams.get("sort");
+
+    const router = useRouter();
 
     const currentPage = searchParams.get("page");
     const filmsPerPage = 6;
@@ -56,6 +58,11 @@ export function FilmsPage() {
             setSelectedFilmFilter(sort as FilterOptions);
         }
     }, [sort]);
+
+    const handlePageChange = (toPage: number) => {
+        router.push(`/films?page=${toPage}&sort=${sort}`);
+    };
+
     return (
         <Styled.Container>
             <div style={{ height: "300px" }}></div>
@@ -64,9 +71,7 @@ export function FilmsPage() {
                     <PaginationControl
                         numberOfItems={filteredFilms.length}
                         itemsPerPage={filmsPerPage}
-                        handlePreviousPage={() => {}}
-                        handleNextPage={() => {}}
-                        handlePageChange={() => {}}
+                        handlePageChange={handlePageChange}
                         initialPage={currentPage ? parseInt(currentPage) : 1}
                     />
                 )}
