@@ -10,16 +10,18 @@ export type HomeHeroFilm = {
 };
 
 export type FilmStatus = "available" | "in_production" | "coming_soon";
+export type FilterOptions = "all" | "available" | "coming_soon";
 
 export type Film = {
     id: number;
     slug: string;
     title: string;
     year: string;
-    genre?: string;
-    production: string[];
-    status: FilmStatus;
+    genre: string;
     type: string;
+    status: FilmStatus;
+    production: string[];
+    writer?: string[];
     link?: string;
     cover?: StaticImageData[];
 };

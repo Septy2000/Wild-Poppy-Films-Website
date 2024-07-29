@@ -4,8 +4,8 @@ import FilmContainerLarge from "@/components/pages/FilmsPage/FilmContainerLarge/
 import * as Styled from "./FilmsPage.styled";
 import { films } from "@/data";
 import { useSearchParams } from "next/navigation";
-
-type FilterOptions = "all" | "available" | "coming_soon";
+import { FilterOptions } from "@/_types/common";
+import { useInView } from "react-intersection-observer";
 
 export function FilmsPage() {
     const [selectedFilmFilter, setSelectedFilmFilter] = useState<FilterOptions>("all");
@@ -27,6 +27,12 @@ export function FilmsPage() {
     const searchParams = useSearchParams();
     const sort = searchParams.get("sort");
 
+    const delayPerItem = 0.1;
+    const { ref, inView } = useInView({
+        threshold: 0.2,
+        triggerOnce: true,
+    });
+
     // Filter films based on the selected filter
     const filteredFilms = films.filter((film) => {
         if (selectedFilmFilter === "all") {
@@ -47,7 +53,7 @@ export function FilmsPage() {
     return (
         <Styled.Container>
             <div style={{ height: "100px" }}></div>
-            <Styled.FilmsFilterContainer>
+            <Styled.FilmsFilterContainer ref={ref}>
                 {filters.map((filter, index) => (
                     <Styled.FilmsFilter
                         key={index}
@@ -60,7 +66,12 @@ export function FilmsPage() {
             </Styled.FilmsFilterContainer>
             <Styled.FilmsContainer>
                 {filteredFilms.map((film, index) => (
-                    <FilmContainerLarge key={index} film={film} />
+                    <FilmContainerLarge
+                        key={index}
+                        film={film}
+                        delay={index * delayPerItem}
+                        inView={inView}
+                    />
                 ))}
             </Styled.FilmsContainer>
         </Styled.Container>

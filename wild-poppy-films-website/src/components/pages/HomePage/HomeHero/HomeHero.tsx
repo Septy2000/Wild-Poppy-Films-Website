@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import * as Styled from "./HomeHero.styled";
 import { HomeHeroFilm } from "@/_types/common";
-import { GlassOverFrame } from "@/components/GlassOverFrame/GlassOverFrame.styled";
 import HomeHeroContentOverlay from "@/components/pages/HomePage/HomeHero/HomeHeroContentOverlay/HomeHeroContentOverlay";
 import useIsMobile from "@/hooks/useIsMobile";
 // Images for content cycle
@@ -125,7 +124,6 @@ export default function HomeHero() {
                             )
                         )
                     )}
-                    <GlassOverFrame />
                 </Styled.ContentContainer>
                 <HomeHeroContentOverlay
                     films={films}
