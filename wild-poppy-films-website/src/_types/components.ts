@@ -42,3 +42,9 @@ export interface PrimaryButtonProps {
     delay?: number;
     inView?: boolean;
 }
+
+export interface PaginationControlProps {
+    numberOfPages: number;
+    handlePageChange: (toPage: number) => void;
+    currentPage: number;
+}

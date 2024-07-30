@@ -80,6 +80,8 @@ const theme = {
         tablet: "744px",
         desktop: "1200px",
     },
+
+    box_shadow: `0px 0px 1px 0px rgba(0, 0, 0, 0.25), 22px 16px 8px 0px rgba(0, 0, 0, 0), 14px 10px 7px 0px rgba(0, 0, 0, 0.01), 8px 6px 6px 0px rgba(0, 0, 0, 0.05), 4px 3px 4px 0px rgba(0, 0, 0, 0.09), 1px 1px 2px 0px rgba(0, 0, 0, 0.1)`,
 };
 
 export default theme;

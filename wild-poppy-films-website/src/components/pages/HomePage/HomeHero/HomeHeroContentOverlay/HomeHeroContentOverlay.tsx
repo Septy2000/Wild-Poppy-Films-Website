@@ -4,6 +4,7 @@ import { HomeHeroContentOverlayProps } from "@/_types/components";
 import * as Styled from "./HomeHeroContentOverlay.styled";
 import CircularProgress from "@/components/CircularCounter/CircularCounter";
 import HomeHeroContentControlButton from "@/components/Buttons/HomeHeroContentControlButton/HomeHeroContentControlButton";
+import { GlassOverFrame } from "@/components/GlassOverFrame/GlassOverFrame.styled";
 
 export default function HomeHeroContentOverlay({
     currentMovieIndex,
@@ -14,6 +15,7 @@ export default function HomeHeroContentOverlay({
 }: HomeHeroContentOverlayProps) {
     return (
         <Styled.Container>
+            <GlassOverFrame />
             <Styled.MovieControlsContainer>
                 <HomeHeroContentControlButton onClick={showPreviousMovie} direction="left" />
                 <HomeHeroContentControlButton onClick={showNextMovie} direction="right" />

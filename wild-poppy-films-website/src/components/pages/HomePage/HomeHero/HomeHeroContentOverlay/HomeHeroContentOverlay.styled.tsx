@@ -45,7 +45,7 @@ export const MovieTitleAndYearWrapper = styled.div`
     @media (max-width: ${({ theme }) => theme.screen.desktop}) {
         flex-direction: column;
         align-items: start;
-        height: 2rem;
+        height: 2.5rem;
         overflow: hidden;
     }
 
@@ -75,10 +75,11 @@ export const MovieTitleAndYearContainer = styled.div<{ $movieIndex: number; $isS
     justify-content: center;
     align-items: flex-end;
     word-wrap: normal;
-
+    opacity: 0;
     @media (max-width: ${({ theme }) => theme.screen.desktop}) {
-        transition: transform 0.2s ease-in-out;
+        transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
         transform: translateY(${({ $movieIndex }) => -100 * $movieIndex}%);
+        opacity: ${({ $isSelected }) => ($isSelected ? 1 : 0)};
     }
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
@@ -90,11 +91,9 @@ export const MovieTitleAndYearContainer = styled.div<{ $movieIndex: number; $isS
 `;
 
 export const MovieTitle = styled.p`
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.2;
+    font-size: 1.5rem;
     color: ${({ theme }) => theme.colors.neutral.neutral_1};
-    margin-right: 4px;
+    margin-right: 0.25rem;
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         margin: 0;
@@ -102,9 +101,7 @@ export const MovieTitle = styled.p`
 `;
 
 export const MovieYear = styled.p`
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.6;
+    font-size: 1rem;
     color: ${({ theme }) => theme.colors.secondary.celadon_blue};
     opacity: 40%;
 `;
