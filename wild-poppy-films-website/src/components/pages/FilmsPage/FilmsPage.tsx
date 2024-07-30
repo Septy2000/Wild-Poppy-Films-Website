@@ -8,6 +8,7 @@ import { FilterOptions } from "@/_types/common";
 import { useInView } from "react-intersection-observer";
 import PaginationControl from "@/components/PaginationControl/PaginationControl";
 import useIsMobile from "@/hooks/useIsMobile";
+import TitleBuffer from "@/components/TitleBuffer/TitleBuffer";
 
 export function FilmsPage() {
     const filters: { label: string; status: FilterOptions }[] = [
@@ -24,6 +25,9 @@ export function FilmsPage() {
             status: "coming_soon",
         },
     ];
+
+    const title = "FILMS";
+    const description = "Our blooming film directory.";
 
     const searchParams = useSearchParams();
     const filter = searchParams.get("filter") ?? "all";
@@ -83,48 +87,50 @@ export function FilmsPage() {
     };
 
     return (
-        <Styled.Container>
-            <div style={{ height: "300px" }}></div>
-            <Styled.TopFilmsPageControlsContainer>
-                {!isMobile && (
-                    <PaginationControl
-                        numberOfPages={numberOfPages}
-                        handlePageChange={handlePageChange}
-                        currentPage={currentPage}
-                        animationDelay={0}
-                        inView={inView}
-                    />
-                )}
-                <Styled.FilmsFilterContainer ref={ref} $animationDelay={0} $inView={inView}>
-                    {filters.map((filterOption, index) => (
-                        <Styled.FilmsFilter
-                            key={index}
-                            onClick={() => handleFilterChange(filterOption.status)}
-                            $selected={filter === filterOption.status}
-                        >
-                            {filterOption.label}
-                        </Styled.FilmsFilter>
-                    ))}
-                </Styled.FilmsFilterContainer>
-            </Styled.TopFilmsPageControlsContainer>
+        <Styled.PageWrapper>
+            <TitleBuffer title={title} description={description} />
+            <Styled.Container>
+                <Styled.TopFilmsPageControlsContainer>
+                    {!isMobile && (
+                        <PaginationControl
+                            numberOfPages={numberOfPages}
+                            handlePageChange={handlePageChange}
+                            currentPage={currentPage}
+                            animationDelay={0}
+                            inView={inView}
+                        />
+                    )}
+                    <Styled.FilmsFilterContainer ref={ref} $animationDelay={0} $inView={inView}>
+                        {filters.map((filterOption, index) => (
+                            <Styled.FilmsFilter
+                                key={index}
+                                onClick={() => handleFilterChange(filterOption.status)}
+                                $selected={filter === filterOption.status}
+                            >
+                                {filterOption.label}
+                            </Styled.FilmsFilter>
+                        ))}
+                    </Styled.FilmsFilterContainer>
+                </Styled.TopFilmsPageControlsContainer>
 
-            <Styled.FilmsContainer>
-                {filmsToDisplay.map((film, index) => (
-                    <FilmContainerLarge
-                        key={index}
-                        film={film}
-                        delay={(index + 1) * delayPerItem}
-                        inView={inView}
-                    />
-                ))}
-            </Styled.FilmsContainer>
-            <PaginationControl
-                numberOfPages={numberOfPages}
-                handlePageChange={handlePageChange}
-                currentPage={currentPage}
-                animationDelay={filmsToDisplay.length * delayPerItem}
-                inView={inView}
-            />
-        </Styled.Container>
+                <Styled.FilmsContainer>
+                    {filmsToDisplay.map((film, index) => (
+                        <FilmContainerLarge
+                            key={index}
+                            film={film}
+                            delay={(index + 1) * delayPerItem}
+                            inView={inView}
+                        />
+                    ))}
+                </Styled.FilmsContainer>
+                <PaginationControl
+                    numberOfPages={numberOfPages}
+                    handlePageChange={handlePageChange}
+                    currentPage={currentPage}
+                    animationDelay={filmsToDisplay.length * delayPerItem}
+                    inView={inView}
+                />
+            </Styled.Container>
+        </Styled.PageWrapper>
     );
 }

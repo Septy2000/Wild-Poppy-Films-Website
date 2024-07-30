@@ -2,13 +2,24 @@
 import styled from "styled-components";
 import { generateSlideAnimation } from "@/utils/animationUtils";
 
+export const PageWrapper = styled.div`
+    margin-top: ${({ theme }) => theme.navbar_height.mobile};
+    @media (min-width: ${({ theme }) => theme.screen.tablet}) {
+        margin-top: ${({ theme }) => theme.navbar_height.tablet};
+    }
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        margin-top: ${({ theme }) => theme.navbar_height.desktop};
+    }
+`;
+
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin: 0 1.25rem 4rem 1.25rem;
+    margin: 4rem 1.25rem 4rem 1.25rem;
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         margin: 4rem;
     }
