@@ -79,7 +79,6 @@ export function FilmsPage() {
     };
 
     const handleFilterChange = (toFilter: FilterOptions) => {
-        // sort = toFilter;
         router.push(`/films?page=1&filter=${toFilter}`);
     };
 
@@ -92,9 +91,11 @@ export function FilmsPage() {
                         numberOfPages={numberOfPages}
                         handlePageChange={handlePageChange}
                         currentPage={currentPage}
+                        animationDelay={0}
+                        inView={inView}
                     />
                 )}
-                <Styled.FilmsFilterContainer ref={ref}>
+                <Styled.FilmsFilterContainer ref={ref} $animationDelay={0} $inView={inView}>
                     {filters.map((filterOption, index) => (
                         <Styled.FilmsFilter
                             key={index}
@@ -112,7 +113,7 @@ export function FilmsPage() {
                     <FilmContainerLarge
                         key={index}
                         film={film}
-                        delay={index * delayPerItem}
+                        delay={(index + 1) * delayPerItem}
                         inView={inView}
                     />
                 ))}
@@ -121,6 +122,8 @@ export function FilmsPage() {
                 numberOfPages={numberOfPages}
                 handlePageChange={handlePageChange}
                 currentPage={currentPage}
+                animationDelay={filmsToDisplay.length * delayPerItem}
+                inView={inView}
             />
         </Styled.Container>
     );

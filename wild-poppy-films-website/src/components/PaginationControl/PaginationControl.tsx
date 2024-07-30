@@ -7,9 +7,11 @@ export default function PaginationControl({
     currentPage,
     numberOfPages,
     handlePageChange,
+    animationDelay = 0,
+    inView = true,
 }: PaginationControlProps) {
     return (
-        <Styled.Container>
+        <Styled.Container $animationDelay={animationDelay} $inView={inView}>
             <Styled.PageControlContainer
                 $isSelected={false}
                 $isInactive={currentPage === 1}

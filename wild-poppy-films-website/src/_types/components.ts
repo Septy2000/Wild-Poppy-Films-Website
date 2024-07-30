@@ -47,4 +47,6 @@ export interface PaginationControlProps {
     numberOfPages: number;
     handlePageChange: (toPage: number) => void;
     currentPage: number;
+    animationDelay?: number;
+    inView?: boolean;
 }

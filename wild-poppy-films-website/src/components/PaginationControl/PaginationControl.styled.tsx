@@ -2,12 +2,16 @@
 import styled from "styled-components";
 import SimpleArrowRight from "@/icons/navigation/simple-arrow-right.svg";
 import SimpleArrowLeft from "@/icons/navigation/simple-arrow-left.svg";
+import { generateSlideAnimation } from "@/utils/animationUtils";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $animationDelay: number; $inView: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1;
+
+    opacity: 0;
+    ${({ $animationDelay, $inView }) => $inView && generateSlideAnimation("Y", 1, $animationDelay)}
 `;
 
 export const SimpleArrowRightStyled = styled(SimpleArrowRight)`

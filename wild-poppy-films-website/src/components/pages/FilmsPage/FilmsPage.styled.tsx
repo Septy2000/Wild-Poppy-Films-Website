@@ -1,5 +1,6 @@
 "use client";
 import styled from "styled-components";
+import { generateSlideAnimation } from "@/utils/animationUtils";
 
 export const Container = styled.div`
     display: flex;
@@ -21,10 +22,13 @@ export const FilmsContainer = styled.div`
     margin-bottom: 2rem;
 `;
 
-export const FilmsFilterContainer = styled.div`
+export const FilmsFilterContainer = styled.div<{ $animationDelay: number; $inView: boolean }>`
     display: flex;
     flex-direction: row;
     width: 17.5rem;
+
+    opacity: 0;
+    ${({ $animationDelay, $inView }) => $inView && generateSlideAnimation("Y", 1, $animationDelay)}
 `;
 
 export const TopFilmsPageControlsContainer = styled.div`
