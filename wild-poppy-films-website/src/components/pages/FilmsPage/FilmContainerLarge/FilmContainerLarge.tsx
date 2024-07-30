@@ -34,15 +34,15 @@ export default function FilmContainerLarge({
                 <Styled.FilmInfoContainer>
                     <Styled.FilmTitleAndYearContainer>
                         <Styled.FilmTitle>{film.title}</Styled.FilmTitle>
-                        <Styled.FilmYear>{film.year}</Styled.FilmYear>
+                        <Styled.FilmYear>{film.release_year}</Styled.FilmYear>
                     </Styled.FilmTitleAndYearContainer>
-                    {film.link && <FilmsYoutubeCtaButton link={film.link} />}
+                    {film.youtube_link && <FilmsYoutubeCtaButton link={film.youtube_link} />}
                     <Styled.FilmProductionContainer>
                         <Styled.DefaultText>{"PROD. BY "}</Styled.DefaultText>
-                        {film.production.map((producer, index) => (
+                        {film.production.producer.map((producer, index) => (
                             <React.Fragment key={index}>
                                 <Styled.ProductionText>{producer}</Styled.ProductionText>
-                                {index < film.production.length - 1 && (
+                                {index < film.production.producer.length - 1 && (
                                     <Styled.DefaultText key={`and-${index}`}>
                                         {" & "}
                                     </Styled.DefaultText>
@@ -66,16 +66,16 @@ export default function FilmContainerLarge({
                 <Styled.FilmImagePlaceholder />
                 <Styled.BlockContainer>
                     <Styled.DefaultText>
-                        {film.year} | {film.type} | {film.genre}{" "}
+                        {film.release_year} | {film.type} | {film.genre}{" "}
                     </Styled.DefaultText>
                 </Styled.BlockContainer>
                 <Styled.BlockContainer>
                     <Styled.FilmProductionContainer>
                         <Styled.DefaultText>{"PROD. BY "}</Styled.DefaultText>
-                        {film.production.map((producer, index) => (
+                        {film.production.producer.map((producer, index) => (
                             <React.Fragment key={index}>
                                 <Styled.ProductionText>{producer}</Styled.ProductionText>
-                                {index < film.production.length - 1 && (
+                                {index < film.production.producer.length - 1 && (
                                     <Styled.DefaultText key={`and-${index}`}>
                                         {" & "}
                                     </Styled.DefaultText>
@@ -85,11 +85,11 @@ export default function FilmContainerLarge({
                     </Styled.FilmProductionContainer>
                     <Styled.FilmProductionContainer>
                         <Styled.DefaultText>{"WRITTEN BY "}</Styled.DefaultText>
-                        {film.writer &&
-                            film.writer.map((writer, index) => (
+                        {film.production.writer &&
+                            film.production.writer.map((writer, index) => (
                                 <React.Fragment key={index}>
                                     <Styled.ProductionText>{writer}</Styled.ProductionText>
-                                    {film.writer && index < film.writer.length - 1 && (
+                                    {index < film.production.writer.length - 1 && (
                                         <Styled.DefaultText key={`and-${index}`}>
                                             {" & "}
                                         </Styled.DefaultText>
@@ -98,7 +98,7 @@ export default function FilmContainerLarge({
                             ))}
                     </Styled.FilmProductionContainer>
                 </Styled.BlockContainer>
-                {film.link && <FilmsYoutubeCtaButton link={film.link} />}
+                {film.youtube_link && <FilmsYoutubeCtaButton link={film.youtube_link} />}
             </Styled.DesktopContainer>
         </React.Fragment>
     );

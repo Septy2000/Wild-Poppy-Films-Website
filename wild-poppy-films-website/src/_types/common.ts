@@ -16,12 +16,23 @@ export type Film = {
     id: number;
     slug: string;
     title: string;
-    year: string;
+    release_year: string;
+    runtime: string;
     genre: string;
     type: string;
     status: FilmStatus;
-    production: string[];
-    writer?: string[];
-    link?: string;
-    cover?: StaticImageData[];
+    production: {
+        writer: string[];
+        executive_producer: string[];
+        producer: string[];
+        director: string[];
+        starring: string[];
+        distributor: string[];
+    };
+    youtube_link?: string;
+    teaser_youtube_link?: string;
+    cover: StaticImageData;
+    cover_small: StaticImageData;
+    description: string;
+    gallery: StaticImageData[];
 };

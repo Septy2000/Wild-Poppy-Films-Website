@@ -28,7 +28,7 @@ export default function NavBar() {
         if (
             (currentScrollY < homeHeroViewHeight * window.innerHeight && pathname === "/") ||
             (currentScrollY < filmHeroViewHeight * window.innerHeight &&
-                pathname.startsWith("/film/"))
+                pathname.startsWith("/films/"))
         ) {
             setIsOverContent(true);
         } else {
