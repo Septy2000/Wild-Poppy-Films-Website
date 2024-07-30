@@ -3,24 +3,25 @@ import React, { useEffect, useState, useRef } from "react";
 import * as Styled from "./Modal.styled";
 import ModalLinkButton from "@/components/Buttons/ModalLinkButton/ModalLinkButton";
 import ModalSocialButton from "@/components/Buttons/ModalSocialButton/ModalSocialButton";
+import { companySocialLinks, defaultPagesLinks } from "@/data";
 
 export default function Modal({ isVisible, onClose }: { isVisible: boolean; onClose: () => void }) {
     const delayPerLinkItem = 0.1;
 
-    const menuItems: { label: string; link: string }[] = [
-        { label: "HOME", link: "/" },
-        { label: "FILMS", link: "/films?page=1" },
-        { label: "OUR TEAM", link: "/our-team" },
-        { label: "CONTACT", link: "/contact" },
-        { label: "SUPPORT US", link: "/support-us" },
+    const pagesItems: { label: string; link: string }[] = [
+        { label: "HOME", link: defaultPagesLinks.home },
+        { label: "FILMS", link: defaultPagesLinks.films },
+        { label: "OUR TEAM", link: defaultPagesLinks.ourTeam },
+        { label: "CONTACT", link: defaultPagesLinks.contact },
+        { label: "SUPPORT US", link: defaultPagesLinks.supportUs },
     ];
 
     const socialItems: { icon: React.JSX.Element; link: string }[] = [
-        { icon: <Styled.InstagramIconStyled />, link: "https://www.instagram.com" },
-        { icon: <Styled.XIconStyled />, link: "https://www.x.com" },
-        { icon: <Styled.FacebookIconStyled />, link: "https://www.facebook.com" },
-        { icon: <Styled.YouTubeIconStyled />, link: "https://www.youtube.com" },
-        { icon: <Styled.LinkedInIconStyled />, link: "https://www.linkedin.com" },
+        { icon: <Styled.InstagramIconStyled />, link: companySocialLinks.instagram },
+        { icon: <Styled.XIconStyled />, link: companySocialLinks.x },
+        { icon: <Styled.FacebookIconStyled />, link: companySocialLinks.facebook },
+        { icon: <Styled.YouTubeIconStyled />, link: companySocialLinks.youtube },
+        { icon: <Styled.LinkedInIconStyled />, link: companySocialLinks.linkedin },
     ];
 
     useEffect(() => {
@@ -56,7 +57,7 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
                 <Styled.Content>
                     <Styled.PagesContainer>
                         {arePageButtonsDisplayed &&
-                            menuItems.map((item, id) => (
+                            pagesItems.map((item, id) => (
                                 <ModalLinkButton
                                     onClick={onClose}
                                     key={id}

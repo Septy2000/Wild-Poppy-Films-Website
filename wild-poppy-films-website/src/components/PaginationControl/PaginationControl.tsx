@@ -4,27 +4,17 @@ import * as Styled from "./PaginationControl.styled";
 import { PaginationControlProps } from "@/_types/components";
 
 export default function PaginationControl({
-    numberOfItems,
-    itemsPerPage,
+    currentPage,
+    numberOfPages,
     handlePageChange,
-    initialPage,
 }: PaginationControlProps) {
-    const currentPage = useRef(initialPage);
-    const numberOfPages = Math.ceil(numberOfItems / itemsPerPage);
-
-    useEffect(() => {
-        handlePageChange(currentPage.current);
-    }, [currentPage]);
-
     return (
         <Styled.Container>
             <Styled.PageControlContainer
                 $isSelected={false}
-                $isInactive={currentPage.current === 1}
+                $isInactive={currentPage === 1}
                 onClick={() => {
-                    if (currentPage.current !== 1) {
-                        handlePageChange(currentPage.current - 1);
-                    }
+                    handlePageChange(currentPage - 1);
                 }}
             >
                 <Styled.SimpleArrowLeftStyled />
@@ -33,11 +23,9 @@ export default function PaginationControl({
             {Array.from({ length: numberOfPages }).map((_, index) => (
                 <Styled.PageNumberContainer
                     key={index}
-                    $isSelected={currentPage.current === index + 1}
+                    $isSelected={currentPage === index + 1}
                     onClick={() => {
-                        if ((currentPage.current = index + 1)) {
-                            handlePageChange(index + 1);
-                        }
+                        handlePageChange(index + 1);
                     }}
                 >
                     {index + 1}
@@ -46,11 +34,9 @@ export default function PaginationControl({
 
             <Styled.PageControlContainer
                 $isSelected={false}
-                $isInactive={currentPage.current === numberOfPages}
+                $isInactive={currentPage === numberOfPages}
                 onClick={() => {
-                    if (currentPage.current !== numberOfPages) {
-                        handlePageChange(currentPage.current + 1);
-                    }
+                    handlePageChange(currentPage + 1);
                 }}
             >
                 <Styled.SimpleArrowRightStyled />

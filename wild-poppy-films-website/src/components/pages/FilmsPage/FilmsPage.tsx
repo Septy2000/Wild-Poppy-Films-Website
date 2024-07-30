@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import FilmContainerLarge from "@/components/pages/FilmsPage/FilmContainerLarge/FilmContainerLarge";
 import * as Styled from "./FilmsPage.styled";
 import { films } from "@/data";
@@ -10,7 +10,6 @@ import PaginationControl from "@/components/PaginationControl/PaginationControl"
 import useIsMobile from "@/hooks/useIsMobile";
 
 export function FilmsPage() {
-    const [selectedFilmFilter, setSelectedFilmFilter] = useState<FilterOptions>("all");
     const filters: { label: string; status: FilterOptions }[] = [
         {
             label: "ALL",
@@ -27,12 +26,13 @@ export function FilmsPage() {
     ];
 
     const searchParams = useSearchParams();
-    const sort = searchParams.get("sort");
+    const filter = searchParams.get("filter") ?? "all";
 
     const router = useRouter();
 
-    const currentPage = searchParams.get("page");
+    const currentPage = parseInt(searchParams.get("page") ?? "1");
     const filmsPerPage = 6;
+    const numberOfPages = Math.ceil(films.length / filmsPerPage);
     const isMobile = useIsMobile();
 
     const delayPerItem = 0.1;
@@ -43,24 +43,33 @@ export function FilmsPage() {
 
     // Filter films based on the selected filter
     const filteredFilms = films.filter((film) => {
-        if (selectedFilmFilter === "all") {
-            return true;
-        } else if (selectedFilmFilter === "available") {
-            return film.status === "available";
-        } else if (selectedFilmFilter === "coming_soon") {
-            return film.status === "coming_soon" || film.status === "in_production";
+        switch (filter) {
+            case "all":
+                return true;
+            case "available":
+                return film.status === "available";
+            case "coming_soon":
+                return film.status === "coming_soon" || film.status === "in_production";
+            default:
+                return false;
         }
-        return false;
     });
 
     useEffect(() => {
-        if (sort) {
-            setSelectedFilmFilter(sort as FilterOptions);
+        if (currentPage > numberOfPages) {
+            router.push(`/films?page=${numberOfPages}&filter=${filter}`);
         }
-    }, [sort]);
+    }, [currentPage, numberOfPages, filter]);
 
     const handlePageChange = (toPage: number) => {
-        router.push(`/films?page=${toPage}&sort=${sort}`);
+        if (toPage < 1 || toPage > numberOfPages || toPage === currentPage) return;
+
+        router.push(`/films?page=${toPage}&filter=${filter}`);
+    };
+
+    const handleFilterChange = (toFilter: FilterOptions) => {
+        // sort = toFilter;
+        router.push(`/films?page=1&filter=${toFilter}`);
     };
 
     return (
@@ -69,20 +78,19 @@ export function FilmsPage() {
             <Styled.TopFilmsPageControlsContainer>
                 {!isMobile && (
                     <PaginationControl
-                        numberOfItems={filteredFilms.length}
-                        itemsPerPage={filmsPerPage}
+                        numberOfPages={numberOfPages}
                         handlePageChange={handlePageChange}
-                        initialPage={currentPage ? parseInt(currentPage) : 1}
+                        currentPage={currentPage}
                     />
                 )}
                 <Styled.FilmsFilterContainer ref={ref}>
-                    {filters.map((filter, index) => (
+                    {filters.map((filterOption, index) => (
                         <Styled.FilmsFilter
                             key={index}
-                            onClick={() => setSelectedFilmFilter(filter.status)}
-                            $selected={selectedFilmFilter === filter.status}
+                            onClick={() => handleFilterChange(filterOption.status)}
+                            $selected={filter === filterOption.status}
                         >
-                            {filter.label}
+                            {filterOption.label}
                         </Styled.FilmsFilter>
                     ))}
                 </Styled.FilmsFilterContainer>
@@ -98,6 +106,11 @@ export function FilmsPage() {
                     />
                 ))}
             </Styled.FilmsContainer>
+            <PaginationControl
+                numberOfPages={numberOfPages}
+                handlePageChange={handlePageChange}
+                currentPage={currentPage}
+            />
         </Styled.Container>
     );
 }

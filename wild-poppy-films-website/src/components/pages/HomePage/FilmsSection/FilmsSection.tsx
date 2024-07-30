@@ -36,7 +36,7 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, filmsSectionRef) => {
 
                 <Styled.CtaContainer>
                     <PrimaryButton
-                        href={{ pathname: "/films", query: { page: "1", sort: "coming_soon" } }}
+                        href={{ pathname: "/films", query: { page: "1", filter: "coming_soon" } }}
                         variant="red"
                         animated
                         axis="Y"

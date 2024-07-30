@@ -44,8 +44,7 @@ export interface PrimaryButtonProps {
 }
 
 export interface PaginationControlProps {
-    numberOfItems: number;
-    itemsPerPage: number;
+    numberOfPages: number;
     handlePageChange: (toPage: number) => void;
-    initialPage: number;
+    currentPage: number;
 }

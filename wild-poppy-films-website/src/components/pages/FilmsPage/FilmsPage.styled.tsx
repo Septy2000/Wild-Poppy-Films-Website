@@ -17,6 +17,8 @@ export const FilmsContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    margin-bottom: 2rem;
 `;
 
 export const FilmsFilterContainer = styled.div`
