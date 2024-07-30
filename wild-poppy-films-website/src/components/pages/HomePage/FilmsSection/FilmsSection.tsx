@@ -17,12 +17,17 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, filmsSectionRef) => {
         triggerOnce: true,
     });
 
+    // Filter out films that are not coming soon or in production, and take the first 3
+    const filteredFilms = films
+        .filter((film) => film.status === "coming_soon" || film.status === "in_production")
+        .slice(0, 3);
+
     return (
         <div ref={filmsSectionRef}>
             <ScrollBanner displayTextList={scrollBannerDisplayTextList} variant="black" />
             <Styled.Container ref={ref} $inView={inView}>
                 <Styled.FilmsContainer>
-                    {films.map((film, index) => (
+                    {filteredFilms.map((film, index) => (
                         <FilmContainer
                             axis={"Y"}
                             direction={1}

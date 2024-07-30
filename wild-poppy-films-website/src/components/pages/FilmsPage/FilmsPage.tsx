@@ -32,7 +32,6 @@ export function FilmsPage() {
 
     const currentPage = parseInt(searchParams.get("page") ?? "1");
     const filmsPerPage = 6;
-    const numberOfPages = Math.ceil(films.length / filmsPerPage);
     const isMobile = useIsMobile();
 
     const delayPerItem = 0.1;
@@ -54,6 +53,18 @@ export function FilmsPage() {
                 return false;
         }
     });
+
+    const startIndex = (currentPage - 1) * filmsPerPage;
+    const endIndex = startIndex + filmsPerPage;
+    const filmsToDisplay = filteredFilms.slice(startIndex, endIndex);
+
+    const [numberOfPages, setNumberOfPages] = useState(
+        Math.ceil(filteredFilms.length / filmsPerPage)
+    );
+
+    useEffect(() => {
+        setNumberOfPages(Math.ceil(filteredFilms.length / filmsPerPage));
+    }, [filteredFilms]);
 
     useEffect(() => {
         if (currentPage > numberOfPages) {
@@ -97,7 +108,7 @@ export function FilmsPage() {
             </Styled.TopFilmsPageControlsContainer>
 
             <Styled.FilmsContainer>
-                {filteredFilms.map((film, index) => (
+                {filmsToDisplay.map((film, index) => (
                     <FilmContainerLarge
                         key={index}
                         film={film}

@@ -12,6 +12,7 @@ export const MobileContainer = styled.div<{ $inView: boolean } & AnimationProps>
     border-radius: 1rem;
     gap: 0.5rem;
     opacity: 0;
+    cursor: pointer;
     background: ${({ theme }) => theme.colors.neutral.neutral_1};
     box-shadow: ${({ theme }) => theme.box_shadow};
     ${({ $inView, $axis, $direction, $delay }) =>
@@ -133,7 +134,7 @@ export const DesktopContainer = styled(MobileContainer)`
     width: 40rem;
     height: 30rem;
     border-radius: 1rem;
-
+    cursor: pointer;
     justify-content: space-between;
 `;
 
