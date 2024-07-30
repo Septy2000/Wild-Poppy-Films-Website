@@ -36,7 +36,7 @@ export function FilmsPage() {
 
     const delayPerItem = 0.1;
     const { ref, inView } = useInView({
-        threshold: 0.2,
+        threshold: 0.1,
         triggerOnce: true,
     });
 

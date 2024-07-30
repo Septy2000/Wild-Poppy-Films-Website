@@ -7,7 +7,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin: 0 1.25rem;
+    margin: 0 1.25rem 4rem 1.25rem;
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         margin: 4rem;
     }
