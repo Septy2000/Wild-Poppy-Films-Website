@@ -7,7 +7,7 @@ export const Container = styled.div``;
 
 export const ImageContainer = styled.div`
     width: 100%;
-    height: 50vh;
+    height: 100vh;
     position: relative;
     overflow: hidden;
 `;
@@ -19,7 +19,7 @@ export const GlassOverFrameStyled = styled(GlassOverFrame)`
 export const ImageStyled = styled(Image)`
     object-fit: cover;
     width: 100%;
-    height: 50vh;
+    height: 100vh;
     display: block;
     flex-grow: 0;
     flex-shrink: 0;
@@ -32,7 +32,10 @@ export const ImageOverlay = styled.div`
     z-index: 2;
     gap: 2rem;
     width: 100%;
-    height: 50vh;
+    height: auto;
+    bottom: 4rem;
+    left: 1.25rem;
+    align-items: flex-start;
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         gap: 4rem;
@@ -46,10 +49,13 @@ export const FilmTitle = styled.h1`
 
 export const DescriptionContainer = styled.div`
     padding: 1.25rem;
+    padding-bottom: 2rem;
+    background: ${({ theme }) => theme.colors.neutral.neutral_14};
 `;
 
 export const DescriptionText = styled.p`
     font-size: 1rem;
+    line-height: 150%;
     color: ${({ theme }) => theme.colors.neutral.neutral_3};
 `;
 
@@ -57,6 +63,14 @@ export const ProductionContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    padding: 0 1.25rem;
+    padding-bottom: 3rem;
+`;
+
+export const SectionContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0;
 `;
 
 export const ProductionPairContainer = styled.div`
@@ -65,13 +79,17 @@ export const ProductionPairContainer = styled.div`
     justify-content: space-between;
 `;
 
+export const CarouselSectionContainer = styled.div`
+    padding-top: 2rem;
+`;
+
 export const PlainText = styled.span`
     font-size: 1rem;
     color: ${({ theme }) => theme.colors.neutral.neutral_14};
 `;
 
 export const PlainTextGreen = styled(PlainText)`
-    color: ${({ theme }) => theme.colors.secondary.core_green_light_2};
+    color: ${({ theme }) => theme.colors.secondary.core_green};
 `;
 
 export const NewsContainer = styled.div`

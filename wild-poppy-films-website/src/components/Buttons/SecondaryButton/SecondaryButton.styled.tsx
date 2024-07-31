@@ -7,7 +7,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     width: fit-content;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem 0.5rem 0;
     gap: 1rem;
     background-color: transparent;
 `;

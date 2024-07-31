@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import FilmContainerLarge from "@/components/pages/FilmsPage/FilmContainerLarge/FilmContainerLarge";
 import * as Styled from "./FilmsPage.styled";
 import { films } from "@/data";
@@ -39,6 +39,7 @@ export function FilmsPage() {
     const isMobile = useIsMobile();
 
     const delayPerItem = 0.1;
+
     const { ref, inView } = useInView({
         threshold: 0.1,
         triggerOnce: true,
@@ -114,14 +115,15 @@ export function FilmsPage() {
                 </Styled.TopFilmsPageControlsContainer>
 
                 <Styled.FilmsContainer>
-                    {filmsToDisplay.map((film, index) => (
-                        <FilmContainerLarge
-                            key={index}
-                            film={film}
-                            delay={(index + 1) * delayPerItem}
-                            inView={inView}
-                        />
-                    ))}
+                    {inView &&
+                        filmsToDisplay.map((film, index) => (
+                            <FilmContainerLarge
+                                key={index}
+                                film={film}
+                                delay={(index + 1) * delayPerItem}
+                                inView={inView}
+                            />
+                        ))}
                 </Styled.FilmsContainer>
                 <PaginationControl
                     numberOfPages={numberOfPages}

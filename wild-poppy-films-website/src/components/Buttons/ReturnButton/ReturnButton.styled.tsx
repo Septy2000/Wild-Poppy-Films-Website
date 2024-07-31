@@ -7,9 +7,10 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     width: fit-content;
-    padding: 0.5rem 1rem;
     gap: 1rem;
     background-color: transparent;
+    padding: 0.5rem 1rem 0.5rem 0%;
+    cursor: pointer;
 `;
 
 export const Text = styled.p`

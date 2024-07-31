@@ -23,6 +23,8 @@ export const Container = styled.div`
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         margin: 4rem;
     }
+
+    min-height: 50vh;
 `;
 
 export const FilmsContainer = styled.div`
