@@ -60,6 +60,7 @@ export default function FilmPage({ film }: { film: Film }) {
                         <Styled.PlainText>STARRING</Styled.PlainText>
                         <Styled.PlainTextGreen>{film.production.starring}</Styled.PlainTextGreen>
                     </Styled.ProductionPairContainer>
+                    <Styled.Spacer />
                     <Styled.ProductionPairContainer>
                         <Styled.PlainText>DISTRIBUTOR</Styled.PlainText>
                         <Styled.PlainTextGreen>{film.production.distributor}</Styled.PlainTextGreen>

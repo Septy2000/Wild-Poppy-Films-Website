@@ -82,9 +82,13 @@ export const ProductionPairContainer = styled.div`
 export const CarouselSectionContainer = styled.div`
     padding-top: 2rem;
 `;
+export const Spacer = styled.div`
+    height: 2rem;
+    width: 100%;
+`;
 
 export const PlainText = styled.span`
-    font-size: 1rem;
+    font-size: 0.75rem;
     color: ${({ theme }) => theme.colors.neutral.neutral_14};
 `;
 
