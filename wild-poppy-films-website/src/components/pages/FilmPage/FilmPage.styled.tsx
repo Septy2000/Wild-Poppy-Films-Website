@@ -102,10 +102,12 @@ export const NewsContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    padding: 3rem 1.25rem 8rem 1.25rem;
     background: ${({ theme }) => theme.colors.primary.poppy_red_light_1};
 `;
 
 export const NewsContainerTitle = styled.h2`
     font-size: 1.25rem;
     color: ${({ theme }) => theme.colors.secondary.core_green_light_2};
+    align-self: flex-start;
 `;

@@ -7,6 +7,7 @@ import ReturnButton from "@/components/Buttons/ReturnButton/ReturnButton";
 import SecondaryButton from "@/components/Buttons/SecondaryButton/SecondaryButton";
 import ImageCarousel from "@/components/ImageCarousel/ImageCarousel";
 import { filmsNews } from "@/data";
+import FilmNewsContainer from "@/components/pages/FilmPage/FilmNewsContainer/FilmNewsContainer";
 
 export default function FilmPage({ film }: { film: Film }) {
     const router = useRouter();
@@ -82,7 +83,9 @@ export default function FilmPage({ film }: { film: Film }) {
             </Styled.SectionContainer>
             <Styled.NewsContainer>
                 <Styled.NewsContainerTitle>POPPYING UP IN THE NEWS!</Styled.NewsContainerTitle>
-                // add news containers;
+                {shownNews.map((news, index) => (
+                    <FilmNewsContainer key={index} news={news} />
+                ))}
             </Styled.NewsContainer>
         </Styled.Container>
     );

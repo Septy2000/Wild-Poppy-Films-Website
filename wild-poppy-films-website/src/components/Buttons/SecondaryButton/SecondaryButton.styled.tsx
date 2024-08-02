@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import SimpleArrowRight from "@/icons/navigation/simple-arrow-right.svg";
+import { SecondaryButtonVariant } from "@/_types/styledComponents";
 
 export const Container = styled.div`
     display: flex;
@@ -12,13 +13,33 @@ export const Container = styled.div`
     background-color: transparent;
 `;
 
-export const Text = styled.p`
+export const Text = styled.p<{ $variant: SecondaryButtonVariant }>`
     font-size: 1rem;
-    color: ${({ theme }) => theme.colors.secondary.core_green_light_2};
+    color: ${({ $variant, theme }) => {
+        switch ($variant) {
+            case "blue":
+                return theme.colors.secondary.celadon_blue_dark_1;
+            case "green":
+                return theme.colors.secondary.core_green_light_2;
+            default:
+                return theme.colors.secondary.core_green_light_2;
+        }
+    }};
 `;
 
-export const SimpleArrowRightStyled = styled(SimpleArrowRight)`
+export const SimpleArrowRightStyled = styled(SimpleArrowRight)<{
+    $variant: SecondaryButtonVariant;
+}>`
     path {
-        fill: ${({ theme }) => theme.colors.secondary.core_green_light_2};
+        fill: ${({ $variant, theme }) => {
+            switch ($variant) {
+                case "blue":
+                    return theme.colors.secondary.celadon_blue_dark_1;
+                case "green":
+                    return theme.colors.secondary.core_green_light_2;
+                default:
+                    return theme.colors.secondary.core_green_light_2;
+            }
+        }};
     }
 `;

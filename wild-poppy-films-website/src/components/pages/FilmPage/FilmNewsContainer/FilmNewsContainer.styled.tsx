@@ -4,18 +4,22 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 1rem;
     border-radius: 1rem;
-    width: 16rem;
-    height: 20rem;
+    min-width: 16rem;
+    max-width: 32rem;
+    height: auto;
+    background: ${({ theme }) => theme.colors.neutral.neutral_1};
 `;
 
 export const ImageStyled = styled(Image)`
-    width: 16rem;
-    height: 9rem;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
     object-fit: cover;
+    border-radius: 0.25rem;
 `;
 
 export const Content = styled.p`

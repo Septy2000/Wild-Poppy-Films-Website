@@ -13,3 +13,5 @@ export interface PrimaryButtonStyledProps extends AnimationProps {
     $animated: boolean;
     $inView: boolean;
 }
+
+export type SecondaryButtonVariant = "blue" | "green";
