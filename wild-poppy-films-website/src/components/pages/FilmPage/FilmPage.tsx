@@ -1,14 +1,16 @@
 "use client";
-import { Film } from "@/_types/common";
+import { Film, News } from "@/_types/common";
 import { useRouter } from "next/navigation";
 import * as Styled from "./FilmPage.styled";
 import React from "react";
 import ReturnButton from "@/components/Buttons/ReturnButton/ReturnButton";
 import SecondaryButton from "@/components/Buttons/SecondaryButton/SecondaryButton";
 import ImageCarousel from "@/components/ImageCarousel/ImageCarousel";
+import { filmsNews } from "@/data";
 
 export default function FilmPage({ film }: { film: Film }) {
     const router = useRouter();
+    const shownNews: News[] = filmsNews.slice(0, 3);
 
     return (
         <Styled.Container>
@@ -78,6 +80,10 @@ export default function FilmPage({ film }: { film: Film }) {
                     <ImageCarousel images={film.gallery} />
                 </Styled.CarouselSectionContainer>
             </Styled.SectionContainer>
+            <Styled.NewsContainer>
+                <Styled.NewsContainerTitle>POPPYING UP IN THE NEWS!</Styled.NewsContainerTitle>
+                // add news containers;
+            </Styled.NewsContainer>
         </Styled.Container>
     );
 }

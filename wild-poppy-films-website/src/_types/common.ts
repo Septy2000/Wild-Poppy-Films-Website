@@ -36,3 +36,10 @@ export type Film = {
     description: string;
     gallery: StaticImageData[];
 };
+
+export type News = {
+    id: number;
+    content: string;
+    cover: StaticImageData;
+    hyperlink: string;
+};

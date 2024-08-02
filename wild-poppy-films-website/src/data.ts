@@ -1,4 +1,4 @@
-import { Film } from "./_types/common";
+import { Film, News } from "./_types/common";
 import OuroboriaCover from "@/images/films/ouroboria/cover.png";
 
 export const films: Film[] = [
@@ -73,6 +73,27 @@ export const films: Film[] = [
         cover_small: OuroboriaCover,
         description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
         gallery: [OuroboriaCover, OuroboriaCover, OuroboriaCover, OuroboriaCover, OuroboriaCover],
+    },
+];
+
+export const filmsNews: News[] = [
+    {
+        id: 1,
+        content: `Ouroboria: A Romanian Folk Thriller That Will Keep You on the Edge of Your Seat...`,
+        cover: OuroboriaCover,
+        hyperlink: "/films/ouroboria",
+    },
+    {
+        id: 2,
+        content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+        cover: OuroboriaCover,
+        hyperlink: "/films/no-names",
+    },
+    {
+        id: 3,
+        content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+        cover: OuroboriaCover,
+        hyperlink: "/films/the-switchboard-sonatta",
     },
 ];
 

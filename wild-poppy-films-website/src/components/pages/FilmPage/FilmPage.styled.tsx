@@ -102,6 +102,7 @@ export const NewsContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    background: ${({ theme }) => theme.colors.primary.poppy_red_light_1};
 `;
 
 export const NewsContainerTitle = styled.h2`
