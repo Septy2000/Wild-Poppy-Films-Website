@@ -81,12 +81,14 @@ export const MenuOpenIcon = styled(MenOpenIcon)``;
 export const MenuCloseIcon = styled(MenCloseIcon)``;
 
 export const WildPoppyAltXsLogo = styled(WpAltXsLogo)`
+    cursor: pointer;
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         display: none;
     }
 `;
 
 export const WildPoppyAltXlLogo = styled(WpAltXlLogo)`
+    cursor: pointer;
     display: none;
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         display: block;

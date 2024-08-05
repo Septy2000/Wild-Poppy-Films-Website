@@ -10,6 +10,10 @@ export const ImageContainer = styled.div`
     height: 100vh;
     position: relative;
     overflow: hidden;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        height: 70vh;
+    }
 `;
 
 export const GlassOverFrameStyled = styled(GlassOverFrame)`
@@ -21,8 +25,9 @@ export const ImageStyled = styled(Image)`
     width: 100%;
     height: 100vh;
     display: block;
-    flex-grow: 0;
-    flex-shrink: 0;
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        height: 70vh;
+    }
 `;
 
 export const ImageOverlay = styled.div`
@@ -38,7 +43,9 @@ export const ImageOverlay = styled.div`
     align-items: flex-start;
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
-        gap: 4rem;
+        height: 70%;
+        justify-content: space-between;
+        left: 4rem;
     }
 `;
 
@@ -47,10 +54,28 @@ export const FilmTitle = styled.h1`
     color: ${({ theme }) => theme.colors.neutral.neutral_4};
 `;
 
+export const HeroFlexContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    background: ${({ theme }) => theme.colors.neutral.neutral_14};
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 8rem;
+    }
+`;
+
 export const DescriptionContainer = styled.div`
     padding: 1.25rem;
     padding-bottom: 2rem;
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        padding: 1.25rem 4rem;
+    }
 `;
 
 export const DescriptionText = styled.p`
@@ -65,6 +90,11 @@ export const ProductionContainer = styled.div`
     gap: 0.25rem;
     padding: 0 1.25rem;
     padding-bottom: 3rem;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        padding: 1.25rem 4rem 1.25rem 6rem;
+        padding-right: 4rem;
+    }
 `;
 
 export const SectionContainer = styled.div`
@@ -77,6 +107,9 @@ export const ProductionPairContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+    }
 `;
 
 export const CarouselSectionContainer = styled.div`
@@ -90,6 +123,10 @@ export const Spacer = styled.div`
 export const PlainText = styled.span`
     font-size: 0.75rem;
     color: ${({ theme }) => theme.colors.neutral.neutral_14};
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        color: ${({ theme }) => theme.colors.neutral.neutral_1};
+    }
 `;
 
 export const PlainTextGreen = styled(PlainText)`
@@ -101,13 +138,36 @@ export const NewsContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
     padding: 3rem 1.25rem 8rem 1.25rem;
     background: ${({ theme }) => theme.colors.primary.poppy_red_light_1};
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        padding: 3rem 4rem 8rem 4rem;
+    }
 `;
 
 export const NewsContainerTitle = styled.h2`
     font-size: 1.25rem;
     color: ${({ theme }) => theme.colors.secondary.core_green_light_2};
     align-self: flex-start;
+`;
+
+export const NewsWrapper = styled.div`
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        flex-direction: row;
+        padding-top: 4rem;
+        align-items: flex-start;
+    }
+`;
+
+export const ImagesShowcaseDesktop = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 `;
