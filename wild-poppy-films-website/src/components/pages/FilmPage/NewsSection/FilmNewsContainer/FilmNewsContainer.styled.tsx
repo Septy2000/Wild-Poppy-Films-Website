@@ -1,7 +1,8 @@
 import Image from "next/image";
 import styled from "styled-components";
+import { generateSlideAnimation } from "@/utils/animationUtils";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $animationDelay: number; $inView: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -12,6 +13,9 @@ export const Container = styled.div`
     background: ${({ theme }) => theme.colors.neutral.neutral_1};
     flex: 1;
     height: 100%;
+
+    opacity: 0;
+    ${({ $animationDelay, $inView }) => $inView && generateSlideAnimation("Y", 1, $animationDelay)}
 `;
 
 export const ImageStyled = styled(Image)`
