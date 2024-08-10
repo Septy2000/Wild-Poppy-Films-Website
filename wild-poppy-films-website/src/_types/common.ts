@@ -43,3 +43,17 @@ export type News = {
     cover: StaticImageData;
     hyperlink: string;
 };
+
+export type TeamMember = {
+    id: number;
+    firstName: string;
+    lastName: string;
+    role: string[];
+    location: string;
+    socials: {
+        imdb: string;
+        instagram: string;
+    };
+    icon: StaticImageData;
+    description: string;
+};

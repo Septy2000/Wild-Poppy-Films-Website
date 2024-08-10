@@ -1,4 +1,4 @@
-import { Film, News } from "./_types/common";
+import { Film, News, TeamMember } from "./_types/common";
 import OuroboriaCover from "@/images/films/ouroboria/cover.png";
 
 export const films: Film[] = [
@@ -112,3 +112,5 @@ export const defaultPagesLinks = {
     contact: "/contact",
     supportUs: "/support-us",
 };
+
+export const teamMembers: TeamMember[] = [];

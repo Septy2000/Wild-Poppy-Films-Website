@@ -8,10 +8,10 @@ export const Container = styled.div`
     justify-content: space-between;
     padding: 1rem;
     border-radius: 1rem;
-    min-width: 12rem;
     max-width: 24rem;
     background: ${({ theme }) => theme.colors.neutral.neutral_1};
     flex: 1;
+    height: 100%;
 `;
 
 export const ImageStyled = styled(Image)`

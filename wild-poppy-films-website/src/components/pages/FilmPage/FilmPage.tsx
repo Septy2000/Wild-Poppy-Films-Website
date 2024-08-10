@@ -9,6 +9,7 @@ import ImageCarousel from "@/components/ImageCarousel/ImageCarousel";
 import { filmsNews } from "@/data";
 import FilmNewsContainer from "@/components/pages/FilmPage/FilmNewsContainer/FilmNewsContainer";
 import useIsMobile from "@/hooks/useIsMobile";
+import ImagesShowcaseDesktop from "@/components/ImagesShowcaseDesktop/ImagesShowcaseDesktop";
 
 export default function FilmPage({ film }: { film: Film }) {
     const router = useRouter();
@@ -90,7 +91,7 @@ export default function FilmPage({ film }: { film: Film }) {
                 {isMobile && <ProductionSection />}
                 <Styled.CarouselSectionContainer>
                     {isMobile && <ImageCarousel images={film.gallery} />}
-                    {!isMobile && <Styled.ImagesShowcaseDesktop />}
+                    {!isMobile && <ImagesShowcaseDesktop images={film.gallery} />}
                 </Styled.CarouselSectionContainer>
             </Styled.SectionContainer>
             <Styled.NewsContainer>

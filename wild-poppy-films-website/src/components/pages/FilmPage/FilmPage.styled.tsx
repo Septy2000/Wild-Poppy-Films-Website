@@ -101,6 +101,7 @@ export const SectionContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 3rem 0;
+    background-color: ${({ theme }) => theme.colors.neutral.neutral_1};
 `;
 
 export const ProductionPairContainer = styled.div`
@@ -112,9 +113,8 @@ export const ProductionPairContainer = styled.div`
     }
 `;
 
-export const CarouselSectionContainer = styled.div`
-    padding-top: 2rem;
-`;
+export const CarouselSectionContainer = styled.div``;
+
 export const Spacer = styled.div`
     height: 2rem;
     width: 100%;
@@ -153,21 +153,15 @@ export const NewsContainerTitle = styled.h2`
 `;
 
 export const NewsWrapper = styled.div`
+    display: grid;
+
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding-top: 2rem;
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
-        flex-direction: row;
-        padding-top: 4rem;
-        align-items: flex-start;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
     }
-`;
-
-export const ImagesShowcaseDesktop = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
 `;
