@@ -64,14 +64,16 @@ export default function HeroSection({ film }: { film: Film }) {
                     {film.description}
                 </Styled.DescriptionText>
                 {film.teaser_youtube_link && (
-                    <SecondaryButton
-                        text="Watch Teaser on Youtube"
-                        onClick={() => router.push(film.teaser_youtube_link ?? "/not-found")}
-                    />
+                    <Styled.AnimationWrapper $inView={inView} $animationDelay={2 * delayPerItem}>
+                        <SecondaryButton
+                            text="Watch Teaser on Youtube"
+                            onClick={() => router.push(film.teaser_youtube_link ?? "/not-found")}
+                        />
+                    </Styled.AnimationWrapper>
                 )}
             </Styled.DescriptionContainer>
             <Styled.ProductionContainer>
-                <Styled.AnimationWrapper $inView={inView} $animationDelay={2 * delayPerItem}>
+                <Styled.AnimationWrapper $inView={inView} $animationDelay={3 * delayPerItem}>
                     <ProductionInfo />
                 </Styled.AnimationWrapper>
             </Styled.ProductionContainer>

@@ -113,4 +113,56 @@ export const defaultPagesLinks = {
     supportUs: "/support-us",
 };
 
-export const teamMembers: TeamMember[] = [];
+export const teamMembers: TeamMember[] = [
+    {
+        id: 1,
+        name: "Daria Popesco",
+        roles: ["PRODUCER", "CO-FOUNDER"],
+        location: "LONDON, UK",
+        socials: {
+            imdb: "https://www.imdb.com",
+            instagram: "https://www.instagram.com",
+        },
+        icon: OuroboriaCover,
+        description: `Daria has been captivating audiences with her unique storytelling style. Her films often explore themes of identity, belonging and human connection, and her work has been recognized at prestigious festivals around the world.`,
+    },
+    {
+        id: 2,
+        name: "Delia Dumont",
+        roles: ["DIRECTOR", "CO-FOUNDER"],
+        location: "NEW YORK CITY, USA",
+        socials: {
+            imdb: "https://www.imdb.com",
+            instagram: "https://www.instagram.com",
+        },
+        icon: OuroboriaCover,
+        description:
+            "Delia has been captivating audiences with her unique storytelling style. Her films often explore themes of identity, belonging and human connection, and her work has been recognized at prestigious festivals around the world.",
+    },
+    {
+        id: 3,
+        name: "Miruna Străuț",
+        roles: ["PRODUCER", "SCREENWRITER"],
+        location: "NEW YORK CITY, USA",
+        socials: {
+            imdb: "https://www.imdb.com",
+            instagram: "https://www.instagram.com",
+        },
+        icon: OuroboriaCover,
+        description:
+            "Miruna has been captivating audiences with her unique storytelling style. Her films often explore themes of identity, belonging and human connection, and her work has been recognized at prestigious festivals around the world.",
+    },
+    {
+        id: 4,
+        name: "Ana Pârvu",
+        roles: ["ACTRESS", "SCREENWRITER"],
+        location: "LONDON, UK",
+        socials: {
+            imdb: "https://www.imdb.com",
+            instagram: "https://www.instagram.com",
+        },
+        icon: OuroboriaCover,
+        description:
+            "Ana has been captivating audiences with her unique storytelling style. Her films often explore themes of identity, belonging and human connection, and her work has been recognized at prestigious festivals around the world.",
+    },
+];

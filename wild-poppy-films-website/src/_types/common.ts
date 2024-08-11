@@ -46,9 +46,8 @@ export type News = {
 
 export type TeamMember = {
     id: number;
-    firstName: string;
-    lastName: string;
-    role: string[];
+    name: string;
+    roles: string[];
     location: string;
     socials: {
         imdb: string;

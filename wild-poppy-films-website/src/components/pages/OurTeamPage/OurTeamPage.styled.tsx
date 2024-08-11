@@ -18,4 +18,12 @@ export const MembersContainer = styled.div`
     flex-direction: column;
     gap: 2rem;
     padding: 4rem 0;
+
+    @media (min-width: ${({ theme }) => theme.screen.tablet}) {
+        padding: 2.5rem;
+    }
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        paddig: 4rem;
+    }
 `;
