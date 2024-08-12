@@ -8,6 +8,13 @@ export interface AnimationProps {
     $delay?: number;
 }
 
+export interface ScrollIntoViewAnimationProps {
+    $axis: "X" | "Y";
+    $animationDelay: number;
+    $inView: boolean;
+    $direction: 1 | -1;
+}
+
 export interface PrimaryButtonStyledProps extends AnimationProps {
     $variant: PrimaryButtonColorVariant;
     $animated: boolean;

@@ -97,7 +97,7 @@ export const ExpandContainer = styled.div`
 
 export const StyledDownwardIcon = styled(DownwardIcon)<{ $isExpanded: boolean }>`
     path {
-        fill: ${({ theme }) => theme.colors.neutral.neutral_1};
+        fill: ${({ theme }) => theme.colors.secondary.celadon_blue_light_1};
     }
 
     transform: ${({ $isExpanded }) => ($isExpanded ? "rotate(180deg)" : "rotate(0deg)")};

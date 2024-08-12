@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import * as Styled from "./OurTeamPage.styled";
 import { teamMembers } from "@/data";
 import MemberContainer from "@/components/pages/OurTeamPage/MemberContainer/MemberContainer";
-
+import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
 export default function OurTeamPage() {
     const [expandedMemberIndex, setExpandedMemberIndex] = useState<number | undefined>(undefined);
 
@@ -22,6 +22,11 @@ export default function OurTeamPage() {
                     />
                 ))}
             </Styled.MembersContainer>
+            <Styled.ButtonContainer>
+                <PrimaryButton href={"/contact-us"} variant={"red"}>
+                    {"contact us"}
+                </PrimaryButton>
+            </Styled.ButtonContainer>
         </Styled.Container>
     );
 }
