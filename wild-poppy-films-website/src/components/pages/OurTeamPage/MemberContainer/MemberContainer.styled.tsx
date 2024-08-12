@@ -32,12 +32,19 @@ export const ExpandedInfoContainer = styled.div<{ $isExpanded: boolean }>`
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
     display: grid;
     grid-template-columns: 1fr 1fr;
-    
+
     gap: 0.5rem;
     width: 100%;
     transition: max-height 0.2s ease-in-out;
     max-height: ${({ $isExpanded }) => ($isExpanded ? "450px" : "0")};
     overflow: hidden;
+`;
+
+export const CenteredContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const ImageContainer = styled.div`
@@ -99,12 +106,26 @@ export const StyledDownwardIcon = styled(DownwardIcon)<{ $isExpanded: boolean }>
 export const Name = styled.h2`
     font-size: 1.25rem;
     color: ${({ theme }) => theme.colors.neutral.neutral_1};
+
+    @media (min-width: ${({ theme }) => theme.screen.tablet}) {
+        font-size: 1.5rem;
+    }
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+    }
 `;
 
 export const Text = styled.p`
     font-size: 0.75rem;
     color: ${({ theme }) => theme.colors.neutral.neutral_1};
     line-height: 150%;
+
+    @media (min-width: ${({ theme }) => theme.screen.tablet}) {
+        font-size: 1rem;
+    }
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+    }
 `;
 
 export const GreenText = styled(Text)`

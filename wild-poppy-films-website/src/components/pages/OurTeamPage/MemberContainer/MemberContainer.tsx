@@ -56,14 +56,16 @@ export default function MemberContainer({
             </Styled.HeaderInfoContainer>
             <Styled.ExpandedInfoContainer $isExpanded={isExpanded}>
                 <Styled.Text>{member.description}</Styled.Text>
-                <Styled.ImageContainer>
-                    <Styled.ImageStyled
-                        src={member.icon.src}
-                        alt={member.name}
-                        width={300}
-                        height={300}
-                    />
-                </Styled.ImageContainer>
+                <Styled.CenteredContainer>
+                    <Styled.ImageContainer>
+                        <Styled.ImageStyled
+                            src={member.icon.src}
+                            alt={member.name}
+                            width={300}
+                            height={300}
+                        />
+                    </Styled.ImageContainer>
+                </Styled.CenteredContainer>
             </Styled.ExpandedInfoContainer>
             <Styled.ExpandContainer onClick={handleExpandToggle}>
                 <Styled.StyledDownwardIcon $isExpanded={isExpanded} />

@@ -5,7 +5,6 @@ export const Container = styled.div`
     width: 100%;
     height: 12.5rem;
     display: flex;
-    padding: 1rem 0;
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
     overflow: hidden;
     user-select: none;
@@ -21,6 +20,7 @@ export const ScrollContainer = styled.div`
     flex-wrap: nowrap;
     animation: scroll 15s linear infinite;
     white-space: nowrap;
+    height: 100%;
 
     @keyframes scroll {
         from {
@@ -34,9 +34,10 @@ export const ScrollContainer = styled.div`
 
 export const Title = styled.h1`
     position: relative;
-    font-size: 10.5rem;
+    font-size: 12.5rem;
     display: inline-flex;
     align-items: center;
+    line-height: 1.5rem;
     color: ${({ theme }) => theme.colors.primary_shaded.poppy_red};
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         font-size: 18rem;
@@ -45,7 +46,7 @@ export const Title = styled.h1`
     &:before {
         content: " - ";
         display: inline-block;
-        font-size: 10.5rem;
+        font-size: 12.5rem;
         color: ${({ theme }) => theme.colors.primary_shaded.poppy_red};
         @media (min-width: ${({ theme }) => theme.screen.desktop}) {
             font-size: 18rem;
