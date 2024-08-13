@@ -109,7 +109,7 @@ export const defaultPagesLinks = {
     home: "/",
     films: "/films?page=1&filter=all",
     ourTeam: "/our-team",
-    contact: "/contact",
+    contact: "/contact-us",
     supportUs: "/support-us",
 };
 
