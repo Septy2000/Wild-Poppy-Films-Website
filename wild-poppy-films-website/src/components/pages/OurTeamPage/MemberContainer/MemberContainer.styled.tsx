@@ -17,6 +17,11 @@ export const Container = styled.div`
     gap: 1rem;
 
     padding: 1.25rem;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        max-width: 54rem;
+        padding: 3rem;
+    }
 `;
 
 export const HeaderInfoContainer = styled.div`
@@ -32,12 +37,21 @@ export const ExpandedInfoContainer = styled.div<{ $isExpanded: boolean }>`
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas: "image description";
 
-    gap: 0.5rem;
+    gap: 1rem;
     width: 100%;
     transition: max-height 0.2s ease-in-out;
     max-height: ${({ $isExpanded }) => ($isExpanded ? "450px" : "0")};
     overflow: hidden;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        ${Container}:hover & {
+            max-height: 450px;
+        }
+
+        grid-template-areas: "image description";
+    }
 `;
 
 export const CenteredContainer = styled.div`
@@ -45,6 +59,8 @@ export const CenteredContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    grid-area: image;
 `;
 
 export const ImageContainer = styled.div`
@@ -56,6 +72,12 @@ export const ImageContainer = styled.div`
     max-width: 300px;
     aspect-ratio: 1 / 1.5;
     max-height: 450px;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        max-width: 100%;
+        aspect-ratio: 1.5 / 1;
+        max-height: 100%;
+    }
 `;
 
 export const ImageStyled = styled(Image)`
@@ -115,11 +137,14 @@ export const Name = styled.h2`
     }
 `;
 
+export const DescriptionContainer = styled.div`
+    grid-area: description;
+`;
+
 export const Text = styled.p`
     font-size: 0.75rem;
     color: ${({ theme }) => theme.colors.neutral.neutral_1};
     line-height: 150%;
-
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
         font-size: 1rem;
     }

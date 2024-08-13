@@ -55,7 +55,9 @@ export default function MemberContainer({
                 </Styled.SocialsContainer>
             </Styled.HeaderInfoContainer>
             <Styled.ExpandedInfoContainer $isExpanded={isExpanded}>
-                <Styled.Text>{member.description}</Styled.Text>
+                <Styled.DescriptionContainer>
+                    <Styled.Text>{member.description}</Styled.Text>
+                </Styled.DescriptionContainer>
                 <Styled.CenteredContainer>
                     <Styled.ImageContainer>
                         <Styled.ImageStyled

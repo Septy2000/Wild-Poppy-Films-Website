@@ -32,7 +32,9 @@ export const MembersContainer = styled.div`
     }
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
-        paddig: 4rem;
+        padding: 4rem;
+        justify-content: center;
+        align-items: center;
     }
 `;
 
