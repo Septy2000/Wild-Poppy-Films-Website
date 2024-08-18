@@ -2,22 +2,16 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { GlassOverFrame } from "@/components/GlassOverFrame/GlassOverFrame.styled";
-import { AnimationProps } from "@/_types/styledComponents";
-import { generateSlideAnimation } from "@/utils/animationUtils";
 
-export const MobileContainer = styled.div<{ $inView: boolean } & AnimationProps>`
+export const MobileContainer = styled.div`
     display: flex;
     position: relative;
     flex-direction: column;
     border-radius: 1rem;
     gap: 0.5rem;
-    opacity: 0;
     cursor: pointer;
     background: ${({ theme }) => theme.colors.neutral.neutral_1};
     box-shadow: ${({ theme }) => theme.box_shadow};
-    ${({ $inView, $axis, $direction, $delay }) =>
-        $inView && generateSlideAnimation($axis, $direction, $delay)}
-
     // mobile
     padding: 1rem;
     width: 18rem;

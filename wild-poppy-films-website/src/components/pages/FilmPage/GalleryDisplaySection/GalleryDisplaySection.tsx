@@ -4,6 +4,7 @@ import ImageCarousel from "@/components/ImageCarousel/ImageCarousel";
 import ImagesShowcaseDesktop from "@/components/ImagesShowcaseDesktop/ImagesShowcaseDesktop";
 import { StaticImageData } from "next/image";
 import { useInView } from "react-intersection-observer";
+import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
 
 export default function GalleryDisplaySection({ gallery }: { gallery: StaticImageData[] }) {
     const isMobile = useIsMobile();
@@ -17,10 +18,15 @@ export default function GalleryDisplaySection({ gallery }: { gallery: StaticImag
 
     return (
         <Styled.Container ref={ref}>
-            <Styled.AnimationWrapper $inView={inView} $animationDelay={delayPerItem}>
+            <ScrollIntoViewAnimationWrapper
+                $inView={inView}
+                $animationDelay={delayPerItem}
+                $axis="Y"
+                $direction={1}
+            >
                 {isMobile && <ImageCarousel images={gallery} />}
                 {!isMobile && <ImagesShowcaseDesktop images={gallery} />}
-            </Styled.AnimationWrapper>
+            </ScrollIntoViewAnimationWrapper>
         </Styled.Container>
     );
 }

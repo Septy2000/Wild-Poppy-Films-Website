@@ -6,10 +6,13 @@ import { films } from "@/data";
 import FilmContainer from "@/components/pages/HomePage/FilmsSection/FilmContainer/FilmContainer";
 import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
 import { useInView } from "react-intersection-observer";
+import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
+import { useRouter } from "next/navigation";
 
 const FilmsSection = forwardRef<HTMLDivElement>((props, filmsSectionRef) => {
     const scrollBannerDisplayTextList: string[] = ["blooming soon!"];
     const filmsCtaText = "view all";
+    const router = useRouter();
 
     const delayPerItem = 0.1;
     const { ref, inView } = useInView({
@@ -22,35 +25,41 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, filmsSectionRef) => {
         .filter((film) => film.status === "coming_soon" || film.status === "in_production")
         .slice(0, 3);
 
+    function handleNavigateTo(path: string) {
+        router.push(path);
+    }
+
     return (
         <div ref={filmsSectionRef}>
             <ScrollBanner displayTextList={scrollBannerDisplayTextList} variant="black" />
             <Styled.Container ref={ref} $inView={inView}>
                 <Styled.FilmsContainer>
                     {filteredFilms.map((film, index) => (
-                        <FilmContainer
-                            axis={"Y"}
-                            direction={1}
-                            delay={index * delayPerItem}
-                            film={film}
-                            inView={inView}
+                        <ScrollIntoViewAnimationWrapper
                             key={index}
-                        />
+                            $animationDelay={index * delayPerItem}
+                            $axis="Y"
+                            $direction={1}
+                            $inView={inView}
+                        >
+                            <FilmContainer film={film} />
+                        </ScrollIntoViewAnimationWrapper>
                     ))}
                 </Styled.FilmsContainer>
 
                 <Styled.CtaContainer>
-                    <PrimaryButton
-                        href={{ pathname: "/films", query: { page: "1", filter: "coming_soon" } }}
-                        variant="red"
-                        animated
-                        axis="Y"
-                        direction={1}
-                        delay={films.length * delayPerItem}
-                        inView={inView}
+                    <ScrollIntoViewAnimationWrapper
+                        $animationDelay={films.length * delayPerItem}
+                        $axis="Y"
+                        $direction={1}
+                        $inView={inView}
                     >
-                        {filmsCtaText}
-                    </PrimaryButton>
+                        <PrimaryButton
+                            onClick={() => handleNavigateTo("/films?filter=coming_soon&page=1")}
+                            variant="red"
+                            label={filmsCtaText}
+                        />
+                    </ScrollIntoViewAnimationWrapper>
                 </Styled.CtaContainer>
             </Styled.Container>
         </div>

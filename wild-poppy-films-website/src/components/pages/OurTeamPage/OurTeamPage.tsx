@@ -5,8 +5,16 @@ import * as Styled from "./OurTeamPage.styled";
 import { teamMembers } from "@/data";
 import MemberContainer from "@/components/pages/OurTeamPage/MemberContainer/MemberContainer";
 import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
+import { useRouter } from "next/navigation";
+
 export default function OurTeamPage() {
     const [expandedMemberIndex, setExpandedMemberIndex] = useState<number | undefined>(undefined);
+
+    const router = useRouter();
+
+    function handleNavigateTo(path: string) {
+        router.push(path);
+    }
 
     return (
         <Styled.Container>
@@ -23,9 +31,11 @@ export default function OurTeamPage() {
                 ))}
             </Styled.MembersContainer>
             <Styled.ButtonContainer>
-                <PrimaryButton href={"/contact-us"} variant={"red"}>
-                    {"contact us"}
-                </PrimaryButton>
+                <PrimaryButton
+                    label="contact us"
+                    onClick={() => handleNavigateTo("/contact-us")}
+                    variant={"red"}
+                />
             </Styled.ButtonContainer>
         </Styled.Container>
     );

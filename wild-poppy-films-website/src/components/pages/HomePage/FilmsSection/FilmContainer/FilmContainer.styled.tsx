@@ -2,10 +2,8 @@
 import styled from "styled-components";
 import Image from "next/image";
 import BackArrowIcon from "@/icons/navigation/left-fwd-icon.svg";
-import { generateSlideAnimation } from "@/utils/animationUtils";
-import { AnimationProps } from "@/_types/styledComponents";
 
-export const Container = styled.div<{ $inView: boolean } & AnimationProps>`
+export const Container = styled.div`
     position: relative;
     display: flex;
     flex-direction: row;
@@ -13,12 +11,9 @@ export const Container = styled.div<{ $inView: boolean } & AnimationProps>`
     gap: 1rem;
     background: ${({ theme }) => theme.colors.neutral.neutral_1};
     cursor: pointer;
-    opacity: 0;
     // mobile
     padding: 0.75rem;
     box-shadow: ${({ theme }) => theme.box_shadow};
-    ${({ $axis, $direction, $delay, $inView }) =>
-        $inView && generateSlideAnimation($axis, $direction, $delay)};
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         &::before {

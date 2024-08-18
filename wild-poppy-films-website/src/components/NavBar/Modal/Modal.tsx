@@ -4,6 +4,7 @@ import * as Styled from "./Modal.styled";
 import ModalLinkButton from "@/components/Buttons/ModalLinkButton/ModalLinkButton";
 import ModalSocialButton from "@/components/Buttons/ModalSocialButton/ModalSocialButton";
 import { companySocialLinks, defaultPagesLinks } from "@/data";
+import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
 
 export default function Modal({ isVisible, onClose }: { isVisible: boolean; onClose: () => void }) {
     const delayPerLinkItem = 0.1;
@@ -58,14 +59,15 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
                     <Styled.PagesContainer>
                         {arePageButtonsDisplayed &&
                             pagesItems.map((item, id) => (
-                                <ModalLinkButton
-                                    onClick={onClose}
+                                <ScrollIntoViewAnimationWrapper
                                     key={id}
-                                    label={item.label}
-                                    link={item.link}
-                                    isVisible={isVisible}
-                                    delay={(id + 1) * delayPerLinkItem}
-                                />
+                                    $animationDelay={id * delayPerLinkItem}
+                                    $inView={true}
+                                    $axis="X"
+                                    $direction={-1}
+                                >
+                                    <ModalLinkButton onClick={onClose} label={item.label} />
+                                </ScrollIntoViewAnimationWrapper>
                             ))}
                     </Styled.PagesContainer>
                     <Styled.SocialsContainer>

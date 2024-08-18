@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import TitleBuffer from "@/components/TitleBuffer/TitleBuffer";
 import * as Styled from "./ContactUsPage.styled";
@@ -43,7 +44,7 @@ export default function ContactUsPage() {
                         onChange={(e) => setMessage(e.target.value)}
                         required
                     />
-                    <PrimaryButton>send</PrimaryButton>
+                    <PrimaryButton label="send" onClick={() => {}}></PrimaryButton>
                 </Styled.FormGridContainer>
             </Styled.Container>
         </Styled.PageWrapper>

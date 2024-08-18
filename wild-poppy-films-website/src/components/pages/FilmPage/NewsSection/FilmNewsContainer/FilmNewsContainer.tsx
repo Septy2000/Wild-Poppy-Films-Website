@@ -24,7 +24,7 @@ export default function FilmNewsContainer({
             />
             <Styled.Content>{news.content}</Styled.Content>
             <SecondaryButton
-                text={"Read on Vanity Fair"}
+                label={"Read on Vanity Fair"}
                 variant="blue"
                 onClick={() => router.push(news.hyperlink)}
             />

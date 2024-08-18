@@ -1,20 +1,14 @@
 "use client";
-
 import styled from "styled-components";
-import Link from "next/link";
 import RightFwdIcon from "@/icons/navigation/right-fwd-icon.svg";
-import { generateSlideAnimation } from "@/utils/animationUtils";
-import { AnimationProps } from "@/_types/styledComponents";
 
-export const Container = styled(Link)<AnimationProps>`
+export const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 8px;
     text-decoration: none;
     cursor: pointer;
-    opacity: 0;
-    ${({ $axis, $direction, $delay }) => generateSlideAnimation($axis, $direction, $delay)}
     &:hover {
         opacity: 60%;
     }

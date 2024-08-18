@@ -9,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 import PaginationControl from "@/components/PaginationControl/PaginationControl";
 import useIsMobile from "@/hooks/useIsMobile";
 import TitleBuffer from "@/components/TitleBuffer/TitleBuffer";
+import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
 
 export function FilmsPage() {
     const filters: { label: string; status: FilterOptions }[] = [
@@ -93,13 +94,18 @@ export function FilmsPage() {
             <Styled.Container>
                 <Styled.TopFilmsPageControlsContainer>
                     {!isMobile && (
-                        <PaginationControl
-                            numberOfPages={numberOfPages}
-                            handlePageChange={handlePageChange}
-                            currentPage={currentPage}
-                            animationDelay={0}
-                            inView={inView}
-                        />
+                        <ScrollIntoViewAnimationWrapper
+                            $inView={inView}
+                            $animationDelay={0}
+                            $axis="Y"
+                            $direction={1}
+                        >
+                            <PaginationControl
+                                numberOfPages={numberOfPages}
+                                handlePageChange={handlePageChange}
+                                currentPage={currentPage}
+                            />
+                        </ScrollIntoViewAnimationWrapper>
                     )}
                     <Styled.FilmsFilterContainer ref={ref} $animationDelay={0} $inView={inView}>
                         {filters.map((filterOption, index) => (
@@ -117,21 +123,29 @@ export function FilmsPage() {
                 <Styled.FilmsContainer>
                     {inView &&
                         filmsToDisplay.map((film, index) => (
-                            <FilmContainerLarge
+                            <ScrollIntoViewAnimationWrapper
+                                $inView={inView}
+                                $animationDelay={(index + 2) * delayPerItem}
+                                $axis="Y"
+                                $direction={1}
                                 key={index}
-                                film={film}
-                                delay={(index + 1) * delayPerItem}
-                                inView={inView}
-                            />
+                            >
+                                <FilmContainerLarge film={film} />
+                            </ScrollIntoViewAnimationWrapper>
                         ))}
                 </Styled.FilmsContainer>
-                <PaginationControl
-                    numberOfPages={numberOfPages}
-                    handlePageChange={handlePageChange}
-                    currentPage={currentPage}
-                    animationDelay={filmsToDisplay.length * delayPerItem}
-                    inView={inView}
-                />
+                <ScrollIntoViewAnimationWrapper
+                    $inView={inView}
+                    $axis="Y"
+                    $direction={1}
+                    $animationDelay={(filmsToDisplay.length + 2) * delayPerItem}
+                >
+                    <PaginationControl
+                        numberOfPages={numberOfPages}
+                        handlePageChange={handlePageChange}
+                        currentPage={currentPage}
+                    />
+                </ScrollIntoViewAnimationWrapper>
             </Styled.Container>
         </Styled.PageWrapper>
     );
