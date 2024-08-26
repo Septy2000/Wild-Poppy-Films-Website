@@ -10,6 +10,7 @@ export const PageWrapper = styled.div`
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         margin-top: ${({ theme }) => theme.navbar_height.desktop};
     }
+    overflow: hidden;
 `;
 
 export const Container = styled.div`
