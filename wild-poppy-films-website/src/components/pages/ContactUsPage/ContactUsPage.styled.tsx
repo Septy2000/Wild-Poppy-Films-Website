@@ -25,6 +25,21 @@ export const Container = styled.div`
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         padding: 4rem 4rem 8rem 4rem;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+`;
+
+export const SubmitButtonContainer = styled.div`
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        justify-content: flex-end;
     }
 `;
 
@@ -34,15 +49,49 @@ export const PageInfo = styled.div`
     gap: 0.5rem;
     align-items: flex-start;
     justify-content: center;
-    margin-bottom: 3rem;
+`;
+
+export const FormContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 54rem;
 `;
 
 export const FormGridContainer = styled.form`
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     gap: 1.5rem;
     width: 100%;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+`;
+
+export const NameEmailContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        flex-direction: row;
+    }
+`;
+
+export const Divider = styled.div`
+    width: 100%;
+    height: 2px;
+    background: ${({ theme }) => theme.colors.secondary_shaded.celadon_blue_light_1};
+    margin: 1.5rem 0;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        display: none;
+    }
 `;
 
 export const Title = styled.p`
@@ -61,6 +110,9 @@ export const InputBox = styled.input`
     border-radius: 0.5rem;
     border: 1px solid ${({ theme }) => theme.colors.secondary.celadon_blue_light_1};
     background: ${({ theme }) => theme.colors.neutral_shaded.neutral_2};
+    height: 3.5rem;
+    width: 100%;
+    max-width: 54rem;
 
     &:hover {
         background: ${({ theme }) => theme.colors.neutral_shaded.neutral_3};
@@ -71,10 +123,34 @@ export const InputBox = styled.input`
     }
 `;
 
+export const NameInputBox = styled(InputBox)``;
+
+export const EmailInputBox = styled(InputBox)``;
+
 export const TextArea = styled.textarea`
     padding: 1rem 0.75rem;
     border-radius: 0.5rem;
     border: 1px solid ${({ theme }) => theme.colors.secondary.celadon_blue_light_1};
     background: ${({ theme }) => theme.colors.neutral_shaded.neutral_2};
-    height: 150px; /* Adjust the height as needed */
+    height: 10rem;
+    min-width: 100%;
+    max-width: 100%;
+
+    resize: vertical;
+    grid-row: 2 / span 2;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        width: 100%;
+        max-width: 108rem;
+    }
+
+    &:hover {
+        background: ${({ theme }) => theme.colors.neutral_shaded.neutral_3};
+    }
+
+    &:focus {
+        background: ${({ theme }) => theme.colors.secondary_shaded.celadon_blue_light_1};
+    }
 `;
+
+export const MessageTextBox = styled(TextArea)``;

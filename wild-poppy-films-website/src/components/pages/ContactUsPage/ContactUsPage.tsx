@@ -3,17 +3,20 @@ import React, { useState } from "react";
 import TitleBuffer from "@/components/TitleBuffer/TitleBuffer";
 import * as Styled from "./ContactUsPage.styled";
 import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
+import emailjs from "@emailjs/browser";
 
 export default function ContactUsPage() {
     const [preferredName, setPreferredName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log({ preferredName, email, message });
-    };
+
+        console.log("preferredName: ", preferredName);
+        console.log("email: ", email);
+        console.log("message: ", message);
+    }
 
     return (
         <Styled.PageWrapper>
@@ -24,28 +27,37 @@ export default function ContactUsPage() {
                     <Styled.Text>contact@wildpoppyfilms.com</Styled.Text>
                     <Styled.Text>London, UK</Styled.Text>
                 </Styled.PageInfo>
-                <Styled.FormGridContainer onSubmit={handleSubmit}>
-                    <Styled.InputBox
-                        type="text"
-                        placeholder="Preferred Name"
-                        value={preferredName}
-                        onChange={(e) => setPreferredName(e.target.value)}
-                    />
-                    <Styled.InputBox
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <Styled.TextArea
-                        placeholder="Message"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        required
-                    />
-                    <PrimaryButton label="send" onClick={() => {}}></PrimaryButton>
-                </Styled.FormGridContainer>
+                <Styled.Divider />
+                <Styled.FormContainer>
+                    <Styled.FormGridContainer onSubmit={handleSubmit}>
+                        <Styled.NameEmailContainer>
+                            <Styled.NameInputBox
+                                type="text"
+                                placeholder="Preferred Name"
+                                value={preferredName}
+                                onChange={(e) => setPreferredName(e.target.value)}
+                                required
+                            />
+                            <Styled.EmailInputBox
+                                type="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </Styled.NameEmailContainer>
+
+                        <Styled.MessageTextBox
+                            placeholder="Message"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            required
+                        />
+                        <Styled.SubmitButtonContainer>
+                            <PrimaryButton label="send" type="submit"></PrimaryButton>
+                        </Styled.SubmitButtonContainer>
+                    </Styled.FormGridContainer>
+                </Styled.FormContainer>
             </Styled.Container>
         </Styled.PageWrapper>
     );

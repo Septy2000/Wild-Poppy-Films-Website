@@ -26,11 +26,12 @@ export interface PaginationControlProps {
 
 export interface ButtonProps {
     label: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export interface PrimaryButtonProps extends ButtonProps {
     variant?: PrimaryButtonColorVariant;
+    type?: "button" | "submit" | "reset";
 }
 
 export interface SecondaryButtonProps extends ButtonProps {

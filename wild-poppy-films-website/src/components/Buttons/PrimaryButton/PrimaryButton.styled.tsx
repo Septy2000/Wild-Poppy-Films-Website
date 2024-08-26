@@ -2,7 +2,7 @@ import styled from "styled-components";
 import RightArrowIcon from "@/icons/navigation/right-fwd-icon.svg";
 import { PrimaryButtonColorVariant } from "@/_types/styledComponents";
 
-export const Container = styled.div`
+export const Container = styled.button`
     all: unset;
 
     display: flex;
