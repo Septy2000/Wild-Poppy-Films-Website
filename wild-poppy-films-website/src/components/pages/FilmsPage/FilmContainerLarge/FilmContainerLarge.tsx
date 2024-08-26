@@ -5,15 +5,7 @@ import FilmsYoutubeCtaButton from "@/components/Buttons/FilmsYoutubeCtaButton/Fi
 import FilmFlail from "@/components/pages/FilmsPage/FilmContainerLarge/FilmFlail/FilmFlail";
 import { useRouter } from "next/navigation";
 
-export default function FilmContainerLarge({
-    film,
-    delay,
-    inView,
-}: {
-    film: Film;
-    delay: number;
-    inView: boolean;
-}) {
+export default function FilmContainerLarge({ film }: { film: Film }) {
     const router = useRouter();
 
     function handleClick() {
@@ -22,13 +14,7 @@ export default function FilmContainerLarge({
 
     return (
         <React.Fragment>
-            <Styled.MobileContainer
-                $axis="Y"
-                $direction={1}
-                $delay={delay}
-                $inView={inView}
-                onClick={handleClick}
-            >
+            <Styled.MobileContainer onClick={handleClick}>
                 <FilmFlail filmStatus={film.status} />
                 <Styled.FilmImagePlaceholder />
                 <Styled.FilmInfoContainer>
@@ -53,13 +39,7 @@ export default function FilmContainerLarge({
                 </Styled.FilmInfoContainer>
             </Styled.MobileContainer>
 
-            <Styled.DesktopContainer
-                $axis="Y"
-                $direction={1}
-                $delay={delay}
-                $inView={inView}
-                onClick={handleClick}
-            >
+            <Styled.DesktopContainer onClick={handleClick}>
                 <Styled.GlassOverFrameStyled />
                 <FilmFlail filmStatus={film.status} />
                 <Styled.FilmTitle>{film.title}</Styled.FilmTitle>

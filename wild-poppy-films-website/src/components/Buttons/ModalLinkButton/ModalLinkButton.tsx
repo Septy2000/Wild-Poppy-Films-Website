@@ -2,29 +2,13 @@
 
 import React from "react";
 import * as Styled from "./ModalLinkButton.styled";
-import { ModalLinkButtonProps } from "@/_types/components";
+import { ButtonProps } from "@/_types/components";
 
-export default function ModalLinkButton({
-    onClick = () => {},
-    label,
-    link,
-    delay = 0,
-}: ModalLinkButtonProps) {
+export default function ModalLinkButton({ label, onClick }: ButtonProps) {
     return (
-        <Styled.Container
-            href={link}
-            $axis={"X"}
-            $direction={-1}
-            $delay={delay}
-            onClick={() => {
-                onClick();
-            }}
-        >
-            <React.Fragment>
-                <Styled.Label>{label}</Styled.Label>
-
-                <Styled.RightFwdIconStyled />
-            </React.Fragment>
+        <Styled.Container onClick={onClick}>
+            <Styled.Label>{label}</Styled.Label>
+            <Styled.RightFwdIconStyled />
         </Styled.Container>
     );
 }

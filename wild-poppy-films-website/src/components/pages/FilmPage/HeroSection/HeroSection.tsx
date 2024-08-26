@@ -4,6 +4,7 @@ import SecondaryButton from "@/components/Buttons/SecondaryButton/SecondaryButto
 import { useRouter } from "next/navigation";
 import { useInView } from "react-intersection-observer";
 import React from "react";
+import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
 
 export default function HeroSection({ film }: { film: Film }) {
     const router = useRouter();
@@ -60,22 +61,38 @@ export default function HeroSection({ film }: { film: Film }) {
     return (
         <Styled.Container ref={ref}>
             <Styled.DescriptionContainer>
-                <Styled.DescriptionText $inView={inView} $animationDelay={delayPerItem}>
-                    {film.description}
-                </Styled.DescriptionText>
+                <ScrollIntoViewAnimationWrapper
+                    $inView={inView}
+                    $animationDelay={0}
+                    $axis="Y"
+                    $direction={1}
+                >
+                    <Styled.DescriptionText>{film.description}</Styled.DescriptionText>
+                </ScrollIntoViewAnimationWrapper>
+
                 {film.teaser_youtube_link && (
-                    <Styled.AnimationWrapper $inView={inView} $animationDelay={2 * delayPerItem}>
+                    <ScrollIntoViewAnimationWrapper
+                        $inView={inView}
+                        $animationDelay={delayPerItem}
+                        $axis="Y"
+                        $direction={1}
+                    >
                         <SecondaryButton
-                            text="Watch Teaser on Youtube"
+                            label="Watch Teaser on Youtube"
                             onClick={() => router.push(film.teaser_youtube_link ?? "/not-found")}
                         />
-                    </Styled.AnimationWrapper>
+                    </ScrollIntoViewAnimationWrapper>
                 )}
             </Styled.DescriptionContainer>
             <Styled.ProductionContainer>
-                <Styled.AnimationWrapper $inView={inView} $animationDelay={3 * delayPerItem}>
+                <ScrollIntoViewAnimationWrapper
+                    $inView={inView}
+                    $animationDelay={2 * delayPerItem}
+                    $axis="Y"
+                    $direction={1}
+                >
                     <ProductionInfo />
-                </Styled.AnimationWrapper>
+                </ScrollIntoViewAnimationWrapper>
             </Styled.ProductionContainer>
         </Styled.Container>
     );

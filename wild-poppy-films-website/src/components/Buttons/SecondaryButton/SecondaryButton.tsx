@@ -1,17 +1,13 @@
 import * as Styled from "./SecondaryButton.styled";
-import { SecondaryButtonVariant } from "@/_types/styledComponents";
+import { SecondaryButtonProps } from "@/_types/components";
 export default function SecondaryButton({
-    text,
+    label,
     variant = "green",
     onClick,
-}: {
-    text: string;
-    variant?: SecondaryButtonVariant;
-    onClick: () => void;
-}) {
+}: SecondaryButtonProps) {
     return (
         <Styled.Container onClick={onClick}>
-            <Styled.Text $variant={variant}>{text}</Styled.Text>
+            <Styled.Text $variant={variant}>{label}</Styled.Text>
             <Styled.SimpleArrowRightStyled $variant={variant} />
         </Styled.Container>
     );

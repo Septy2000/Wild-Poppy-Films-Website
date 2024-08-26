@@ -1,50 +1,95 @@
+"use client";
 import React, { useState } from "react";
 import TitleBuffer from "@/components/TitleBuffer/TitleBuffer";
 import * as Styled from "./ContactUsPage.styled";
 import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
+import emailjs from "@emailjs/browser";
+import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
 
 export default function ContactUsPage() {
     const [preferredName, setPreferredName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log({ preferredName, email, message });
-    };
+
+        console.log("preferredName: ", preferredName);
+        console.log("email: ", email);
+        console.log("message: ", message);
+    }
+
+    const delayPerItem = 0.1;
 
     return (
         <Styled.PageWrapper>
             <TitleBuffer title="CONTACT" description="Let's cultivate connections!" />
             <Styled.Container>
-                <Styled.PageInfo>
-                    <Styled.Title>Feel free to reach out!</Styled.Title>
-                    <Styled.Text>contact@wildpoppyfilms.com</Styled.Text>
-                    <Styled.Text>London, UK</Styled.Text>
-                </Styled.PageInfo>
-                <Styled.FormGridContainer onSubmit={handleSubmit}>
-                    <Styled.InputBox
-                        type="text"
-                        placeholder="Preferred Name"
-                        value={preferredName}
-                        onChange={(e) => setPreferredName(e.target.value)}
-                    />
-                    <Styled.InputBox
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <Styled.TextArea
-                        placeholder="Message"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        required
-                    />
-                    <PrimaryButton>send</PrimaryButton>
-                </Styled.FormGridContainer>
+                <ScrollIntoViewAnimationWrapper
+                    $inView={true}
+                    $animationDelay={1 * delayPerItem}
+                    $axis="Y"
+                    $direction={1}
+                >
+                    <Styled.PageInfo>
+                        <Styled.Title>Feel free to reach out!</Styled.Title>
+                        <Styled.Text>contact@wildpoppyfilms.com</Styled.Text>
+                        <Styled.Text>London, UK</Styled.Text>
+                    </Styled.PageInfo>
+                </ScrollIntoViewAnimationWrapper>
+                <Styled.Divider />
+                <Styled.FormContainer>
+                    <Styled.FormGridContainer onSubmit={handleSubmit}>
+                        <ScrollIntoViewAnimationWrapper
+                            $inView={true}
+                            $animationDelay={1 * delayPerItem}
+                            $axis="Y"
+                            $direction={1}
+                            style={{ width: "100%" }}
+                        >
+                            <Styled.NameEmailContainer>
+                                <Styled.NameInputBox
+                                    type="text"
+                                    placeholder="Preferred Name"
+                                    value={preferredName}
+                                    onChange={(e) => setPreferredName(e.target.value)}
+                                    required
+                                />
+                                <Styled.EmailInputBox
+                                    type="email"
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                            </Styled.NameEmailContainer>
+                        </ScrollIntoViewAnimationWrapper>
+                        <ScrollIntoViewAnimationWrapper
+                            $inView={true}
+                            $animationDelay={2 * delayPerItem}
+                            $axis="Y"
+                            $direction={1}
+                            style={{ width: "100%" }}
+                        >
+                            <Styled.MessageTextBox
+                                placeholder="Message"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                required
+                            />
+                        </ScrollIntoViewAnimationWrapper>
+                        <ScrollIntoViewAnimationWrapper
+                            $inView={true}
+                            $animationDelay={3 * delayPerItem}
+                            $axis="Y"
+                            $direction={1}
+                        >
+                            <Styled.SubmitButtonContainer>
+                                <PrimaryButton label="send" type="submit"></PrimaryButton>
+                            </Styled.SubmitButtonContainer>
+                        </ScrollIntoViewAnimationWrapper>
+                    </Styled.FormGridContainer>
+                </Styled.FormContainer>
             </Styled.Container>
         </Styled.PageWrapper>
     );

@@ -3,24 +3,17 @@ import React from "react";
 import * as Styled from "./FilmContainer.styled";
 import { useRouter } from "next/navigation";
 import { FilmComponentProps } from "@/_types/components";
+import { Film } from "@/_types/common";
 
-export default function FilmContainer({
-    film,
-    axis,
-    direction,
-    delay,
-    inView,
-}: FilmComponentProps) {
+export default function FilmContainer({ film }: { film: Film }) {
     const router = useRouter();
 
+    function handleNavigateTo(path: string) {
+        router.push(path);
+    }
+
     return (
-        <Styled.Container
-            $axis={axis}
-            $direction={direction}
-            $delay={delay}
-            $inView={inView}
-            onClick={() => router.push(`/films/${film.slug}`)}
-        >
+        <Styled.Container onClick={() => handleNavigateTo(`/films/${film.slug}`)}>
             <Styled.FilmImagePlaceholder />
             <Styled.FilmInfoContainer>
                 <Styled.FilmTitleAndYearContainer>

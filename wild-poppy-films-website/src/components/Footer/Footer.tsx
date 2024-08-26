@@ -1,10 +1,14 @@
+"use client";
 import * as Styled from "./Footer.styled";
 import ModalLinkButton from "@/components/Buttons/ModalLinkButton/ModalLinkButton";
 import ModalSocialButton from "@/components/Buttons/ModalSocialButton/ModalSocialButton";
 import { LegalButton } from "@/components/Buttons/LegalButton/LegalButton.styled";
 import { companySocialLinks, defaultPagesLinks } from "@/data";
+import { useRouter } from "next/navigation";
 
 export default function Footer() {
+    const router = useRouter();
+
     const pagesItems: { label: string; link: string }[] = [
         { label: "HOME", link: defaultPagesLinks.home },
         { label: "FILMS", link: defaultPagesLinks.films },
@@ -20,6 +24,11 @@ export default function Footer() {
         { icon: <Styled.YouTubeIconStyled />, link: companySocialLinks.youtube },
         { icon: <Styled.LinkedInIconStyled />, link: companySocialLinks.linkedin },
     ];
+
+    function handleLinkClick(link: string) {
+        router.push(link);
+    }
+
     return (
         <Styled.Container>
             <Styled.TopFooterContainer>
@@ -34,7 +43,11 @@ export default function Footer() {
                 <Styled.Separator />
                 <Styled.PagesContainer>
                     {pagesItems.map((page, id) => (
-                        <ModalLinkButton key={id} label={page.label} link={page.link} />
+                        <ModalLinkButton
+                            key={id}
+                            label={page.label}
+                            onClick={() => handleLinkClick(page.link)}
+                        />
                     ))}
                 </Styled.PagesContainer>
             </Styled.TopFooterContainer>

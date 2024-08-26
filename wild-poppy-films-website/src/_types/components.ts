@@ -1,15 +1,6 @@
 import { HomeHeroFilm } from "./common";
 import { Film } from "./common";
-import { ParsedUrlQuery } from "querystring";
-import { PrimaryButtonColorVariant } from "./styledComponents";
-
-export interface ModalLinkButtonProps {
-    label: string;
-    link: string;
-    isVisible?: boolean;
-    delay?: number;
-    onClick?: () => void;
-}
+import { PrimaryButtonColorVariant, SecondaryButtonVariant } from "./styledComponents";
 
 export interface HomeHeroContentOverlayProps {
     currentMovieIndex: number;
@@ -27,26 +18,22 @@ export interface FilmComponentProps {
     inView: boolean;
 }
 
-export interface PrimaryButtonProps {
-    children: string;
-    href:
-        | {
-              pathname: string;
-              query?: ParsedUrlQuery;
-          }
-        | string;
-    variant: PrimaryButtonColorVariant;
-    animated?: boolean;
-    axis?: "X" | "Y";
-    direction?: 1 | -1;
-    delay?: number;
-    inView?: boolean;
-}
-
 export interface PaginationControlProps {
     numberOfPages: number;
     handlePageChange: (toPage: number) => void;
     currentPage: number;
-    animationDelay?: number;
-    inView?: boolean;
+}
+
+export interface ButtonProps {
+    label: string;
+    onClick?: () => void;
+}
+
+export interface PrimaryButtonProps extends ButtonProps {
+    variant?: PrimaryButtonColorVariant;
+    type?: "button" | "submit" | "reset";
+}
+
+export interface SecondaryButtonProps extends ButtonProps {
+    variant?: SecondaryButtonVariant;
 }

@@ -4,9 +4,13 @@ import * as Styled from "./Modal.styled";
 import ModalLinkButton from "@/components/Buttons/ModalLinkButton/ModalLinkButton";
 import ModalSocialButton from "@/components/Buttons/ModalSocialButton/ModalSocialButton";
 import { companySocialLinks, defaultPagesLinks } from "@/data";
+import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
+import { useRouter } from "next/navigation";
 
 export default function Modal({ isVisible, onClose }: { isVisible: boolean; onClose: () => void }) {
     const delayPerLinkItem = 0.1;
+
+    const router = useRouter();
 
     const pagesItems: { label: string; link: string }[] = [
         { label: "HOME", link: defaultPagesLinks.home },
@@ -50,6 +54,11 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
         }
     }, [isVisible]);
 
+    function handleButtonClick(path: string) {
+        router.push(path);
+        onClose();
+    }
+
     return (
         <React.Fragment>
             <Styled.Overlay onClick={onClose} $isVisible={isVisible} />
@@ -58,14 +67,18 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
                     <Styled.PagesContainer>
                         {arePageButtonsDisplayed &&
                             pagesItems.map((item, id) => (
-                                <ModalLinkButton
-                                    onClick={onClose}
+                                <ScrollIntoViewAnimationWrapper
                                     key={id}
-                                    label={item.label}
-                                    link={item.link}
-                                    isVisible={isVisible}
-                                    delay={(id + 1) * delayPerLinkItem}
-                                />
+                                    $animationDelay={id * delayPerLinkItem}
+                                    $inView={true}
+                                    $axis="X"
+                                    $direction={-1}
+                                >
+                                    <ModalLinkButton
+                                        onClick={() => handleButtonClick(item.link)}
+                                        label={item.label}
+                                    />
+                                </ScrollIntoViewAnimationWrapper>
                             ))}
                     </Styled.PagesContainer>
                     <Styled.SocialsContainer>

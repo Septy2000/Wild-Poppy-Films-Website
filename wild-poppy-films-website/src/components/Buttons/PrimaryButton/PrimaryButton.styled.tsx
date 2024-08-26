@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import RightArrowIcon from "@/icons/navigation/right-fwd-icon.svg";
-import Link from "next/link";
-import { PrimaryButtonColorVariant, PrimaryButtonStyledProps } from "@/_types/styledComponents";
-import { generateSlideAnimation } from "@/utils/animationUtils";
+import { PrimaryButtonColorVariant } from "@/_types/styledComponents";
 
-export const Container = styled(Link)<PrimaryButtonStyledProps>`
+export const Container = styled.button`
     all: unset;
 
     display: flex;
@@ -16,11 +14,6 @@ export const Container = styled(Link)<PrimaryButtonStyledProps>`
     width: 128px;
     padding: 12px 8px;
     background-color: transparent;
-
-    ${({ $animated, $axis, $direction, $delay, $inView }) =>
-        $animated && $inView && generateSlideAnimation($axis, $direction, $delay)}
-
-    ${({ $animated }) => $animated && "opacity: 0;"}
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         width: 200px;

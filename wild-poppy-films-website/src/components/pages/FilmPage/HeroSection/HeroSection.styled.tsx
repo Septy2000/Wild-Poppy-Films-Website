@@ -17,11 +17,6 @@ export const Container = styled.div`
     overflow: hidden;
 `;
 
-export const AnimationWrapper = styled.div<{ $inView: boolean; $animationDelay: number }>`
-    opacity: 0;
-    ${({ $inView, $animationDelay }) => $inView && generateSlideAnimation("Y", 1, $animationDelay)}
-`;
-
 export const DescriptionContainer = styled.div`
     padding: 1.25rem;
     padding-bottom: 2rem;
@@ -32,12 +27,10 @@ export const DescriptionContainer = styled.div`
     }
 `;
 
-export const DescriptionText = styled.p<{ $inView: boolean; $animationDelay: number }>`
+export const DescriptionText = styled.p`
     font-size: 1rem;
     line-height: 150%;
     color: ${({ theme }) => theme.colors.neutral.neutral_3};
-    opacity: 0;
-    ${({ $inView, $animationDelay }) => $inView && generateSlideAnimation("Y", 1, $animationDelay)}
 `;
 
 export const ProductionContainer = styled.div`
