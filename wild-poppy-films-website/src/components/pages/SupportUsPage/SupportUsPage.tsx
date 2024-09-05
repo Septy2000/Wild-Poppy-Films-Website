@@ -83,11 +83,13 @@ export default function SupportUsPage() {
         <Styled.PageWrapper>
             <Styled.Container>
                 <Styled.Banner>
-                    <Styled.VerticalFlexContainer $gap={1}>
-                        <Styled.BannerTitle>{text.banner.title}</Styled.BannerTitle>
-                        <Styled.BannerText>{text.banner.body}</Styled.BannerText>
-                    </Styled.VerticalFlexContainer>
-                    <Styled.WPFLogoStyled />
+                    <Styled.BannerWrapper>
+                        <Styled.BannerInfoContainer>
+                            <Styled.BannerTitle>{text.banner.title}</Styled.BannerTitle>
+                            <Styled.BannerText>{text.banner.body}</Styled.BannerText>
+                        </Styled.BannerInfoContainer>
+                        <Styled.WPFLogoStyled />
+                    </Styled.BannerWrapper>
                 </Styled.Banner>
 
                 <Styled.ContentContainer>

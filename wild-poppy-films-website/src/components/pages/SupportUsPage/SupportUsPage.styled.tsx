@@ -23,19 +23,29 @@ export const Container = styled.div`
 `;
 
 export const Banner = styled.div`
-    width: 100%;
-    background: ${({ theme }) => theme.colors.secondary.celadon_blue_dark_1};
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem 1.25rem 1.5rem 1.25rem;
+    width: 100%;
+    background: ${({ theme }) => theme.colors.secondary.celadon_blue_dark_1};
+`;
 
+export const BannerWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 150rem;
+    width: 100%;
+
+    padding: 3rem 1.25rem 1.5rem 1.25rem;
+    gap: 4rem;
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
-        padding: 3rem 2.5rem.5rem 2.5rem;
+        padding: 3rem 2.5rem 2.5rem 2.5rem;
     }
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
-        padding: 3rem 4rem 1.5rem 4rem;
+        padding: 7.5rem 4rem 4rem 4rem;
     }
 `;
 
@@ -53,8 +63,11 @@ export const ContentContainer = styled.div`
     }
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
-        padding: 3rem 4rem 1.5rem 4rem;
+        padding: 7.5rem 4rem 7.5rem 4rem;
+        gap: 3rem;
     }
+
+    max-width: 150rem;
 `;
 
 export const ContentBlock = styled.div`
@@ -72,6 +85,10 @@ export const OLStyled = styled.ol`
     flex-direction: column;
     padding-left: 1rem;
     gap: 2rem;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        padding-left: 2rem;
+    }
 `;
 
 export const ULStyled = styled.ul`
@@ -81,9 +98,25 @@ export const ULStyled = styled.ul`
     margin-top: 1rem;
 `;
 
-export const OLLIStyled = styled.li``;
+export const OLLIStyled = styled.li`
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 120%;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        font-size: 2rem;
+    }
+`;
 
 export const ULLIStyled = styled.li`
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 120%;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        font-size: 1.5rem;
+    }
+
     &::marker {
         content: "•  ";
     }
@@ -104,6 +137,8 @@ export const Title = styled.h2`
     line-height: 120%;
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        font-size: 2rem;
+        align-self: flex-start;
     }
 `;
 
@@ -113,6 +148,7 @@ export const Text = styled.p`
     line-height: 120%;
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        font-size: 1.5rem;
     }
 `;
 
@@ -146,7 +182,17 @@ export const VerticalFlexContainer = styled.div<{ $gap: number }>`
     gap: ${({ $gap }) => $gap}rem;
 `;
 
+export const BannerInfoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 50rem;
+`;
+
 export const WPFLogoStyled = styled(WPFLogo)`
+    scale: 1.5;
+
     path {
         fill: ${({ theme }) => theme.colors.neutral.neutral_1};
     }
