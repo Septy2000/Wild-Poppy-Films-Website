@@ -2,7 +2,6 @@
 import styled from "styled-components";
 import SimpleArrowRight from "@/icons/navigation/simple-arrow-right.svg";
 import SimpleArrowLeft from "@/icons/navigation/simple-arrow-left.svg";
-import { generateSlideAnimation } from "@/utils/animationUtils";
 
 export const Container = styled.div`
     display: flex;
