@@ -14,30 +14,37 @@ export const PageWrapper = styled.div`
 `;
 
 export const Banner = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
     background: ${({ theme }) => theme.colors.neutral.neutral_14};
 
+    width: 100%;
+    max-width: 150rem;
+
     padding: 3rem 1.25rem 1.5rem 1.25rem;
-    gap: 4rem;
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
         padding: 3rem 2.5rem 2.5rem 2.5rem;
     }
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
-        padding: 7.5rem 4rem 4rem 4rem;
+        padding: 15rem 4rem 4rem 4rem;
+        justify-content: flex-start;
     }
+`;
+
+export const BannerWrapper = styled.div`
+    background: ${({ theme }) => theme.colors.neutral.neutral_14};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 `;
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 
-    gap: 2rem;
+    width: 100%;
 
     padding: 3rem 1.25rem;
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
@@ -48,8 +55,17 @@ export const Container = styled.div`
         padding: 7.5rem 4rem 7.5rem 4rem;
         gap: 3rem;
     }
+`;
+export const ContentContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 100%;
 
     max-width: 150rem;
+    gap: 2rem;
 `;
 
 export const ListItem = styled.div`
@@ -63,6 +79,10 @@ export const PageTitle = styled.h1`
     font-weight: 400;
     line-height: 120%;
     color: ${({ theme }) => theme.colors.primary.poppy_red_light_1};
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        font-size: 2rem;
+    }
 `;
 
 export const ContentTitle = styled.h2`
@@ -70,6 +90,10 @@ export const ContentTitle = styled.h2`
     font-weight: 700;
     line-height: 120%;
     color: ${({ theme }) => theme.colors.neutral.neutral_11};
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        font-size: 1.5rem;
+    }
 `;
 
 export const Text = styled.p`
@@ -77,4 +101,8 @@ export const Text = styled.p`
     font-weight: 400;
     line-height: 120%;
     color: ${({ theme }) => theme.colors.neutral.neutral_11};
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        font-size: 1.5rem;
+    }
 `;

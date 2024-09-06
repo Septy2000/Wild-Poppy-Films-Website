@@ -49,19 +49,26 @@ export default function TermsAndConditionsPage() {
 
     return (
         <Styled.PageWrapper>
-            <Styled.Banner>
-                <Styled.PageTitle>{pageContent.title}</Styled.PageTitle>
-            </Styled.Banner>
+            <Styled.BannerWrapper>
+                <Styled.Banner>
+                    <Styled.PageTitle>{pageContent.title}</Styled.PageTitle>
+                </Styled.Banner>
+            </Styled.BannerWrapper>
+
             <Styled.Container>
-                <Styled.Text>{pageContent.content.date}</Styled.Text>
-                <Styled.Text>{pageContent.content.intro}</Styled.Text>
-                {pageContent.content.list.map((item, index) => (
-                    <Styled.ListItem key={index}>
-                        <Styled.ContentTitle>{`${index + 1}. ${item.title}`}</Styled.ContentTitle>
-                        <Styled.Text>{item.content}</Styled.Text>
-                    </Styled.ListItem>
-                ))}
-                <Styled.Text>{pageContent.content.thanks}</Styled.Text>
+                <Styled.ContentContainer>
+                    <Styled.Text>{pageContent.content.date}</Styled.Text>
+                    <Styled.Text>{pageContent.content.intro}</Styled.Text>
+                    {pageContent.content.list.map((item, index) => (
+                        <Styled.ListItem key={index}>
+                            <Styled.ContentTitle>{`${index + 1}. ${
+                                item.title
+                            }`}</Styled.ContentTitle>
+                            <Styled.Text>{item.content}</Styled.Text>
+                        </Styled.ListItem>
+                    ))}
+                    <Styled.Text>{pageContent.content.thanks}</Styled.Text>
+                </Styled.ContentContainer>
             </Styled.Container>
         </Styled.PageWrapper>
     );
