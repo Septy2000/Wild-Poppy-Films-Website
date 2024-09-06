@@ -35,6 +35,8 @@ export const Container = styled.div`
 export const SubmitButtonContainer = styled.div`
     margin-top: 1.5rem;
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
@@ -152,6 +154,11 @@ export const TextArea = styled.textarea`
     &:focus {
         background: ${({ theme }) => theme.colors.secondary_shaded.celadon_blue_light_1};
     }
+`;
+
+export const SuccessMessage = styled.p`
+    color: ${({ theme }) => theme.colors.neutral.neutral_11};
+    font-size: 1rem;
 `;
 
 export const MessageTextBox = styled(TextArea)``;

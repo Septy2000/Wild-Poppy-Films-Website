@@ -11,12 +11,16 @@ export default function ContactUsPage() {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
+    const [messageSent, setMessageSent] = useState(false);
+
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
 
         console.log("preferredName: ", preferredName);
         console.log("email: ", email);
         console.log("message: ", message);
+
+        setMessageSent(true);
     }
 
     const delayPerItem = 0.1;
@@ -85,6 +89,11 @@ export default function ContactUsPage() {
                             $direction={1}
                         >
                             <Styled.SubmitButtonContainer>
+                                {messageSent && (
+                                    <Styled.SuccessMessage>
+                                        {"Message sent, we can't wait to read it!"}
+                                    </Styled.SuccessMessage>
+                                )}
                                 <PrimaryButton label="send" type="submit"></PrimaryButton>
                             </Styled.SubmitButtonContainer>
                         </ScrollIntoViewAnimationWrapper>
