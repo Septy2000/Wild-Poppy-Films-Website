@@ -24,12 +24,6 @@ export default function HeroSection({ film }: { film: Film }) {
                     <Styled.PlainTextGreen>{film.production.writer}</Styled.PlainTextGreen>
                 </Styled.ProductionPairContainer>
                 <Styled.ProductionPairContainer>
-                    <Styled.PlainText>EXECUTIVE PRODUCED BY</Styled.PlainText>
-                    <Styled.PlainTextGreen>
-                        {film.production.executive_producer}
-                    </Styled.PlainTextGreen>
-                </Styled.ProductionPairContainer>
-                <Styled.ProductionPairContainer>
                     <Styled.PlainText>PRODUCED BY</Styled.PlainText>
                     <Styled.PlainTextGreen>{film.production.producer}</Styled.PlainTextGreen>
                 </Styled.ProductionPairContainer>
@@ -42,10 +36,6 @@ export default function HeroSection({ film }: { film: Film }) {
                     <Styled.PlainTextGreen>{film.production.starring}</Styled.PlainTextGreen>
                 </Styled.ProductionPairContainer>
                 <Styled.Spacer />
-                <Styled.ProductionPairContainer>
-                    <Styled.PlainText>DISTRIBUTOR</Styled.PlainText>
-                    <Styled.PlainTextGreen>{film.production.distributor}</Styled.PlainTextGreen>
-                </Styled.ProductionPairContainer>
                 <Styled.ProductionPairContainer>
                     <Styled.PlainText>RELEASE DATE</Styled.PlainText>
                     <Styled.PlainTextGreen>{film.release_year}</Styled.PlainTextGreen>

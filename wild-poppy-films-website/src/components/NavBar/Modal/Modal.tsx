@@ -22,10 +22,8 @@ export default function Modal({ isVisible, onClose }: { isVisible: boolean; onCl
 
     const socialItems: { icon: React.JSX.Element; link: string }[] = [
         { icon: <Styled.InstagramIconStyled />, link: companySocialLinks.instagram },
-        { icon: <Styled.XIconStyled />, link: companySocialLinks.x },
-        { icon: <Styled.FacebookIconStyled />, link: companySocialLinks.facebook },
         { icon: <Styled.YouTubeIconStyled />, link: companySocialLinks.youtube },
-        { icon: <Styled.LinkedInIconStyled />, link: companySocialLinks.linkedin },
+        { icon: <Styled.TiktokIconStyled />, link: companySocialLinks.tiktok },
     ];
 
     useEffect(() => {

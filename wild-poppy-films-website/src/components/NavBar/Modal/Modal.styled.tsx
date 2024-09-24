@@ -5,6 +5,7 @@ import InstagramIcon from "@/icons/social/ig-icon.svg";
 import LinkedInIcon from "@/icons/social/linkedin-icon.svg";
 import YouTubeIcon from "@/icons/social/yt-icon.svg";
 import XIcon from "@/icons/social/x-icon.svg";
+import TiktokIcon from "@/icons/social/tiktok-icon.svg";
 
 export const Overlay = styled.div<{ $isVisible: boolean }>`
     position: fixed;
@@ -108,6 +109,10 @@ export const InstagramIconStyled = styled(InstagramIcon)`
 `;
 
 export const LinkedInIconStyled = styled(LinkedInIcon)`
+    ${IconStylingCss}
+`;
+
+export const TiktokIconStyled = styled(TiktokIcon)`
     ${IconStylingCss}
 `;
 

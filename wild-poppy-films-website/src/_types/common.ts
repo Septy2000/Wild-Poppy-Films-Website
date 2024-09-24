@@ -17,24 +17,22 @@ export type Film = {
     slug: string;
     title: string;
     release_year: string;
-    runtime: string;
+    runtime?: string;
     genre: string;
     type: string;
     status: FilmStatus;
     production: {
         writer: string[];
-        executive_producer: string[];
         producer: string[];
         director: string[];
         starring: string[];
-        distributor: string[];
     };
     youtube_link?: string;
     teaser_youtube_link?: string;
     cover: StaticImageData;
     cover_small: StaticImageData;
     description: string;
-    gallery: StaticImageData[];
+    gallery?: StaticImageData[];
 };
 
 export type News = {
@@ -50,9 +48,9 @@ export type TeamMember = {
     roles: string[];
     location: string;
     socials: {
-        imdb: string;
-        instagram: string;
+        imdb?: string;
+        instagram?: string;
     };
     icon: StaticImageData;
-    description: string;
+    description?: string;
 };

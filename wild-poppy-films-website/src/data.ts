@@ -1,5 +1,40 @@
 import { Film, News, TeamMember } from "./_types/common";
-import OuroboriaCover from "@/images/films/ouroboria/cover.png";
+
+// "Ouroboria" images
+import OuroboriaCover1 from "@/images/films/ouroboria/cover_1.png";
+import OuroboriaCover2 from "@/images/films/ouroboria/cover_2.jpg";
+import OuroboriaCover3 from "@/images/films/ouroboria/cover_3.jpg";
+import OuroboriaGallery1 from "@/images/films/ouroboria/photo_1.jpg";
+
+// "Cutezatorii" images
+import CutezatoriiCover1 from "@/images/films/cutezatorii/cutezatorii_cover_1.png";
+import CutezatoriiCover2 from "@/images/films/cutezatorii/cutezatorii_cover_2.jpeg";
+import CutezatoriiCover3 from "@/images/films/cutezatorii/cutezatorii_cover_3.jpeg";
+import CutezatoriiGallery1 from "@/images/films/cutezatorii/cutezatorii_gallery_1.jpeg";
+import CutezatoriiGallery2 from "@/images/films/cutezatorii/cutezatorii_gallery_2.jpeg";
+import CutezatoriiGallery3 from "@/images/films/cutezatorii/cutezatorii_gallery_3.jpeg";
+
+// "Hello only ends in goodbye" images
+import HoeigCover1 from "@/images/films/hello-only-ends-in-goodbye/hoeig_cover_1.jpeg";
+import HoeigCover2 from "@/images/films/hello-only-ends-in-goodbye/hoieg_cover_2.jpeg";
+import HoeigCover3 from "@/images/films/hello-only-ends-in-goodbye/hoieg_cover_3.jpeg";
+import HoeigGallery1 from "@/images/films/hello-only-ends-in-goodbye/hoieg_gallery_1.jpeg";
+import HoeigGallery2 from "@/images/films/hello-only-ends-in-goodbye/hoieg_gallery_2.jpeg";
+import HoeigGallery3 from "@/images/films/hello-only-ends-in-goodbye/hoieg_gallery_3.jpeg";
+// "I can hear the skylark soaring" images
+
+// "It's not that deep" images
+
+// "Memoirs of a dying fish" images
+import MemoirsOfADyingFishCover1 from "@/images/films/memoirs-of-a-dying-fish/memoirs_of_a_dying_fish_cover_1.jpg";
+
+// "No names" images
+import NoNamesCover1 from "@/images/films/no-names/no_names_cover_1.jpg";
+import NoNamesCover2 from "@/images/films/no-names/no_names_cover_2.jpg";
+import NoNamesGallery1 from "@/images/films/no-names/no_names_gallery_1.jpg";
+import NoNamesGallery2 from "@/images/films/no-names/no_names_gallery_2.jpg";
+
+// "The beast was I" images
 
 export const films: Film[] = [
     {
@@ -7,72 +42,194 @@ export const films: Film[] = [
         slug: "ouroboria",
         title: "OUROBORIA",
         release_year: "2022",
-        runtime: "2h 30m",
-        genre: "THRILLER",
-        type: "SHORT FILM",
-        status: "coming_soon",
-        production: {
-            writer: ["MIRUNA STRĂUȚ"],
-            executive_producer: ["MIRUNA STRĂUȚ"],
-            producer: ["MIRUNA STRĂUȚ"],
-            director: ["MIRUNA STRĂUȚ"],
-            starring: ["MIRUNA STRĂUȚ"],
-            distributor: ["MIRUNA STRĂUȚ"],
-        },
-        youtube_link: undefined,
-        teaser_youtube_link: "https://www.youtube.com",
-        cover: OuroboriaCover,
-        cover_small: OuroboriaCover,
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-        gallery: [OuroboriaCover, OuroboriaCover, OuroboriaCover, OuroboriaCover, OuroboriaCover],
-    },
-    {
-        id: 2,
-        slug: "no-names",
-        title: "NO NAMES",
-        release_year: "2023",
-        runtime: "2h 30m",
-        genre: "DRAMA",
-        type: "SHORT FILM",
-        status: "in_production",
-        production: {
-            writer: ["MIRUNA STRĂUȚ"],
-            executive_producer: ["MIRUNA STRĂUȚ"],
-            producer: ["MIRUNA STRĂUȚ"],
-            director: ["MIRUNA STRĂUȚ"],
-            starring: ["MIRUNA STRĂUȚ"],
-            distributor: ["MIRUNA STRĂUȚ"],
-        },
-        youtube_link: undefined,
-        teaser_youtube_link: undefined,
-        cover: OuroboriaCover,
-        cover_small: OuroboriaCover,
-        description: `In the heart of Romania, a mother and her young son find themselves trapped in a remote village controlled by a malevolent cult. As they struggle to break free from the grip of the cult's ominous rituals and dark secrets, the duo must navigate the treacherous terrain and fight to reclaim their lives. This folk thriller combines elements of suspense, horror, and the indomitable power of a mother's love in the face of evil.`,
-        gallery: [OuroboriaCover, OuroboriaCover, OuroboriaCover, OuroboriaCover, OuroboriaCover],
-    },
-    {
-        id: 3,
-        slug: "the-switchboard-sonatta",
-        title: "THE SWITCHBOARD SONATTA",
-        release_year: "2024",
-        runtime: "2h 30m",
-        genre: "COMEDY",
+        runtime: undefined,
+        genre: "THRILLER, FOLK HORROR",
         type: "SHORT FILM",
         status: "available",
         production: {
             writer: ["MIRUNA STRĂUȚ"],
-            executive_producer: ["MIRUNA STRĂUȚ"],
-            producer: ["MIRUNA STRĂUȚ"],
+            producer: ["DARIA POPESCO"],
+            director: ["MIRUNA STRĂUȚ"],
+            starring: ["SILVANA MIHAI"],
+        },
+        youtube_link: undefined,
+        teaser_youtube_link: "https://youtu.be/mTTX46K6cEQ?feature=shared",
+        cover: OuroboriaCover1,
+        cover_small: OuroboriaCover2,
+        description: `Following his uncle's mysterious death, a young man returns to his childhood home in a secluded village from the Carpathians.`,
+        gallery: [OuroboriaCover1, OuroboriaCover2, OuroboriaCover3, OuroboriaGallery1],
+    },
+
+    {
+        id: 2,
+        slug: "no-names",
+        title: "NO NAMES",
+        release_year: "2024",
+        runtime: undefined,
+        genre: "ROMANTIC COMEDY",
+        type: "SHORT FILM",
+        status: "available",
+        production: {
+            writer: ["ARTEMIS ADAMANTOPOULOU"],
+            producer: ["DARIA POPESCO"],
+            director: ["ARTEMIS ADAMANTOPOULOU"],
+            starring: ["ANA PÂRVU", "LUKE MOTT"],
+        },
+        youtube_link: undefined,
+        teaser_youtube_link: undefined,
+        cover: NoNamesCover2,
+        cover_small: NoNamesCover2,
+        description: `Boy and Girl meet outside an off-license in London and choose to talk to each other. In doing so, they start letting their guard down, giving in to this fun, incomplete interaction among strangers.Since it’s been released, `,
+        gallery: [NoNamesCover1, NoNamesCover2, NoNamesGallery1, NoNamesGallery2],
+    },
+
+    {
+        id: 3,
+        slug: "cutezatorii",
+        title: "CUTEZATORII",
+        release_year: "2025",
+        runtime: "15m",
+        genre: "COMEDY",
+        type: "SHORT FILM",
+        status: "in_production",
+        production: {
+            writer: ["MIRUNA STRĂUȚ"],
+            producer: ["DELIA DUMONT, DARIA POPESCO"],
             director: ["MIRUNA STRĂUȚ"],
             starring: ["MIRUNA STRĂUȚ"],
-            distributor: ["MIRUNA STRĂUȚ"],
         },
-        youtube_link: "https://www.youtube.com",
-        teaser_youtube_link: "https://www.youtube.com",
-        cover: OuroboriaCover,
-        cover_small: OuroboriaCover,
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-        gallery: [OuroboriaCover, OuroboriaCover, OuroboriaCover, OuroboriaCover, OuroboriaCover],
+        youtube_link: undefined,
+        teaser_youtube_link: undefined,
+        cover: CutezatoriiCover3,
+        cover_small: CutezatoriiCover3,
+        description: `In the midst of summer's end, a group of 12-year-olds from the Romanian countryside embark on a day-long quest in search of a missing fawn. The world of Cutezatorii is one solely inhabited by children - kids who act as adults and do adult things in the absence of their parents. `,
+        gallery: [
+            CutezatoriiCover1,
+            CutezatoriiCover2,
+            CutezatoriiCover3,
+            CutezatoriiGallery1,
+            CutezatoriiGallery2,
+            CutezatoriiGallery3,
+        ],
+    },
+
+    {
+        id: 4,
+        slug: "hello-only-ends-in-goodbye",
+        title: "HELLO ONLY ENDS IN GOODBYE",
+        release_year: "2024",
+        runtime: "10m",
+        genre: "COMEDY",
+        type: "SHORT FILM",
+        status: "in_production",
+        production: {
+            writer: ["ANA PÂRVU"],
+            producer: ["DARIA POPESCO"],
+            director: ["ANA PÂRVU"],
+            starring: ["CRINA VICTORIA ENE", "ELIZA ACROSOAIE"],
+        },
+        youtube_link: undefined,
+        teaser_youtube_link: undefined,
+        cover: HoeigCover2,
+        cover_small: HoeigCover2,
+        description: `Camelia, an expat living in London has to reconsider the prejudices she holds against her own heritage after a chance encounter with a distressed young Romanian immigrant. Can she overcome these biases to help her?`,
+        gallery: [
+            HoeigCover1,
+            HoeigCover2,
+            HoeigCover3,
+            HoeigGallery1,
+            HoeigGallery2,
+            HoeigGallery3,
+        ],
+    },
+    // {
+    //     id: 5,
+    //     slug: "i-can-hear-the-skylark-soaring",
+    //     title: "I CAN HEAR THE SKYLARK SOARING",
+    //     release_year: "2025",
+    //     runtime: "15m",
+    //     genre: "DRAMA",
+    //     type: "SHORT FILM",
+    //     status: "in_production",
+    //     production: {
+    //         writer: ["MIRUNA STRĂUȚ"],
+    //         producer: ["DARIA POPESCO"],
+    //         director: ["MIRUNA STRĂUȚ"],
+    //         starring: ["MARA BUGARIN", "BOGDAN CAROL"],
+    //     },
+    //     youtube_link: "",
+    //     teaser_youtube_link: "",
+    //     cover: ,
+    //     cover_small:,
+    //     description: `A restless boy sneaks out in the middle of the night to bury a dead skylark, when he meets a weeping bride.`,
+    //     gallery: [],
+    // },
+
+    // {
+    //     id: 6,
+    //     slug: "the-beast-was-i",
+    //     title: "THE BEAST WAS I",
+    //     release_year: "2025",
+    //     runtime: "30m",
+    //     genre: "DRAMA",
+    //     type: "SHORT FILM",
+    //     status: "in_production",
+    //     production: {
+    //         writer: ["MIRUNA STRĂUȚ"],
+    //         producer: ["DARIA POPESCO"],
+    //         director: ["MIRUNA STRĂUȚ"],
+    //         starring: [],
+    //     },
+    //     youtube_link: "",
+    //     teaser_youtube_link: "",
+    //     cover:,
+    //     cover_small:,
+    //     description: `A story in three chapters, the film follows a broken father-son relationship across generations seemingly linked by a recurring dream, that still has a chance to heal through the unexpected intervention of a little girl.`,
+    //     gallery: [],
+    // },
+    // {
+    //     id: 7,
+    //     slug: "its-not-that-deep",
+    //     title: "IT'S NOT THAT DEEP",
+    //     release_year: "2025",
+    //     runtime: "10m",
+    //     genre: "DRAMA",
+    //     type: "SHORT FILM",
+    //     status: "in_production",
+    //     production: {
+    //         writer: ["ANA PARVU"],
+    //         producer: ["DARIA POPESCO"],
+    //         director: ["ANA PÂRVU"],
+    //         starring: ["ANA PÂRVU"],
+    //     },
+    //     youtube_link: "",
+    //     teaser_youtube_link: "",
+    //     cover:,
+    //     cover_small:,
+    //     description: `The people we interact with are like products we consume. In time, they melt, they break down, get washed down the drains, and get flushed out into a sea of memories that will slowly erode our souls. It’s a self-fulfilling prophecy, a never-ending cycle of wanting, consuming and getting consumed. With each product we consume, little residue of grease will clog the pipes until we get choked up on our own addiction, on our own needs and wants. The consumer becomes the consumed.`,
+    //     gallery: [],
+    // },
+    {
+        id: 8,
+        slug: "memoirs-of-a-dying-fish",
+        title: "MEMOIRS OF A DYING FISH",
+        release_year: "2025",
+        runtime: "10m",
+        genre: "DRAMA",
+        type: "SHORT FILM",
+        status: "available",
+        production: {
+            writer: ["DARREN HUANG"],
+            producer: ["MIRUNA STRAUT"],
+            director: ["DARREN HUANG"],
+            starring: [""],
+        },
+        youtube_link: "",
+        teaser_youtube_link: "",
+        cover: MemoirsOfADyingFishCover1,
+        cover_small: MemoirsOfADyingFishCover1,
+        description: `Alone, on the shore, he begins to remember`,
+        gallery: [MemoirsOfADyingFishCover1],
     },
 ];
 
@@ -80,29 +237,18 @@ export const filmsNews: News[] = [
     {
         id: 1,
         content: `Ouroboria: A Romanian Folk Thriller That Will Keep You on the Edge of Your Seat...`,
-        cover: OuroboriaCover,
+        cover: OuroboriaCover1,
         hyperlink: "/films/ouroboria",
-    },
-    {
-        id: 2,
-        content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-        cover: OuroboriaCover,
-        hyperlink: "/films/no-names",
-    },
-    {
-        id: 3,
-        content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-        cover: OuroboriaCover,
-        hyperlink: "/films/the-switchboard-sonatta",
     },
 ];
 
 export const companySocialLinks = {
-    instagram: "https://www.instagram.com",
-    x: "https://www.x.com",
-    facebook: "https://www.facebook.com",
-    youtube: "https://www.youtube.com",
-    linkedin: "https://www.linkedin.com",
+    instagram: "https://www.instagram.com/wildpoppyfilms",
+    x: undefined,
+    tiktok: "https://www.tiktok.com/@wildpoppyfilms",
+    facebook: undefined,
+    youtube: "https://www.youtube.com/@ouroboria6003",
+    linkedin: undefined,
 };
 
 export const defaultPagesLinks = {
@@ -117,52 +263,49 @@ export const teamMembers: TeamMember[] = [
     {
         id: 1,
         name: "Daria Popesco",
-        roles: ["PRODUCER", "CO-FOUNDER"],
-        location: "LONDON, UK",
+        roles: ["PRODUCER"],
+        location: "LONDON, UK \n AMSTERDAM, NL",
         socials: {
-            imdb: "https://www.imdb.com",
-            instagram: "https://www.instagram.com",
+            imdb: "https://www.imdb.com/name/nm13309734",
+            instagram: undefined,
         },
-        icon: OuroboriaCover,
-        description: `Daria has been captivating audiences with her unique storytelling style. Her films often explore themes of identity, belonging and human connection, and her work has been recognized at prestigious festivals around the world.`,
+        icon: OuroboriaCover1,
+        description: undefined,
     },
     {
         id: 2,
         name: "Delia Dumont",
-        roles: ["DIRECTOR", "CO-FOUNDER"],
+        roles: ["DIRECTOR", "PRODUCER"],
         location: "NEW YORK CITY, USA",
         socials: {
-            imdb: "https://www.imdb.com",
-            instagram: "https://www.instagram.com",
+            imdb: "https://www.imdb.com/name/nm15163093",
+            instagram: "https://www.instagram.com/deliaadumont",
         },
-        icon: OuroboriaCover,
-        description:
-            "Delia has been captivating audiences with her unique storytelling style. Her films often explore themes of identity, belonging and human connection, and her work has been recognized at prestigious festivals around the world.",
+        icon: OuroboriaCover1,
+        description: undefined,
     },
     {
         id: 3,
         name: "Miruna Străuț",
-        roles: ["PRODUCER", "SCREENWRITER"],
+        roles: ["DIRECTOR", "SCREENWRITER"],
         location: "NEW YORK CITY, USA",
         socials: {
-            imdb: "https://www.imdb.com",
-            instagram: "https://www.instagram.com",
+            imdb: "https://www.imdb.com/name/nm14436894",
+            instagram: undefined,
         },
-        icon: OuroboriaCover,
-        description:
-            "Miruna has been captivating audiences with her unique storytelling style. Her films often explore themes of identity, belonging and human connection, and her work has been recognized at prestigious festivals around the world.",
+        icon: OuroboriaCover1,
+        description: undefined,
     },
     {
         id: 4,
         name: "Ana Pârvu",
-        roles: ["ACTRESS", "SCREENWRITER"],
+        roles: ["PRODUCER", "SCREENWRITER"],
         location: "LONDON, UK",
         socials: {
-            imdb: "https://www.imdb.com",
-            instagram: "https://www.instagram.com",
+            imdb: "https://www.imdb.com/name/nm10780910",
+            instagram: "https://www.instagram.com/_anaparvu",
         },
-        icon: OuroboriaCover,
-        description:
-            "Ana has been captivating audiences with her unique storytelling style. Her films often explore themes of identity, belonging and human connection, and her work has been recognized at prestigious festivals around the world.",
+        icon: OuroboriaCover1,
+        description: undefined,
     },
 ];

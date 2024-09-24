@@ -19,10 +19,8 @@ export default function Footer() {
 
     const socialItems: { icon: React.JSX.Element; link: string }[] = [
         { icon: <Styled.InstagramIconStyled />, link: companySocialLinks.instagram },
-        { icon: <Styled.XIconStyled />, link: companySocialLinks.x },
-        { icon: <Styled.FacebookIconStyled />, link: companySocialLinks.facebook },
+        { icon: <Styled.TiktokIconStyled />, link: companySocialLinks.tiktok },
         { icon: <Styled.YouTubeIconStyled />, link: companySocialLinks.youtube },
-        { icon: <Styled.LinkedInIconStyled />, link: companySocialLinks.linkedin },
     ];
 
     function handleLinkClick(link: string) {
