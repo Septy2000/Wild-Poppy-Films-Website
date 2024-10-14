@@ -36,6 +36,7 @@ export default function DescriptionSection() {
         <React.Fragment>
             <ScrollBanner displayTextList={scrollBannerDisplayTextList} variant="red" />
             <Styled.Container ref={ref}>
+                <Styled.PoppyBackground />
                 <ScrollIntoViewAnimationWrapper
                     $inView={inView}
                     $axis={"Y"}

@@ -46,7 +46,7 @@ export const Text = styled.span<{ $variant: ScrollBannerColorVariant }>`
             case "green":
                 return theme.colors.neutral.neutral_1;
             case "red":
-                return theme.colors.neutral.neutral_4;
+                return theme.colors.neutral.neutral_1;
             default:
                 return theme.colors.neutral.neutral_14;
         }

@@ -32,7 +32,7 @@ export type Film = {
     cover: StaticImageData;
     cover_small: StaticImageData;
     description: string;
-    gallery?: StaticImageData[];
+    gallery: StaticImageData[];
 };
 
 export type News = {

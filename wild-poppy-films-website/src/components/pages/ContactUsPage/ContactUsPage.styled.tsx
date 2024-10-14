@@ -19,6 +19,7 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 150rem;
 
     @media (min-width: ${({ theme }) => theme.screen.tablet}) {
         padding: 4rem 2rem 8rem 2rem;

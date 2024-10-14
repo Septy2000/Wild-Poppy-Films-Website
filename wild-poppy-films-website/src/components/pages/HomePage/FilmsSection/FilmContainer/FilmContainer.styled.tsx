@@ -56,7 +56,7 @@ export const BackArrowIconStyled = styled(BackArrowIcon)`
 `;
 
 export const FilmImage = styled(Image)`
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 4px;
     width: 96px;
     height: 96px;

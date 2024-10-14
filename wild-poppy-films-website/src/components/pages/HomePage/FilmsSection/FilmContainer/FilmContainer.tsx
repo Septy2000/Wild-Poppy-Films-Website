@@ -2,7 +2,6 @@
 import React from "react";
 import * as Styled from "./FilmContainer.styled";
 import { useRouter } from "next/navigation";
-import { FilmComponentProps } from "@/_types/components";
 import { Film } from "@/_types/common";
 
 export default function FilmContainer({ film }: { film: Film }) {
@@ -14,7 +13,7 @@ export default function FilmContainer({ film }: { film: Film }) {
 
     return (
         <Styled.Container onClick={() => handleNavigateTo(`/films/${film.slug}`)}>
-            <Styled.FilmImagePlaceholder />
+            <Styled.FilmImage src={film.cover_small} alt="film-image" />
             <Styled.FilmInfoContainer>
                 <Styled.FilmTitleAndYearContainer>
                     <Styled.FilmTitle>{film.title}</Styled.FilmTitle>

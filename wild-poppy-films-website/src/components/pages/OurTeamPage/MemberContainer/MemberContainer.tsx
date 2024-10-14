@@ -44,14 +44,18 @@ export default function MemberContainer({
                     <Styled.GreenText>{member.location}</Styled.GreenText>
                 </Styled.MemberInfoContainer>
                 <Styled.SocialsContainer>
-                    <ModalSocialButton
-                        link={member.socials.imdb}
-                        icon={<Styled.ImdbIconStyled />}
-                    />
-                    <ModalSocialButton
-                        link={member.socials.instagram}
-                        icon={<Styled.InstagramIconStyled />}
-                    />
+                    {member.socials.imdb && (
+                        <ModalSocialButton
+                            link={member.socials.imdb}
+                            icon={<Styled.ImdbIconStyled />}
+                        />
+                    )}
+                    {member.socials.instagram && (
+                        <ModalSocialButton
+                            link={member.socials.instagram}
+                            icon={<Styled.InstagramIconStyled />}
+                        />
+                    )}
                 </Styled.SocialsContainer>
             </Styled.HeaderInfoContainer>
             <Styled.ExpandedInfoContainer $isExpanded={isExpanded}>

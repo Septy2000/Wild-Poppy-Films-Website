@@ -16,7 +16,7 @@ export default function FilmContainerLarge({ film }: { film: Film }) {
         <React.Fragment>
             <Styled.MobileContainer onClick={handleClick}>
                 <FilmFlail filmStatus={film.status} />
-                <Styled.FilmImagePlaceholder />
+                <Styled.FilmImage src={film.cover} alt="film-cover" />
                 <Styled.FilmInfoContainer>
                     <Styled.FilmTitleAndYearContainer>
                         <Styled.FilmTitle>{film.title}</Styled.FilmTitle>
@@ -40,10 +40,10 @@ export default function FilmContainerLarge({ film }: { film: Film }) {
             </Styled.MobileContainer>
 
             <Styled.DesktopContainer onClick={handleClick}>
-                <Styled.GlassOverFrameStyled />
                 <FilmFlail filmStatus={film.status} />
                 <Styled.FilmTitle>{film.title}</Styled.FilmTitle>
-                <Styled.FilmImagePlaceholder />
+                <Styled.FilmImage src={film.cover} alt="film-cover" />
+                <Styled.GlassOverFrameStyled />
                 <Styled.BlockContainer>
                     <Styled.DefaultText>
                         {film.release_year} | {film.type} | {film.genre}{" "}
