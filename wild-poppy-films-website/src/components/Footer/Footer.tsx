@@ -54,7 +54,6 @@ export default function Footer() {
             <Styled.BottomFooterContainer>
                 <Styled.LegalContainer>
                     <LegalButton href={"/terms-and-conditions"}>{`TERMS & CONDITIONS`}</LegalButton>
-                    <LegalButton href={"/cookie-policy"}>{`COOKIE POLICY`}</LegalButton>
                 </Styled.LegalContainer>
                 <Styled.CopyrightText>{"©️ WILD POPPY FILMS, 2024"}</Styled.CopyrightText>
             </Styled.BottomFooterContainer>

@@ -22,6 +22,7 @@ export const GlassOverFrameStyled = styled(GlassOverFrame)`
 
 export const ImageStyled = styled(Image)`
     object-fit: cover;
+    object-position: top;
     width: 100%;
     height: 100vh;
     display: block;

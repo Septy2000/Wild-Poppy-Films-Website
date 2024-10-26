@@ -36,7 +36,7 @@ export function FilmsPage() {
     const router = useRouter();
 
     const currentPage = parseInt(searchParams.get("page") ?? "1");
-    const filmsPerPage = 6;
+    const filmsPerPage = 3;
     const isMobile = useIsMobile();
 
     const delayPerItem = 0.1;

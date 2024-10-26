@@ -17,8 +17,8 @@ export default function FilmPage({ film }: { film: Film }) {
         <Styled.Container>
             <Styled.ImageContainer>
                 <Styled.ImageStyled
-                    width={300}
-                    height={300}
+                    width={1500}
+                    height={1500}
                     priority
                     src={film.cover.src}
                     alt={`${film.title}-cover`}
@@ -31,7 +31,7 @@ export default function FilmPage({ film }: { film: Film }) {
             </Styled.ImageContainer>
             <HeroSection film={film} />
             <GalleryDisplaySection gallery={film.gallery} />
-            <NewsSection shownNews={shownNews} />
+            {/* <NewsSection shownNews={shownNews} /> */}
         </Styled.Container>
     );
 }

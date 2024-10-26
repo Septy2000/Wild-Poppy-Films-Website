@@ -11,8 +11,8 @@ export default function ImageCarousel({ images }: { images: StaticImageData[] })
                 {images.map((image, index) => (
                     <Styled.ImageStyled
                         priority
-                        width={300}
-                        height={300}
+                        width={1500}
+                        height={1500}
                         key={index}
                         src={image.src}
                         alt={`carousel-image-${index + 1}`}

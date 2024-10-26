@@ -26,6 +26,7 @@ export const FilmImage = styled(Image)`
     height: 12rem;
     border-radius: 0.25rem;
     object-fit: cover;
+    filter: brightness(0.8);
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         width: 100%;
         height: 100%;

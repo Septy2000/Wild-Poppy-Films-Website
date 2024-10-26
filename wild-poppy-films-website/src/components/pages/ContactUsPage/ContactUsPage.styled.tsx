@@ -11,6 +11,7 @@ export const PageWrapper = styled.div`
         margin-top: ${({ theme }) => theme.navbar_height.desktop};
     }
     overflow: hidden;
+    min-height: 75vh;
 `;
 
 export const Container = styled.div`

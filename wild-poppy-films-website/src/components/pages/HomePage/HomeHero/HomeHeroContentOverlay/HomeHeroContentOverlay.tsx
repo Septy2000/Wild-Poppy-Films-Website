@@ -34,7 +34,7 @@ export default function HomeHeroContentOverlay({
                                 $isSelected={index === currentMovieIndex}
                             >
                                 <Styled.MovieTitle>{film.title}</Styled.MovieTitle>
-                                <Styled.MovieYear>{film.year}</Styled.MovieYear>
+                                <Styled.MovieYear>{film.release_year}</Styled.MovieYear>
                             </Styled.MovieTitleAndYearContainer>
                         </Styled.MovieInstanceContainer>
                     ))}

@@ -1,10 +1,9 @@
-import { HomeHeroFilm } from "./common";
 import { Film } from "./common";
 import { PrimaryButtonColorVariant, SecondaryButtonVariant } from "./styledComponents";
 
 export interface HomeHeroContentOverlayProps {
     currentMovieIndex: number;
-    films: HomeHeroFilm[];
+    films: Film[];
     showNextMovie: () => void;
     showPreviousMovie: () => void;
     setCurrentMovieIndex: (index: number) => void;

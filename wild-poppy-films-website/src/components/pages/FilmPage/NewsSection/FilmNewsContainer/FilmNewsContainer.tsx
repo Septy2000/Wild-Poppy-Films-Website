@@ -16,8 +16,8 @@ export default function FilmNewsContainer({
     return (
         <Styled.Container $animationDelay={animationDelay} $inView={inView}>
             <Styled.ImageStyled
-                width={300}
-                height={300}
+                width={1500}
+                height={1500}
                 priority
                 src={news.cover.src}
                 alt={`news-cover`}

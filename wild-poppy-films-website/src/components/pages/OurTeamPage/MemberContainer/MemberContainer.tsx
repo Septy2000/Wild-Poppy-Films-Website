@@ -58,7 +58,7 @@ export default function MemberContainer({
                     )}
                 </Styled.SocialsContainer>
             </Styled.HeaderInfoContainer>
-            <Styled.ExpandedInfoContainer $isExpanded={isExpanded}>
+            {/* <Styled.ExpandedInfoContainer $isExpanded={isExpanded}>
                 <Styled.DescriptionContainer>
                     <Styled.Text>{member.description}</Styled.Text>
                 </Styled.DescriptionContainer>
@@ -67,15 +67,15 @@ export default function MemberContainer({
                         <Styled.ImageStyled
                             src={member.icon.src}
                             alt={member.name}
-                            width={300}
-                            height={300}
+                            width={1500}
+                            height={1500}
                         />
                     </Styled.ImageContainer>
                 </Styled.CenteredContainer>
             </Styled.ExpandedInfoContainer>
             <Styled.ExpandContainer onClick={handleExpandToggle}>
                 <Styled.StyledDownwardIcon $isExpanded={isExpanded} />
-            </Styled.ExpandContainer>
+            </Styled.ExpandContainer> */}
         </Styled.Container>
     );
 }

@@ -19,7 +19,7 @@ export const Container = styled.div`
     padding: 1.25rem;
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
-        max-width: 54rem;
+        width: 54rem;
         padding: 3rem;
     }
 `;

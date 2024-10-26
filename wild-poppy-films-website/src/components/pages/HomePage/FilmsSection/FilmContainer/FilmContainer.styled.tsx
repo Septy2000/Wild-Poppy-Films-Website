@@ -63,6 +63,7 @@ export const FilmImage = styled(Image)`
     border-radius: 4px;
     background: black;
     flex-shrink: 0;
+    filter: brightness(0.8);
 
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         width: 280px;

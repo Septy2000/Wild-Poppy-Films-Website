@@ -11,8 +11,8 @@ export default function ImagesShowcaseDesktop({ images }: { images: StaticImageD
             <Styled.Container>
                 <Styled.SelectedImage
                     src={images[selectedImageIndex].src}
-                    width={300}
-                    height={300}
+                    width={1500}
+                    height={1500}
                     alt={`Selected Image`}
                     priority
                 />
@@ -20,8 +20,8 @@ export default function ImagesShowcaseDesktop({ images }: { images: StaticImageD
                     {images.map((image, index) => (
                         <Styled.ImageGridItem
                             src={image.src}
-                            width={300}
-                            height={300}
+                            width={1500}
+                            height={1500}
                             alt={`Image ${index + 1}`}
                             priority
                             key={index}
