@@ -6,7 +6,6 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: "Helvetica", sans-serif, Arial;
-        // to change font
     }
 
     html body {
