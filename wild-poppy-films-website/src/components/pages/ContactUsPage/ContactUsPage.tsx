@@ -11,16 +11,37 @@ export default function ContactUsPage() {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
-    const [messageSent, setMessageSent] = useState(false);
+    const [messageStatus, setMessageStatus] = useState("");
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
 
-        console.log("preferredName: ", preferredName);
-        console.log("email: ", email);
-        console.log("message: ", message);
+        const templateParams = {
+            preferredName: preferredName,
+            email: email,
+            message: message,
+            reply_to: email,
+        };
 
-        setMessageSent(true);
+        emailjs
+            .send(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "",
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "",
+                templateParams,
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? ""
+            )
+            .then(
+                () => {
+                    setMessageStatus("Message sent, we can't wait to read it!");
+                },
+                (error) => {
+                    setMessageStatus(`Failed to send email: ${error.text}`);
+                }
+            );
+
+        setPreferredName("");
+        setEmail("");
+        setMessage("");
     }
 
     const delayPerItem = 0.1;
@@ -89,11 +110,7 @@ export default function ContactUsPage() {
                             $direction={1}
                         >
                             <Styled.SubmitButtonContainer>
-                                {messageSent && (
-                                    <Styled.SuccessMessage>
-                                        {"Message sent, we can't wait to read it!"}
-                                    </Styled.SuccessMessage>
-                                )}
+                                <Styled.SuccessMessage>{messageStatus}</Styled.SuccessMessage>
                                 <PrimaryButton label="send" type="submit"></PrimaryButton>
                             </Styled.SubmitButtonContainer>
                         </ScrollIntoViewAnimationWrapper>
