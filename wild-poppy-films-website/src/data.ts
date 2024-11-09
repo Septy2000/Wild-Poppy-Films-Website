@@ -1,14 +1,13 @@
 import { Film, News, TeamMember } from "./_types/common";
-import { StaticImageData } from "next/image";
 
 // "Ouroboria" images
-import OuroboriaCover1 from "@/images/films/ouroboria/cover_1.png";
+import OuroboriaCover1 from "@/images/films/ouroboria/cover_1.jpeg";
 import OuroboriaCover2 from "@/images/films/ouroboria/cover_2.jpg";
 import OuroboriaCover3 from "@/images/films/ouroboria/cover_3.jpg";
 import OuroboriaGallery1 from "@/images/films/ouroboria/photo_1.jpg";
 
 // "Cutezatorii" images
-import CutezatoriiCover1 from "@/images/films/cutezatorii/cutezatorii_cover_1.png";
+import CutezatoriiCover1 from "@/images/films/cutezatorii/cutezatorii_cover_1.jpeg";
 import CutezatoriiCover2 from "@/images/films/cutezatorii/cutezatorii_cover_2.jpeg";
 import CutezatoriiCover3 from "@/images/films/cutezatorii/cutezatorii_cover_3.jpeg";
 import CutezatoriiGallery1 from "@/images/films/cutezatorii/cutezatorii_gallery_1.jpeg";
