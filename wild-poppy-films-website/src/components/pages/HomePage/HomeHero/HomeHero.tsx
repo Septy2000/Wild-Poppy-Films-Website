@@ -56,8 +56,8 @@ export default function HomeHero() {
                             .slice(0, imagesPerFilm)
                             .map((image, imageIndex) => (
                                 <Styled.StyledImage
-                                    width={1500}
-                                    height={1500}
+                                    width={1920}
+                                    height={1080}
                                     key={`${film.title}-${imageIndex}`}
                                     src={image}
                                     alt={film.title}
