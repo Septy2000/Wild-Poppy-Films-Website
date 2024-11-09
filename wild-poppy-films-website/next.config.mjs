@@ -1,10 +1,17 @@
 /** @type {import('next').NextConfig} */
+import path from "path";
+
+// Use import.meta.url to get the directory name in ES modules
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
 const nextConfig = {
     compiler: {
         // Enables the styled-components SWC transform
         styledComponents: true,
     },
     webpack(config) {
+        config.resolve.alias["@"] = path.resolve(__dirname, "src");
+
         // Grab the existing rule that handles SVG imports
         const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
 
