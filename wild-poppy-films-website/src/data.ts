@@ -39,11 +39,11 @@ import NoNamesGallery2 from "@/images/films/no-names/no_names_gallery_2.jpg";
 import TheBeastWasICover1 from "@/images/films/the-beast-was-i/the_beast_was_i_cover_1.jpg";
 
 // "Bird in space" images
-import BirdInSpaceCover1 from "@/images/films/bird-in-space/bird_in_space_cover_1.jpg";
-import BirdInSpaceCover2 from "@/images/films/bird-in-space/bird_in_space_cover_2.jpg";
-import BirdInSpaceCover3 from "@/images/films/bird-in-space/bird_in_space_cover_3.jpg";
-import BirdInSpaceGallery1 from "@/images/films/bird-in-space/bird_in_space_gallery_1.jpg";
-import BirdInSpaceGallery2 from "@/images/films/bird-in-space/bird_in_space_gallery_2.jpg";
+import BirdInSpaceCover1 from "@/images/films/bird-in-space/bird_in_space_cover_1.jpeg";
+import BirdInSpaceCover2 from "@/images/films/bird-in-space/bird_in_space_cover_2.jpeg";
+import BirdInSpaceCover3 from "@/images/films/bird-in-space/bird_in_space_cover_3.jpeg";
+import BirdInSpaceGallery1 from "@/images/films/bird-in-space/bird_in_space_gallery_1.jpeg";
+import BirdInSpaceGallery2 from "@/images/films/bird-in-space/bird_in_space_gallery_2.jpeg";
 
 export const films: Film[] = [
     {
