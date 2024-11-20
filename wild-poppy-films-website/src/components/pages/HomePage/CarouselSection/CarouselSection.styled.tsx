@@ -50,6 +50,8 @@ export const CarouselItem = styled(Image)<{ $inView: boolean } & AnimationProps>
     width: 8rem;
     height: 8rem;
     margin-bottom: 1rem;
+    object-fit: cover;
+    /* object-position: top; */
 
     opacity: 0;
     ${({ $axis, $direction, $delay, $inView }) =>

@@ -4,19 +4,24 @@ import { useInView } from "react-intersection-observer";
 import * as Styled from "./CarouselSection.styled";
 import { StaticImageData } from "next/image";
 import ScrollBanner from "@/components/ScrollBanner/ScrollBanner";
-import Carousel_1_1 from "@/images/home-page/carousel/carousel-1-1.png";
-import Carousel_1_2 from "@/images/home-page/carousel/carousel-1-2.png";
-import Carousel_1_3 from "@/images/home-page/carousel/carousel-1-3.png";
-import Carousel_2_1 from "@/images/home-page/carousel/carousel-2-1.png";
-import Carousel_2_2 from "@/images/home-page/carousel/carousel-2-2.png";
-import Carousel_2_3 from "@/images/home-page/carousel/carousel-2-3.png";
+import CutezatoriiCover1 from "@/images/films/cutezatorii/cutezatorii_cover_1.jpeg";
+
+import OuroboriaCover2 from "@/images/films/ouroboria/cover_2.jpg";
+import CutezatoriiCover2 from "@/images/films/cutezatorii/cutezatorii_cover_2.jpeg";
+import HoeigCover1 from "@/images/films/hello-only-ends-in-goodbye/hoeig_cover_1.jpeg";
+import NoNamesCover2 from "@/images/films/no-names/no_names_cover_2.jpg";
+import BirdInSpaceCover1 from "@/images/films/bird-in-space/bird_in_space_cover_1.jpeg";
 
 export default function CarouselSection() {
     const scrollBannerDisplayTextList: string[] = ["watch us bloom"];
 
-    const leftCarouselItems: StaticImageData[] = [Carousel_1_1, Carousel_1_2, Carousel_1_3];
+    const leftCarouselItems: StaticImageData[] = [CutezatoriiCover1, HoeigCover1, NoNamesCover2];
 
-    const rightCarouselItems: StaticImageData[] = [Carousel_2_1, Carousel_2_2, Carousel_2_3];
+    const rightCarouselItems: StaticImageData[] = [
+        BirdInSpaceCover1,
+        OuroboriaCover2,
+        CutezatoriiCover2,
+    ];
 
     const delayPerItem = 0.1;
     const { ref, inView } = useInView({
@@ -34,6 +39,8 @@ export default function CarouselSection() {
                             <Styled.CarouselItem
                                 key={index}
                                 src={carouselItem}
+                                width={350}
+                                height={350}
                                 alt={`carousel_item_${index}`}
                                 $axis="X"
                                 $direction={-1}
@@ -47,6 +54,8 @@ export default function CarouselSection() {
                             <Styled.CarouselItem
                                 key={index}
                                 src={carouselItem}
+                                width={350}
+                                height={350}
                                 alt={`carousel_item_${index}`}
                                 $axis="X"
                                 $direction={1}
