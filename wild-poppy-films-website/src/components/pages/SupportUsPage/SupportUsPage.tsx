@@ -17,7 +17,7 @@ export default function SupportUsPage() {
                     title: "BANK TRANSFER",
                     bankDetails: {
                         accountName: "Wild Poppy Films Association",
-                        iban: "IBAN ROXX XXXX XXXX XXXX XXXX XXXX",
+                        iban: "IBAN RO06 BTRL RONC RT06 7011 5901",
                         bank: "Banca Transilvania",
                     },
                 },
