@@ -22,6 +22,12 @@ import HoeigGallery1 from "@/images/films/hello-only-ends-in-goodbye/hoieg_galle
 import HoeigGallery2 from "@/images/films/hello-only-ends-in-goodbye/hoieg_gallery_2.jpeg";
 import HoeigGallery3 from "@/images/films/hello-only-ends-in-goodbye/hoieg_gallery_3.jpeg";
 // "I can hear the skylark soaring" images
+import SkylarkCover1 from "@/images/films/i-can-hear-the-skylark-soaring/skylark_cover_1.jpeg";
+import SkylarkCover2 from "@/images/films/i-can-hear-the-skylark-soaring/skylark_cover_2.jpeg";
+import SkylarkGallery1 from "@/images/films/i-can-hear-the-skylark-soaring/skylark_gallery_1.jpeg";
+import SkylarkGallery2 from "@/images/films/i-can-hear-the-skylark-soaring/skylark_gallery_2.jpeg";
+import SkylarkGallery3 from "@/images/films/i-can-hear-the-skylark-soaring/skylark_gallery_3.jpeg";
+import SkylarkGallery4 from "@/images/films/i-can-hear-the-skylark-soaring/skylark_gallery_4.jpeg";
 
 // "It's not that deep" images
 import ItsNotThatDeepCover1 from "@/images/films/its-not-that-deep/its_not_that_deep_cover_1.jpg";
@@ -237,27 +243,34 @@ export const films: Film[] = [
         gallery: [MemoirsOfADyingFishCover1],
     },
 
-    // {
-    //     slug: "i-can-hear-the-skylark-soaring",
-    //     title: "I CAN HEAR THE SKYLARK SOARING",
-    //     release_year: "2025",
-    //     runtime: "15m",
-    //     genre: "DRAMA",
-    //     type: "SHORT FILM",
-    //     status: "in_production",
-    //     production: {
-    //         writer: ["MIRUNA STRĂUȚ"],
-    //         producer: ["DARIA POPESCO"],
-    //         director: ["MIRUNA STRĂUȚ"],
-    //         starring: ["MARA BUGARIN", "BOGDAN CAROL"],
-    //     },
-    //     youtube_link: "",
-    //     teaser_youtube_link: "",
-    //     cover: ,
-    //     cover_small:,
-    //     description: `A restless boy sneaks out in the middle of the night to bury a dead skylark, when he meets a weeping bride.`,
-    //     gallery: [],
-    // },
+    {
+        slug: "i-can-hear-the-skylark-soaring",
+        title: "I CAN HEAR THE SKYLARK SOARING",
+        release_year: "2025",
+        runtime: "15m",
+        genre: "DRAMA",
+        type: "SHORT FILM",
+        status: "in_production",
+        production: {
+            writer: ["MIRUNA STRĂUȚ"],
+            producer: ["DARIA POPESCO"],
+            director: ["MIRUNA STRĂUȚ"],
+            starring: ["MARA BUGARIN", "BOGDAN CAROL"],
+        },
+        youtube_link: "",
+        teaser_youtube_link: "",
+        cover: SkylarkCover2,
+        cover_small: SkylarkCover2,
+        description: `A restless boy sneaks out in the middle of the night to bury a dead skylark, when he meets a weeping bride.`,
+        gallery: [
+            SkylarkCover1,
+            SkylarkCover2,
+            SkylarkGallery1,
+            SkylarkGallery2,
+            SkylarkGallery3,
+            SkylarkGallery4,
+        ],
+    },
 ];
 
 export const filmsNews: News[] = [
