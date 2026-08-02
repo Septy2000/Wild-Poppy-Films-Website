@@ -48,12 +48,14 @@ export default function MemberContainer({
                         <ModalSocialButton
                             link={member.socials.imdb}
                             icon={<Styled.ImdbIconStyled />}
+                            label={`${member.name} on IMDb`}
                         />
                     )}
                     {member.socials.instagram && (
                         <ModalSocialButton
                             link={member.socials.instagram}
                             icon={<Styled.InstagramIconStyled />}
+                            label={`${member.name} on Instagram`}
                         />
                     )}
                 </Styled.SocialsContainer>

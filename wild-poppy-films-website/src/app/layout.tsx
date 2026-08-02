@@ -4,17 +4,55 @@ import GlobalStyles from "@/styles/GlobalStyles";
 import StyledComponentsRegistry from "@/lib/registry";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
-import { Open_Sans } from "next/font/google";
-
-//👇 Configure our font object
-const openSans = Open_Sans({
-    subsets: ["latin"],
-    display: "swap",
-});
+import JsonLd from "@/components/JsonLd/JsonLd";
+import { SkipLink } from "@/components/SkipLink/SkipLink.styled";
+import { organizationSchema } from "@/utils/structuredData";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-    title: "Wild Poppy Films",
-    description: "",
+    metadataBase: new URL(siteConfig.url),
+    title: {
+        default: siteConfig.name,
+        template: `%s | ${siteConfig.name}`,
+    },
+    description: siteConfig.description,
+    applicationName: siteConfig.name,
+    alternates: {
+        canonical: "/",
+    },
+    icons: {
+        icon: [
+            { url: "/favicon.ico", sizes: "32x32" },
+            { url: "/icon.png", type: "image/png", sizes: "512x512" },
+        ],
+        apple: "/apple-touch-icon.png",
+    },
+    openGraph: {
+        type: "website",
+        siteName: siteConfig.name,
+        title: siteConfig.name,
+        description: siteConfig.description,
+        url: siteConfig.url,
+        locale: siteConfig.locale,
+        images: [
+            {
+                url: "/opengraph-image.jpg",
+                width: 1200,
+                height: 630,
+                alt: `${siteConfig.name} - independent film production`,
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: siteConfig.name,
+        description: siteConfig.description,
+        images: ["/opengraph-image.jpg"],
+    },
+    robots: {
+        index: true,
+        follow: true,
+    },
 };
 
 export const viewport: Viewport = {
@@ -29,17 +67,21 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={openSans.className}>
-            <StyledComponentsRegistry>
-                <ThemeClient>
-                    <GlobalStyles />
-                    <body>
+        <html lang="en">
+            <body>
+                <StyledComponentsRegistry>
+                    <ThemeClient>
+                        <GlobalStyles />
+                        <JsonLd schema={organizationSchema()} />
+                        <SkipLink href="#main-content">Skip to content</SkipLink>
                         <NavBar />
-                        {children}
+                        {/* The site had no <main> landmark, so screen reader users had no
+                            way to jump past the navigation on every page. */}
+                        <main id="main-content">{children}</main>
                         <Footer />
-                    </body>
-                </ThemeClient>
-            </StyledComponentsRegistry>
+                    </ThemeClient>
+                </StyledComponentsRegistry>
+            </body>
         </html>
     );
 }

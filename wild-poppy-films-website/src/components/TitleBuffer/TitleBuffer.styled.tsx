@@ -32,8 +32,18 @@ export const ScrollContainer = styled.div`
     }
 `;
 
-export const Title = styled.h1`
+/**
+ * Renders as a <span> by default. The marquee repeats the page title ten times to
+ * fill the scroll, and each copy used to be an <h1> - so every page shipped ten
+ * competing top-level headings. TitleBuffer now promotes exactly one copy with
+ * `as="h1"` and hides the rest from assistive tech. Styles are unchanged; the
+ * explicit `display: inline-flex` means both elements render identically.
+ */
+export const Title = styled.span`
     position: relative;
+    /* Was an <h1>, which is bold by user-agent default. Now that most copies render
+       as <span>, the weight has to be stated explicitly or the marquee renders thin. */
+    font-weight: bold;
     font-size: 12.5rem;
     display: inline-flex;
     align-items: center;

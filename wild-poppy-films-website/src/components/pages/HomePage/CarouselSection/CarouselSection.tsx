@@ -39,9 +39,10 @@ export default function CarouselSection() {
                             <Styled.CarouselItem
                                 key={index}
                                 src={carouselItem}
-                                width={350}
-                                height={350}
-                                alt={`carousel_item_${index}`}
+                                alt=""
+                                aria-hidden="true"
+                                sizes="(min-width: 1200px) 296px, 128px"
+                                placeholder="blur"
                                 $axis="X"
                                 $direction={-1}
                                 $delay={(1 + index) * delayPerItem}
@@ -54,9 +55,10 @@ export default function CarouselSection() {
                             <Styled.CarouselItem
                                 key={index}
                                 src={carouselItem}
-                                width={350}
-                                height={350}
-                                alt={`carousel_item_${index}`}
+                                alt=""
+                                aria-hidden="true"
+                                sizes="(min-width: 1200px) 296px, 128px"
+                                placeholder="blur"
                                 $axis="X"
                                 $direction={1}
                                 $delay={index * delayPerItem}

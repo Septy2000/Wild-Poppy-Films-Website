@@ -4,7 +4,6 @@ import ScrollBanner from "@/components/ScrollBanner/ScrollBanner";
 import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
 import { useInView } from "react-intersection-observer";
 import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
-import { useRouter } from "next/navigation";
 
 export default function DescriptionSection() {
     const scrollBannerDisplayTextList: string[] = ["growing everywhere", "in a poppyseed..."];
@@ -20,17 +19,12 @@ export default function DescriptionSection() {
         films. 
     `;
 
-    const router = useRouter();
 
     const delayPerItem = 0.1;
     const { ref, inView } = useInView({
         threshold: 0.5,
         triggerOnce: true,
     });
-
-    const handleNavigateTo = (path: string) => {
-        router.push(path);
-    };
 
     return (
         <React.Fragment>
@@ -58,7 +52,7 @@ export default function DescriptionSection() {
                         <PrimaryButton
                             label="our team"
                             variant="green"
-                            onClick={() => handleNavigateTo("/our-team")}
+                            href="/our-team"
                         />
                     </Styled.CtaContainer>
                 </ScrollIntoViewAnimationWrapper>

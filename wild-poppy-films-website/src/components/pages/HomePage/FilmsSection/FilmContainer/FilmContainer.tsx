@@ -1,19 +1,19 @@
 "use client";
 import React from "react";
 import * as Styled from "./FilmContainer.styled";
-import { useRouter } from "next/navigation";
 import { Film } from "@/_types/common";
+import CreditList from "@/components/CreditList/CreditList";
 
 export default function FilmContainer({ film }: { film: Film }) {
-    const router = useRouter();
-
-    function handleNavigateTo(path: string) {
-        router.push(path);
-    }
-
     return (
-        <Styled.Container onClick={() => handleNavigateTo(`/films/${film.slug}`)}>
-            <Styled.FilmImage src={film.cover_small} alt="film-image" />
+        <Styled.Container href={`/films/${film.slug}`}>
+            {/* 96px on mobile, 280px on desktop - see FilmContainer.styled */}
+            <Styled.FilmImage
+                src={film.cover_small}
+                alt={`${film.title} poster`}
+                sizes="(min-width: 1200px) 280px, 96px"
+                placeholder="blur"
+            />
             <Styled.FilmInfoContainer>
                 <Styled.FilmTitleAndYearContainer>
                     <Styled.FilmTitle>{film.title}</Styled.FilmTitle>
@@ -22,17 +22,12 @@ export default function FilmContainer({ film }: { film: Film }) {
                 <Styled.FilmDescriptionContainer>
                     <Styled.DefaultText>{film.genre}</Styled.DefaultText>
                     <Styled.FilmProductionContainer>
-                        <Styled.DefaultText>{"PROD. BY "}</Styled.DefaultText>
-                        {film.production.producer.map((producer, index) => (
-                            <React.Fragment key={index}>
-                                <Styled.ProductionText>{producer}</Styled.ProductionText>
-                                {index < film.production.producer.length - 1 && (
-                                    <Styled.DefaultText key={`and-${index}`}>
-                                        {" & "}
-                                    </Styled.DefaultText>
-                                )}
-                            </React.Fragment>
-                        ))}
+                        <CreditList
+                            label="PROD. BY "
+                            names={film.production.producer}
+                            LabelText={Styled.DefaultText}
+                            NameText={Styled.ProductionText}
+                        />
                     </Styled.FilmProductionContainer>
                 </Styled.FilmDescriptionContainer>
             </Styled.FilmInfoContainer>

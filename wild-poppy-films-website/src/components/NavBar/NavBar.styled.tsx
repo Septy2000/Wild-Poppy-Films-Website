@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import Link from "next/link";
 import WpAltXlLogo from "@/icons/logo/wp-logo-alt-xl.svg";
 import WpAltXsLogo from "@/icons/logo/wp-logo-alt-xs.svg";
 import MenOpenIcon from "@/icons/navigation/menu-icon-open-mobile.svg";
@@ -57,7 +58,22 @@ export const Header = styled.header<HeaderProps>`
     }
 `;
 
-export const MenuRhsContainer = styled.div`
+/** Wraps the logo so "go home" is a real link rather than a div with an onClick. */
+export const LogoLink = styled(Link)`
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+`;
+
+// A real <button>: as a <div onClick> the menu could not be reached by keyboard and
+// was announced as plain text. The resets below keep it looking exactly as it did.
+export const MenuRhsContainer = styled.button`
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+
     display: flex;
     flex-direction: row;
     user-select: none;

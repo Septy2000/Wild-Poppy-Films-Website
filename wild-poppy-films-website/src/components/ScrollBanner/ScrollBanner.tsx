@@ -11,8 +11,6 @@ export default function ScrollBanner({
     displayTextList: string[];
     variant: ScrollBannerColorVariant;
 }) {
-    const containerY = useRef(0);
-    const [currentScrollY, setCurrentScrollY] = useState(0);
     const [translateX, setTranslateX] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const { ref, inView } = useInView({
@@ -24,28 +22,43 @@ export default function ScrollBanner({
 
     useEffect(() => {
         setScrollBarLength(Math.round(window.innerWidth / displayTextList[0].length));
-
-        handleScroll();
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
+        // displayTextList is a literal defined inline by each caller, so it is a new
+        // array every render - depending on it here would re-run this on every render.
+        // Only its length matters and that never changes for a given banner.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
-        if (inView && containerRef.current) {
-            const containerYPositionPercentage = containerY.current / window.innerHeight;
+        let frame: number | null = null;
+
+        // This banner renders ~100 text spans. It previously stored window.scrollY in
+        // state on every scroll event purely to re-trigger the translate calculation,
+        // re-rendering all of them many times per frame. translateX is now derived
+        // directly inside one rAF callback, and skipped entirely while off screen.
+        function update() {
+            frame = null;
+            if (!containerRef.current) return;
+
+            const containerY = containerRef.current.getBoundingClientRect().y;
+            const containerYPositionPercentage = containerY / window.innerHeight;
             // value "50" is the max percentage of the translateX
             setTranslateX((1 - containerYPositionPercentage) * 50 * -1);
         }
-    }, [currentScrollY, inView]);
 
-    function handleScroll() {
-        setCurrentScrollY(window.scrollY);
-        if (containerRef.current) {
-            containerY.current = containerRef.current.getBoundingClientRect().y;
+        function onScroll() {
+            if (frame === null) frame = requestAnimationFrame(update);
         }
-    }
+
+        if (inView) {
+            update();
+            window.addEventListener("scroll", onScroll, { passive: true });
+        }
+
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            if (frame !== null) cancelAnimationFrame(frame);
+        };
+    }, [inView]);
 
     return (
         <Styled.Container ref={ref} $variant={variant}>

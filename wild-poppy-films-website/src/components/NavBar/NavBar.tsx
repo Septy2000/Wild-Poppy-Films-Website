@@ -15,40 +15,47 @@ export default function NavBar() {
     const homeHeroViewHeight = 0.85;
     const filmHeroViewHeight = 0.5;
 
-    function handleScroll() {
-        const currentScrollY = window.scrollY;
-
-        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-            setIsHidden(true);
-        } else {
-            setIsHidden(false);
-        }
-
-        // Check if the user is over content
-        if (
-            (currentScrollY < homeHeroViewHeight * window.innerHeight && pathname === "/") ||
-            (currentScrollY < filmHeroViewHeight * window.innerHeight &&
-                pathname.startsWith("/films/"))
-        ) {
-            setIsOverContent(true);
-        } else {
-            setIsOverContent(false);
-        }
-
-        lastScrollY.current = currentScrollY;
-    }
-
     useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        handleScroll();
+        let frame: number | null = null;
+
+        function update() {
+            frame = null;
+            const currentScrollY = window.scrollY;
+
+            setIsHidden(currentScrollY > lastScrollY.current && currentScrollY > 100);
+
+            // Check if the user is over content
+            setIsOverContent(
+                (currentScrollY < homeHeroViewHeight * window.innerHeight && pathname === "/") ||
+                    (currentScrollY < filmHeroViewHeight * window.innerHeight &&
+                        pathname.startsWith("/films/"))
+            );
+
+            lastScrollY.current = currentScrollY;
+        }
+
+        // Scroll fires far more often than the screen refreshes. Coalescing into one
+        // rAF callback means at most one state update per frame instead of per event,
+        // and `passive` tells the browser this listener will never preventDefault, so
+        // it can keep scrolling smoothly without waiting on us.
+        function onScroll() {
+            if (frame === null) frame = requestAnimationFrame(update);
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        update();
+
         return () => {
-            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("scroll", onScroll);
+            if (frame !== null) cancelAnimationFrame(frame);
         };
     }, [pathname]);
 
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
-    };
+    const toggleModal = () => setIsModalOpen((open) => !open);
+    const closeModal = () => setIsModalOpen(false);
+
+    // Ties the menu button's aria-controls to the panel it opens.
+    const modalId = "main-navigation-menu";
 
     const ModalToggleIcon = isModalOpen ? Styled.MenuCloseIcon : Styled.MenuOpenIcon;
 
@@ -59,24 +66,26 @@ export default function NavBar() {
                 $isHidden={isHidden}
                 $isOverContent={isOverContent}
             >
-                <Styled.WildPoppyAltXsLogo
-                    onClick={() => {
-                        router.push("/");
-                        setIsModalOpen(false);
-                    }}
-                />
-                <Styled.WildPoppyAltXlLogo
-                    onClick={() => {
-                        router.push("/");
-                        setIsModalOpen(false);
-                    }}
-                />
-                <Styled.MenuRhsContainer onClick={toggleModal}>
+                <Styled.LogoLink
+                    href="/"
+                    aria-label="Wild Poppy Films - home"
+                    onClick={() => setIsModalOpen(false)}
+                >
+                    <Styled.WildPoppyAltXsLogo />
+                    <Styled.WildPoppyAltXlLogo />
+                </Styled.LogoLink>
+                <Styled.MenuRhsContainer
+                    type="button"
+                    onClick={toggleModal}
+                    aria-expanded={isModalOpen}
+                    aria-controls={modalId}
+                    aria-label={isModalOpen ? "Close menu" : "Open menu"}
+                >
                     <Styled.MenuText>{isModalOpen ? "CLOSE" : "MENU"}</Styled.MenuText>
-                    <ModalToggleIcon />
+                    <ModalToggleIcon aria-hidden="true" />
                 </Styled.MenuRhsContainer>
             </Styled.Header>
-            <Modal isVisible={isModalOpen} onClose={toggleModal} />
+            <Modal id={modalId} isVisible={isModalOpen} onClose={closeModal} />
         </React.Fragment>
     );
 }

@@ -2,7 +2,17 @@ import styled from "styled-components";
 import SimpleArrowRight from "@/icons/navigation/simple-arrow-right.svg";
 import { SecondaryButtonVariant } from "@/_types/styledComponents";
 
+// Rendered as either <button> or <a> depending on whether an href is given, so it
+// has to neutralise both sets of user-agent styles - the button border/font and the
+// link underline/colour - to keep looking identical to when this was a <div>.
 export const Container = styled.div`
+    border: none;
+    font: inherit;
+    color: inherit;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -24,12 +24,17 @@ export default function HomeHeroContentOverlay({
                 <Styled.MovieTitleAndYearWrapper>
                     {films.map((film, index) => (
                         <Styled.MovieInstanceContainer
-                            key={index}
+                            key={film.slug}
+                            type="button"
                             onClick={() => setCurrentMovieIndex(index)}
+                            aria-label={`Show ${film.title} (${film.release_year})`}
+                            aria-current={index === currentMovieIndex}
                         >
-                            <Styled.ForwardIconStyled $isSelected={index === currentMovieIndex} />
+                            <Styled.ForwardIconStyled
+                                aria-hidden="true"
+                                $isSelected={index === currentMovieIndex}
+                            />
                             <Styled.MovieTitleAndYearContainer
-                                key={index}
                                 $movieIndex={currentMovieIndex}
                                 $isSelected={index === currentMovieIndex}
                             >

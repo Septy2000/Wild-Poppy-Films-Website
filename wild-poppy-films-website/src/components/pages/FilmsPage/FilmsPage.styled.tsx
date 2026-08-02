@@ -44,6 +44,18 @@ export const FilmsFilterContainer = styled.div<{ $animationDelay: number; $inVie
     ${({ $animationDelay, $inView }) => $inView && generateSlideAnimation("Y", 1, $animationDelay)}
 `;
 
+/**
+ * The pagination control above the list is desktop-only. Hiding it by media query
+ * rather than by a JS width check avoids it popping in after hydration.
+ */
+export const DesktopOnlyPagination = styled.div`
+    display: none;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        display: block;
+    }
+`;
+
 export const TopFilmsPageControlsContainer = styled.div`
     width: 100%;
     display: flex;

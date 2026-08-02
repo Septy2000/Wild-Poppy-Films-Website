@@ -3,46 +3,59 @@ import * as Styled from "./FilmContainerLarge.styled";
 import { Film } from "@/_types/common";
 import FilmsYoutubeCtaButton from "@/components/Buttons/FilmsYoutubeCtaButton/FilmsYoutubeCtaButton";
 import FilmFlail from "@/components/pages/FilmsPage/FilmContainerLarge/FilmFlail/FilmFlail";
-import { useRouter } from "next/navigation";
+import CreditList from "@/components/CreditList/CreditList";
 
 export default function FilmContainerLarge({ film }: { film: Film }) {
-    const router = useRouter();
+    const href = `/films/${film.slug}`;
 
-    function handleClick() {
-        router.push(`/films/${film.slug}`);
-    }
+    // FilmTitle is the link and stretches its hit area over the whole card - see
+    // FilmContainerLarge.styled. The card itself stays a <div> because it may also
+    // contain the YouTube link, and <a> cannot be nested inside <a>.
+    const youtubeCta = film.youtube_link ? (
+        <Styled.CtaWrapper>
+            <FilmsYoutubeCtaButton link={film.youtube_link} />
+        </Styled.CtaWrapper>
+    ) : null;
 
     return (
         <React.Fragment>
-            <Styled.MobileContainer onClick={handleClick}>
+            <Styled.MobileContainer>
                 <FilmFlail filmStatus={film.status} />
-                <Styled.FilmImage src={film.cover} alt="film-cover" />
+                {/* Fixed 16rem (256px) in the mobile card */}
+                <Styled.FilmImage
+                    src={film.cover}
+                    alt={`${film.title} poster`}
+                    sizes="256px"
+                    placeholder="blur"
+                />
                 <Styled.FilmInfoContainer>
                     <Styled.FilmTitleAndYearContainer>
-                        <Styled.FilmTitle>{film.title}</Styled.FilmTitle>
+                        <Styled.FilmTitle href={href}>{film.title}</Styled.FilmTitle>
                         <Styled.FilmYear>{film.release_year}</Styled.FilmYear>
                     </Styled.FilmTitleAndYearContainer>
-                    {film.youtube_link && <FilmsYoutubeCtaButton link={film.youtube_link} />}
+                    {youtubeCta}
                     <Styled.FilmProductionContainer>
-                        <Styled.DefaultText>{"PROD. BY "}</Styled.DefaultText>
-                        {film.production.producer.map((producer, index) => (
-                            <React.Fragment key={index}>
-                                <Styled.ProductionText>{producer}</Styled.ProductionText>
-                                {index < film.production.producer.length - 1 && (
-                                    <Styled.DefaultText key={`and-${index}`}>
-                                        {" & "}
-                                    </Styled.DefaultText>
-                                )}
-                            </React.Fragment>
-                        ))}
+                        <CreditList
+                            label="PROD. BY "
+                            names={film.production.producer}
+                            LabelText={Styled.DefaultText}
+                            NameText={Styled.ProductionText}
+                        />
                     </Styled.FilmProductionContainer>
                 </Styled.FilmInfoContainer>
             </Styled.MobileContainer>
 
-            <Styled.DesktopContainer onClick={handleClick}>
+            <Styled.DesktopContainer>
                 <FilmFlail filmStatus={film.status} />
-                <Styled.FilmTitle>{film.title}</Styled.FilmTitle>
-                <Styled.FilmImage src={film.cover} alt="film-cover" />
+                <Styled.FilmTitle href={href}>{film.title}</Styled.FilmTitle>
+                {/* Fills the desktop card, which spans the page minus the 4rem gutters */}
+                <Styled.FilmImage
+                    src={film.cover}
+                    alt=""
+                    aria-hidden="true"
+                    sizes="calc(100vw - 8rem)"
+                    placeholder="blur"
+                />
                 <Styled.GlassOverFrameStyled />
                 <Styled.BlockContainer>
                     <Styled.DefaultText>
@@ -51,34 +64,23 @@ export default function FilmContainerLarge({ film }: { film: Film }) {
                 </Styled.BlockContainer>
                 <Styled.BlockContainer>
                     <Styled.FilmProductionContainer>
-                        <Styled.DefaultText>{"PROD. BY "}</Styled.DefaultText>
-                        {film.production.producer.map((producer, index) => (
-                            <React.Fragment key={index}>
-                                <Styled.ProductionText>{producer}</Styled.ProductionText>
-                                {index < film.production.producer.length - 1 && (
-                                    <Styled.DefaultText key={`and-${index}`}>
-                                        {" & "}
-                                    </Styled.DefaultText>
-                                )}
-                            </React.Fragment>
-                        ))}
+                        <CreditList
+                            label="PROD. BY "
+                            names={film.production.producer}
+                            LabelText={Styled.DefaultText}
+                            NameText={Styled.ProductionText}
+                        />
                     </Styled.FilmProductionContainer>
                     <Styled.FilmProductionContainer>
-                        <Styled.DefaultText>{"WRITTEN BY "}</Styled.DefaultText>
-                        {film.production.writer &&
-                            film.production.writer.map((writer, index) => (
-                                <React.Fragment key={index}>
-                                    <Styled.ProductionText>{writer}</Styled.ProductionText>
-                                    {index < film.production.writer.length - 1 && (
-                                        <Styled.DefaultText key={`and-${index}`}>
-                                            {" & "}
-                                        </Styled.DefaultText>
-                                    )}
-                                </React.Fragment>
-                            ))}
+                        <CreditList
+                            label="WRITTEN BY "
+                            names={film.production.writer}
+                            LabelText={Styled.DefaultText}
+                            NameText={Styled.ProductionText}
+                        />
                     </Styled.FilmProductionContainer>
                 </Styled.BlockContainer>
-                {film.youtube_link && <FilmsYoutubeCtaButton link={film.youtube_link} />}
+                {youtubeCta}
             </Styled.DesktopContainer>
         </React.Fragment>
     );

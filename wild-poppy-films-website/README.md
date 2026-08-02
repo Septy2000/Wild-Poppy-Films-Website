@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wild Poppy Films
 
-## Getting Started
+Marketing site for Wild Poppy Films, an independent film production company.
 
-First, run the development server:
+Next.js 14 (App Router) · TypeScript · styled-components · deployed on Vercel.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # then fill in the EmailJS values
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm run build && npm run start` runs the production build locally. Worth doing before
+pushing: the production build is what reveals type errors, static-generation problems
+and the real image behaviour.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How it fits together
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+All content lives in **`src/data.ts`** — films, team members, social links, navigation.
+Adding a film there is all that's needed: the films directory, the individual film page,
+the sitemap and the static pre-render list are all derived from it.
 
-## Learn More
+```
+src/
+  app/            routes (App Router). Server components: metadata lives here.
+  components/     one folder per component: Component.tsx + Component.styled.tsx
+    pages/        page-level components, imported by the matching route
+  config/site.ts  canonical URL, company name/description - used by metadata & sitemap
+  data.ts         all site content
+  styles/         theme (colours, breakpoints, spacing) and global styles
+  utils/          films lookup, credit formatting, structured data, animations
+  _types/         shared TypeScript types
+```
 
-To learn more about Next.js, take a look at the following resources:
+Two conventions worth knowing:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Styling** is styled-components. Each component has a sibling `.styled.tsx` marked
+  `"use client"`. The theme in `src/styles/theme/theme.tsx` holds every colour and
+  breakpoint — prefer `theme.colors.*` over literal hex values.
+- **Page metadata** (titles, descriptions, social cards) must be exported from the route
+  file in `src/app/`, not the page component, because only the route is a server
+  component.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Scripts
 
-## Deploy on Vercel
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | ESLint |
+| `node scripts/optimize-images.mjs` | Report on oversized images in `src/images` (add `--write` to re-encode them in place) |
+| `node scripts/generate-icons.mjs` | Regenerate `public/` favicon, app icons and the Open Graph card from the logo artwork |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run `optimize-images` after adding photos — camera originals are typically 4 MB+ and
+should be capped before being committed.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Environment variables
+
+See `.env.example`. The EmailJS keys drive the contact form; `NEXT_PUBLIC_SITE_URL` sets
+the canonical origin used by metadata, `sitemap.xml` and `robots.txt`, and must be set
+in the Vercel project settings for production.

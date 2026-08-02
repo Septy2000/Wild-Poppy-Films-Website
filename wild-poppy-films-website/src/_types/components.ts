@@ -31,8 +31,15 @@ export interface ButtonProps {
 export interface PrimaryButtonProps extends ButtonProps {
     variant?: PrimaryButtonColorVariant;
     type?: "button" | "submit" | "reset";
+    disabled?: boolean;
+    /** When set, the control renders as a link rather than a button. */
+    href?: string;
 }
 
 export interface SecondaryButtonProps extends ButtonProps {
     variant?: SecondaryButtonVariant;
+    /** When set, the control renders as a link rather than a button. */
+    href?: string;
+    /** Opens `href` in a new tab with rel="noopener noreferrer". */
+    external?: boolean;
 }

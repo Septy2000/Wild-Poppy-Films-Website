@@ -15,13 +15,18 @@ export const Container = styled.button`
     padding: 12px 8px;
     background-color: transparent;
 
+    &:disabled {
+        cursor: default;
+        opacity: 0.5;
+    }
+
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         width: 200px;
         padding: 16px 8px;
         border-radius: 4px;
         background-color: ${({ theme }) => theme.colors.secondary.core_green_light_2};
 
-        &:hover {
+        &:hover:not(:disabled) {
             background-color: ${({ theme }) => theme.colors.neutral.neutral_14};
         }
     }
@@ -40,7 +45,7 @@ export const Text = styled.p<{ $variant: PrimaryButtonColorVariant }>`
         font-size: 20px;
         color: ${({ theme }) => theme.colors.neutral.neutral_14};
 
-        ${Container}:hover & {
+        ${Container}:hover:not(:disabled) & {
             color: ${({ theme }) => theme.colors.primary.poppy_red};
         }
     }
@@ -62,7 +67,7 @@ export const StyledRightArrowIcon = styled(RightArrowIcon)<{ $variant: PrimaryBu
             fill: ${({ theme }) => theme.colors.neutral.neutral_14};
         }
 
-        ${Container}:hover & {
+        ${Container}:hover:not(:disabled) & {
             path {
                 fill: ${({ theme }) => theme.colors.primary.poppy_red};
             }

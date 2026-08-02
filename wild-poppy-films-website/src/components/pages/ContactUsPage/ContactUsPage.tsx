@@ -12,9 +12,12 @@ export default function ContactUsPage() {
     const [message, setMessage] = useState("");
 
     const [messageStatus, setMessageStatus] = useState("");
+    const [isSending, setIsSending] = useState(false);
 
-    function handleSubmit(e: React.FormEvent) {
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
+
+        if (isSending) return;
 
         const templateParams = {
             preferredName: preferredName,
@@ -23,25 +26,29 @@ export default function ContactUsPage() {
             reply_to: email,
         };
 
-        emailjs
-            .send(
+        setIsSending(true);
+        setMessageStatus("");
+
+        try {
+            await emailjs.send(
                 process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "",
                 process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "",
                 templateParams,
                 process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? ""
-            )
-            .then(
-                () => {
-                    setMessageStatus("Message sent, we can't wait to read it!");
-                },
-                (error) => {
-                    setMessageStatus(`Failed to send email: ${error.text}`);
-                }
             );
 
-        setPreferredName("");
-        setEmail("");
-        setMessage("");
+            setMessageStatus("Message sent, we can't wait to read it!");
+            // Only clear on success, so a failed send doesn't lose what they wrote
+            setPreferredName("");
+            setEmail("");
+            setMessage("");
+        } catch {
+            setMessageStatus(
+                "Something went wrong sending your message. Please try again, or email us directly at contact@wildpoppyfilms.com."
+            );
+        } finally {
+            setIsSending(false);
+        }
     }
 
     const delayPerItem = 0.1;
@@ -110,8 +117,14 @@ export default function ContactUsPage() {
                             $direction={1}
                         >
                             <Styled.SubmitButtonContainer>
-                                <Styled.SuccessMessage>{messageStatus}</Styled.SuccessMessage>
-                                <PrimaryButton label="send" type="submit"></PrimaryButton>
+                                <Styled.SuccessMessage role="status" aria-live="polite">
+                                    {messageStatus}
+                                </Styled.SuccessMessage>
+                                <PrimaryButton
+                                    label={isSending ? "sending" : "send"}
+                                    type="submit"
+                                    disabled={isSending}
+                                />
                             </Styled.SubmitButtonContainer>
                         </ScrollIntoViewAnimationWrapper>
                     </Styled.FormGridContainer>

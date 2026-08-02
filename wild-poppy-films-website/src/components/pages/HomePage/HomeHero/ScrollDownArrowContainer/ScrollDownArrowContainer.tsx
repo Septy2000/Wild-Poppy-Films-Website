@@ -1,24 +1,23 @@
 import * as Styled from "./ScrollDownArrowContainer.styled";
-import React, { forwardRef, RefObject } from "react";
+import React from "react";
 
-const ScrollDownArrowContainer = forwardRef<HTMLDivElement>((props, ref) => {
-    const scrollToSection = () => {
-        if (ref) {
-            const elementRef = ref as RefObject<HTMLDivElement>;
-            elementRef.current?.scrollIntoView({
-                behavior: "smooth",
-            });
-        }
-    };
-
+/**
+ * The scroll-down affordance under the hero. It previously took a forwarded ref that
+ * it never attached to anything and only read from - the same ref object HomePage
+ * also gave to FilmsSection. It now just takes the action to run.
+ */
+export default function ScrollDownArrowContainer({ onScrollTo }: { onScrollTo: () => void }) {
     return (
         <React.Fragment>
-            <Styled.Container onClick={scrollToSection}>
-                <Styled.StyledDownwardIcon />
+            <Styled.Container
+                as="button"
+                type="button"
+                onClick={onScrollTo}
+                aria-label="Scroll to films"
+            >
+                <Styled.StyledDownwardIcon aria-hidden="true" />
             </Styled.Container>
             <Styled.Spacer />
         </React.Fragment>
     );
-});
-ScrollDownArrowContainer.displayName = "ScrollDownArrowContainer";
-export default ScrollDownArrowContainer;
+}
