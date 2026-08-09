@@ -1,14 +1,12 @@
 import * as Styled from "./HeroSection.styled";
 import { Film } from "@/_types/common";
 import SecondaryButton from "@/components/Buttons/SecondaryButton/SecondaryButton";
-import { useRouter } from "next/navigation";
 import { useInView } from "react-intersection-observer";
 import React from "react";
 import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
+import { formatCredits } from "@/utils/formatters";
 
 export default function HeroSection({ film }: { film: Film }) {
-    const router = useRouter();
-
     const delayPerItem = 0.1;
 
     const { ref, inView } = useInView({
@@ -16,34 +14,40 @@ export default function HeroSection({ film }: { film: Film }) {
         triggerOnce: true,
     });
 
+    const credits: { label: string; value: string }[] = [
+        { label: "CREATED / WRITTEN BY", value: formatCredits(film.production.writer) },
+        { label: "PRODUCED BY", value: formatCredits(film.production.producer) },
+        { label: "DIRECTED BY", value: formatCredits(film.production.director) },
+        { label: "STARRING", value: formatCredits(film.production.starring) },
+    ];
+
+    const releaseDetails: { label: string; value: string }[] = [
+        { label: "RELEASE DATE", value: film.release_year },
+        { label: "RUN TIME", value: film.runtime ?? "" },
+    ];
+
+    function ProductionPair({ label, value }: { label: string; value: string }) {
+        // Several films have no runtime yet - skip the row rather than render a dangling label
+        if (!value) return null;
+
+        return (
+            <Styled.ProductionPairContainer>
+                <Styled.PlainText>{label}</Styled.PlainText>
+                <Styled.PlainTextGreen>{value}</Styled.PlainTextGreen>
+            </Styled.ProductionPairContainer>
+        );
+    }
+
     function ProductionInfo() {
         return (
             <React.Fragment>
-                <Styled.ProductionPairContainer>
-                    <Styled.PlainText>CREATED / WRITTEN BY</Styled.PlainText>
-                    <Styled.PlainTextGreen>{film.production.writer}</Styled.PlainTextGreen>
-                </Styled.ProductionPairContainer>
-                <Styled.ProductionPairContainer>
-                    <Styled.PlainText>PRODUCED BY</Styled.PlainText>
-                    <Styled.PlainTextGreen>{film.production.producer}</Styled.PlainTextGreen>
-                </Styled.ProductionPairContainer>
-                <Styled.ProductionPairContainer>
-                    <Styled.PlainText>DIRECTED BY</Styled.PlainText>
-                    <Styled.PlainTextGreen>{film.production.director}</Styled.PlainTextGreen>
-                </Styled.ProductionPairContainer>
-                <Styled.ProductionPairContainer>
-                    <Styled.PlainText>STARRING</Styled.PlainText>
-                    <Styled.PlainTextGreen>{film.production.starring}</Styled.PlainTextGreen>
-                </Styled.ProductionPairContainer>
+                {credits.map(({ label, value }) => (
+                    <ProductionPair key={label} label={label} value={value} />
+                ))}
                 <Styled.Spacer />
-                <Styled.ProductionPairContainer>
-                    <Styled.PlainText>RELEASE DATE</Styled.PlainText>
-                    <Styled.PlainTextGreen>{film.release_year}</Styled.PlainTextGreen>
-                </Styled.ProductionPairContainer>
-                <Styled.ProductionPairContainer>
-                    <Styled.PlainText>RUN TIME</Styled.PlainText>
-                    <Styled.PlainTextGreen>{film.runtime}</Styled.PlainTextGreen>
-                </Styled.ProductionPairContainer>
+                {releaseDetails.map(({ label, value }) => (
+                    <ProductionPair key={label} label={label} value={value} />
+                ))}
             </React.Fragment>
         );
     }
@@ -69,7 +73,8 @@ export default function HeroSection({ film }: { film: Film }) {
                     >
                         <SecondaryButton
                             label="Watch Teaser on Youtube"
-                            onClick={() => router.push(film.teaser_youtube_link ?? "/not-found")}
+                            href={film.teaser_youtube_link}
+                            external
                         />
                     </ScrollIntoViewAnimationWrapper>
                 )}

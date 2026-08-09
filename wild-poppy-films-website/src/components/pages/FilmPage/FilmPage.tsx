@@ -1,27 +1,27 @@
 "use client";
-import { Film, News } from "@/_types/common";
+import { Film } from "@/_types/common";
 import { useRouter } from "next/navigation";
 import * as Styled from "./FilmPage.styled";
 import React from "react";
 import ReturnButton from "@/components/Buttons/ReturnButton/ReturnButton";
-import { filmsNews } from "@/data";
-import NewsSection from "@/components/pages/FilmPage/NewsSection/NewsSection";
 import GalleryDisplaySection from "@/components/pages/FilmPage/GalleryDisplaySection/GalleryDisplaySection";
 import HeroSection from "@/components/pages/FilmPage/HeroSection/HeroSection";
 
 export default function FilmPage({ film }: { film: Film }) {
     const router = useRouter();
-    const shownNews: News[] = filmsNews.slice(0, 3);
 
     return (
         <Styled.Container>
             <Styled.ImageContainer>
+                {/* Passing the imported image object rather than `.src` lets Next use the
+                    real dimensions and generate the blur placeholder. This is the page's
+                    LCP element, so it keeps `priority`. */}
                 <Styled.ImageStyled
-                    width={1500}
-                    height={1500}
+                    src={film.cover}
+                    alt={`${film.title} - cover image`}
+                    sizes="100vw"
+                    placeholder="blur"
                     priority
-                    src={film.cover.src}
-                    alt={`${film.title}-cover`}
                 />
                 <Styled.GlassOverFrameStyled />
                 <Styled.ImageOverlay>
@@ -30,8 +30,10 @@ export default function FilmPage({ film }: { film: Film }) {
                 </Styled.ImageOverlay>
             </Styled.ImageContainer>
             <HeroSection film={film} />
-            <GalleryDisplaySection gallery={film.gallery} />
-            {/* <NewsSection shownNews={shownNews} /> */}
+            <GalleryDisplaySection gallery={film.gallery} filmTitle={film.title} />
+            {/* The news section is switched off for now. Its components still live in
+                ./NewsSection and its content in `filmsNews` (src/data.ts); re-enable by
+                importing NewsSection and rendering it with those entries. */}
         </Styled.Container>
     );
 }

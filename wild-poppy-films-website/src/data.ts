@@ -62,7 +62,7 @@ export const films: Film[] = [
         status: "in_production",
         production: {
             writer: ["MIRUNA STRĂUȚ"],
-            producer: ["DELIA DUMONT, DARIA POPESCO"],
+            producer: ["DELIA DUMONT", "DARIA POPESCO"],
             director: ["MIRUNA STRĂUȚ"],
             starring: ["MIRUNA STRĂUȚ"],
         },
@@ -298,6 +298,18 @@ export const defaultPagesLinks = {
     contact: "/contact-us",
     supportUs: "/support-us",
 };
+
+/**
+ * The site's main navigation. Both the NavBar modal and the Footer render this, so
+ * they can't drift apart - they each used to keep their own copy of this list.
+ */
+export const mainNavigationLinks: { label: string; link: string }[] = [
+    { label: "HOME", link: defaultPagesLinks.home },
+    { label: "FILMS", link: defaultPagesLinks.films },
+    { label: "OUR TEAM", link: defaultPagesLinks.ourTeam },
+    { label: "CONTACT", link: defaultPagesLinks.contact },
+    { label: "SUPPORT US", link: defaultPagesLinks.supportUs },
+];
 
 export const teamMembers: TeamMember[] = [
     {

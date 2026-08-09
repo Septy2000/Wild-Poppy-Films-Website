@@ -1,16 +1,14 @@
 /** @type {import('next').NextConfig} */
-import path from "path";
-
-// Use import.meta.url to get the directory name in ES modules
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
 const nextConfig = {
     compiler: {
         // Enables the styled-components SWC transform
         styledComponents: true,
     },
     webpack(config) {
-        config.resolve.alias["@"] = path.resolve(__dirname, "src");
+        // The "@/*" alias is not configured here: Next already derives it from the
+        // `paths` entry in tsconfig.json. The previous manual alias built its path
+        // from `new URL(import.meta.url).pathname`, which on Windows yields a
+        // malformed "/C:/Users/..." value.
 
         // Grab the existing rule that handles SVG imports
         const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));

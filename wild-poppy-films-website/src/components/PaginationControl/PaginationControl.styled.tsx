@@ -22,7 +22,16 @@ export const SimpleArrowLeftStyled = styled(SimpleArrowLeft)`
     }
 `;
 
-export const PageNumberContainer = styled.div<{ $isSelected: boolean }>`
+// Real <button>s: as <div>s these page controls could not be tabbed to or
+// activated with Enter, and screen readers announced them as plain text.
+export const PageNumberContainer = styled.button<{ $isSelected: boolean }>`
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+
     display: flex;
     justify-content: center;
     align-items: center;

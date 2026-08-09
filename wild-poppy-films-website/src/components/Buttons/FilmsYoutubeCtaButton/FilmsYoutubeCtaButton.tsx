@@ -1,13 +1,15 @@
 "use client";
 import * as Styled from "./FilmsYoutubeCtaButton.styled";
-import useIsMobile from "@/hooks/useIsMobile";
 
 export default function FilmsYoutubeCtaButton({ link }: { link: string }) {
-    const cta = useIsMobile() ? "WATCH NOW ON YOUTUBE" : "WATCH NOW";
-
     return (
         <Styled.Container href={link}>
-            <Styled.Label>{cta}</Styled.Label>
+            {/* Mobile reads "WATCH NOW ON YOUTUBE"; on desktop the suffix is hidden by media
+                query and the YouTube icon carries that meaning instead. Doing this in CSS
+                rather than a JS width check stops the label changing after hydration. */}
+            <Styled.Label>
+                WATCH NOW<Styled.MobileLabelSuffix> ON YOUTUBE</Styled.MobileLabelSuffix>
+            </Styled.Label>
             <Styled.RightFwdIconStyled />
             <Styled.YoutubeIconStyled />
         </Styled.Container>

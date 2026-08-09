@@ -85,7 +85,9 @@ export default function SupportUsPage() {
                 <Styled.Banner>
                     <Styled.BannerWrapper>
                         <Styled.BannerInfoContainer>
-                            <Styled.BannerTitle>{text.banner.title}</Styled.BannerTitle>
+                            {/* Rendered as h1: this is the page's top-level heading.
+                                The shared Title styled component is an h2 by default. */}
+                            <Styled.BannerTitle as="h1">{text.banner.title}</Styled.BannerTitle>
                             <Styled.BannerText>{text.banner.body}</Styled.BannerText>
                         </Styled.BannerInfoContainer>
                         <Styled.WPFLogoStyled />

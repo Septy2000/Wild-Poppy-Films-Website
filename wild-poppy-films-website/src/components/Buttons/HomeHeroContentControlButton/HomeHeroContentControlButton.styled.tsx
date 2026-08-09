@@ -2,7 +2,13 @@ import styled from "styled-components";
 import RightArrow from "@/icons/navigation/home-hero-forward-icon-mobile.svg";
 import LeftIcon from "@/icons/navigation/home-hero-back-icon-mobile.svg";
 
-export const Container = styled.div`
+export const Container = styled.button`
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;

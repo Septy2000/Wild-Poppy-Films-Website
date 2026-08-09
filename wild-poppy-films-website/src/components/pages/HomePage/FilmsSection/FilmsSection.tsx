@@ -7,12 +7,10 @@ import FilmContainer from "@/components/pages/HomePage/FilmsSection/FilmContaine
 import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
 import { useInView } from "react-intersection-observer";
 import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
-import { useRouter } from "next/navigation";
 
 const FilmsSection = forwardRef<HTMLDivElement>((props, filmsSectionRef) => {
     const scrollBannerDisplayTextList: string[] = ["blooming soon!"];
     const filmsCtaText = "view all";
-    const router = useRouter();
 
     const delayPerItem = 0.1;
     const { ref, inView } = useInView({
@@ -25,10 +23,6 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, filmsSectionRef) => {
         .filter((film) => film.status === "coming_soon" || film.status === "in_production")
         .slice(0, 3);
 
-    function handleNavigateTo(path: string) {
-        router.push(path);
-    }
-
     return (
         <div ref={filmsSectionRef}>
             <ScrollBanner displayTextList={scrollBannerDisplayTextList} variant="black" />
@@ -36,7 +30,7 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, filmsSectionRef) => {
                 <Styled.FilmsContainer>
                     {filteredFilms.map((film, index) => (
                         <ScrollIntoViewAnimationWrapper
-                            key={index}
+                            key={film.slug}
                             $animationDelay={index * delayPerItem}
                             $axis="Y"
                             $direction={1}
@@ -55,7 +49,7 @@ const FilmsSection = forwardRef<HTMLDivElement>((props, filmsSectionRef) => {
                         $inView={inView}
                     >
                         <PrimaryButton
-                            onClick={() => handleNavigateTo("/films?filter=coming_soon&page=1")}
+                            href="/films?filter=coming_soon&page=1"
                             variant="red"
                             label={filmsCtaText}
                         />

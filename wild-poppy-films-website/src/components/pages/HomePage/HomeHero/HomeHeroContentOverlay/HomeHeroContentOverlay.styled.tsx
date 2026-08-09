@@ -56,7 +56,13 @@ export const MovieTitleAndYearWrapper = styled.div`
     }
 `;
 
-export const MovieInstanceContainer = styled.div`
+export const MovieInstanceContainer = styled.button`
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     justify-content: center;

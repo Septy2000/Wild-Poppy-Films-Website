@@ -14,8 +14,16 @@ export default function HomeHeroContentControlButton({
     }
 
     return (
-        <Styled.Container onClick={handleOnClick}>
-            {direction === "left" ? <Styled.LeftArrowIcon /> : <Styled.RightArrowIcon />}
+        <Styled.Container
+            type="button"
+            onClick={handleOnClick}
+            aria-label={direction === "left" ? "Previous film" : "Next film"}
+        >
+            {direction === "left" ? (
+                <Styled.LeftArrowIcon aria-hidden="true" />
+            ) : (
+                <Styled.RightArrowIcon aria-hidden="true" />
+            )}
         </Styled.Container>
     );
 }

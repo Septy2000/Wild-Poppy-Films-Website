@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import FilmContainerLarge from "@/components/pages/FilmsPage/FilmContainerLarge/FilmContainerLarge";
 import * as Styled from "./FilmsPage.styled";
 import { films } from "@/data";
@@ -7,8 +7,6 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { FilterOptions } from "@/_types/common";
 import { useInView } from "react-intersection-observer";
 import PaginationControl from "@/components/PaginationControl/PaginationControl";
-import useIsMobile from "@/hooks/useIsMobile";
-import TitleBuffer from "@/components/TitleBuffer/TitleBuffer";
 import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
 
 export function FilmsPage() {
@@ -27,18 +25,11 @@ export function FilmsPage() {
         },
     ];
 
-    const title = "FILMS";
-    const description = "Our blooming film directory.";
 
     const searchParams = useSearchParams();
-    const filter = searchParams.get("filter") ?? "all";
-
     const router = useRouter();
 
-    const currentPage = parseInt(searchParams.get("page") ?? "1");
     const filmsPerPage = 3;
-    const isMobile = useIsMobile();
-
     const delayPerItem = 0.1;
 
     const { ref, inView } = useInView({
@@ -46,7 +37,12 @@ export function FilmsPage() {
         triggerOnce: true,
     });
 
-    // Filter films based on the selected filter
+    // An unrecognised ?filter= value falls back to "all" rather than showing nothing
+    const requestedFilter = searchParams.get("filter");
+    const filter: FilterOptions = filters.some((f) => f.status === requestedFilter)
+        ? (requestedFilter as FilterOptions)
+        : "all";
+
     const filteredFilms = films.filter((film) => {
         switch (filter) {
             case "all":
@@ -55,28 +51,27 @@ export function FilmsPage() {
                 return film.status === "available";
             case "coming_soon":
                 return film.status === "coming_soon" || film.status === "in_production";
-            default:
-                return false;
         }
     });
 
+    const numberOfPages = Math.max(1, Math.ceil(filteredFilms.length / filmsPerPage));
+
+    // parseInt returns NaN for a non-numeric ?page=, which would silently break the slice
+    const requestedPage = parseInt(searchParams.get("page") ?? "1", 10);
+    const currentPage = Number.isNaN(requestedPage)
+        ? 1
+        : Math.min(Math.max(requestedPage, 1), numberOfPages);
+
     const startIndex = (currentPage - 1) * filmsPerPage;
-    const endIndex = startIndex + filmsPerPage;
-    const filmsToDisplay = filteredFilms.slice(startIndex, endIndex);
+    const filmsToDisplay = filteredFilms.slice(startIndex, startIndex + filmsPerPage);
 
-    const [numberOfPages, setNumberOfPages] = useState(
-        Math.ceil(filteredFilms.length / filmsPerPage)
-    );
-
+    // Tidy the URL when it asked for a page or filter that doesn't exist. `replace`
+    // rather than `push` so this normalisation doesn't end up in the back history.
     useEffect(() => {
-        setNumberOfPages(Math.ceil(filteredFilms.length / filmsPerPage));
-    }, [filteredFilms]);
-
-    useEffect(() => {
-        if (currentPage > numberOfPages) {
-            router.push(`/films?page=${numberOfPages}&filter=${filter}`);
+        if (requestedPage !== currentPage || requestedFilter !== filter) {
+            router.replace(`/films?page=${currentPage}&filter=${filter}`);
         }
-    }, [currentPage, numberOfPages, filter]);
+    }, [requestedPage, currentPage, requestedFilter, filter, router]);
 
     const handlePageChange = (toPage: number) => {
         if (toPage < 1 || toPage > numberOfPages || toPage === currentPage) return;
@@ -88,12 +83,14 @@ export function FilmsPage() {
         router.push(`/films?page=1&filter=${toFilter}`);
     };
 
+    // The page shell and TitleBuffer live in app/films/page.tsx, outside the Suspense
+    // boundary this component sits behind - otherwise the heading would be missing
+    // from the server-rendered HTML, since useSearchParams forces client rendering.
     return (
-        <Styled.PageWrapper>
-            <TitleBuffer title={title} description={description} />
+        <React.Fragment>
             <Styled.Container>
                 <Styled.TopFilmsPageControlsContainer>
-                    {!isMobile && (
+                    <Styled.DesktopOnlyPagination>
                         <ScrollIntoViewAnimationWrapper
                             $inView={inView}
                             $animationDelay={0}
@@ -106,11 +103,12 @@ export function FilmsPage() {
                                 currentPage={currentPage}
                             />
                         </ScrollIntoViewAnimationWrapper>
-                    )}
+                    </Styled.DesktopOnlyPagination>
                     <Styled.FilmsFilterContainer ref={ref} $animationDelay={0} $inView={inView}>
                         {filters.map((filterOption, index) => (
                             <Styled.FilmsFilter
-                                key={index}
+                                key={filterOption.status}
+                                type="button"
                                 onClick={() => handleFilterChange(filterOption.status)}
                                 $selected={filter === filterOption.status}
                             >
@@ -128,7 +126,7 @@ export function FilmsPage() {
                                 $animationDelay={(index + 2) * delayPerItem}
                                 $axis="Y"
                                 $direction={1}
-                                key={index}
+                                key={film.slug}
                             >
                                 <FilmContainerLarge film={film} />
                             </ScrollIntoViewAnimationWrapper>
@@ -147,6 +145,6 @@ export function FilmsPage() {
                     />
                 </ScrollIntoViewAnimationWrapper>
             </Styled.Container>
-        </Styled.PageWrapper>
+        </React.Fragment>
     );
 }

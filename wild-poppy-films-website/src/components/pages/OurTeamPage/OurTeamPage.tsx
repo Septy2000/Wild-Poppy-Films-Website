@@ -5,18 +5,12 @@ import * as Styled from "./OurTeamPage.styled";
 import { teamMembers } from "@/data";
 import MemberContainer from "@/components/pages/OurTeamPage/MemberContainer/MemberContainer";
 import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
-import { useRouter } from "next/navigation";
 import { ScrollIntoViewAnimationWrapper } from "@/components/AnimationWrappers/AnimationWrappers.styled";
 
 export default function OurTeamPage() {
     const [expandedMemberIndex, setExpandedMemberIndex] = useState<number | undefined>(undefined);
 
-    const router = useRouter();
     const delayPerItem = 0.1;
-
-    function handleNavigateTo(path: string) {
-        router.push(path);
-    }
 
     return (
         <Styled.Container>
@@ -28,7 +22,7 @@ export default function OurTeamPage() {
                         $animationDelay={(index + 1) * delayPerItem}
                         $axis="Y"
                         $direction={1}
-                        key={index}
+                        key={member.id}
                     >
                         <MemberContainer
                             member={member}
@@ -48,7 +42,7 @@ export default function OurTeamPage() {
                 >
                     <PrimaryButton
                         label="contact us"
-                        onClick={() => handleNavigateTo("/contact-us")}
+                        href="/contact-us"
                         variant={"red"}
                     />
                 </ScrollIntoViewAnimationWrapper>

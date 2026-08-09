@@ -1,9 +1,16 @@
 "use client";
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import BackArrowIcon from "@/icons/navigation/left-fwd-icon.svg";
 
-export const Container = styled.div`
+// Renders as a real <a href>. It was a <div onClick>, which meant crawlers found no
+// link to the film, and the card could not be tabbed to, opened in a new tab, or
+// activated with Enter. Styles below are unchanged apart from resetting the
+// underline and inherited link colour.
+export const Container = styled(Link)`
+    text-decoration: none;
+    color: inherit;
     position: relative;
     display: flex;
     flex-direction: row;

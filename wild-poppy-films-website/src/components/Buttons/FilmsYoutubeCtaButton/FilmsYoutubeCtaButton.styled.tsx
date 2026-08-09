@@ -32,6 +32,12 @@ export const Label = styled.p`
     color: ${({ theme }) => theme.colors.primary.poppy_red};
 `;
 
+export const MobileLabelSuffix = styled.span`
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        display: none;
+    }
+`;
+
 export const RightFwdIconStyled = styled(RightFwdIcon)`
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         display: none;
@@ -42,9 +48,12 @@ export const RightFwdIconStyled = styled(RightFwdIcon)`
 `;
 
 export const YoutubeIconStyled = styled(YoutubeIcon)`
-    @media (max-width: ${({ theme }) => theme.screen.desktop}) {
-        display: none;
+    display: none;
+
+    @media (min-width: ${({ theme }) => theme.screen.desktop}) {
+        display: block;
     }
+
     path:first-of-type {
         fill: ${({ theme }) => theme.colors.primary.poppy_red};
     }

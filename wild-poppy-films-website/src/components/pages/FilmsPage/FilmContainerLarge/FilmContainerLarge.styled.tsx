@@ -1,6 +1,7 @@
 "use client";
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 import { GlassOverFrame } from "@/components/GlassOverFrame/GlassOverFrame.styled";
 
 export const MobileContainer = styled.div`
@@ -73,13 +74,39 @@ export const FilmTitleAndYearContainer = styled.div`
     }
 `;
 
-export const FilmTitle = styled.span`
+/**
+ * The film title is the card's link. The card itself cannot be one, because it also
+ * contains an independent "watch on YouTube" link and nesting <a> inside <a> is
+ * invalid HTML.
+ *
+ * The ::after overlay stretches this anchor's hit area across the whole card, so the
+ * card stays clickable everywhere while remaining a single, crawlable, focusable
+ * link. The YouTube button sits above the overlay on its own z-index.
+ */
+export const FilmTitle = styled(Link)`
+    text-decoration: none;
     color: ${({ theme }) => theme.colors.neutral.neutral_14};
     font-size: 1.25rem;
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        border-radius: inherit;
+    }
+
     @media (min-width: ${({ theme }) => theme.screen.desktop}) {
         color: ${({ theme }) => theme.colors.neutral.neutral_1};
         font-size: 2rem;
     }
+`;
+
+/** Lifts the YouTube link above FilmTitle's stretched hit area so it stays clickable. */
+export const CtaWrapper = styled.div`
+    position: relative;
+    z-index: 2;
+    width: fit-content;
 `;
 
 export const FilmYear = styled.span`

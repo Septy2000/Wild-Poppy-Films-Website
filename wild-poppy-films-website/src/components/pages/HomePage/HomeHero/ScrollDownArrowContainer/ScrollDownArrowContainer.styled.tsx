@@ -2,7 +2,13 @@
 import styled from "styled-components";
 import DownwardIcon from "@/icons/navigation/downward-icon-mobile.svg";
 
+// Rendered as a <button>, so it neutralises the user-agent button styles to keep
+// looking exactly as it did when this was a <div onClick>.
 export const Container = styled.div`
+    border: none;
+    font: inherit;
+    color: inherit;
+
     width: 100%;
     display: flex;
     justify-content: center;
