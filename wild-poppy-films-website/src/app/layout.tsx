@@ -21,8 +21,10 @@ export const metadata: Metadata = {
         canonical: "/",
     },
     icons: {
+        // Google's favicon crawler wants a square that is a multiple of 48px, so
+        // the .ico carries a 48x48 alongside the sizes browsers use.
         icon: [
-            { url: "/favicon.ico", sizes: "32x32" },
+            { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
             { url: "/icon.png", type: "image/png", sizes: "512x512" },
         ],
         apple: "/apple-touch-icon.png",
@@ -52,6 +54,11 @@ export const metadata: Metadata = {
     robots: {
         index: true,
         follow: true,
+        // Without these Google caps the search result to a small thumbnail and a
+        // short snippet. Films are a visual product, so opt into the large preview.
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
     },
 };
 

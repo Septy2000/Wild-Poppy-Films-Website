@@ -2,12 +2,14 @@
  * Single source of truth for anything that needs the public URL or the company's
  * identity: metadata, Open Graph cards, the sitemap and JSON-LD.
  *
- * Set NEXT_PUBLIC_SITE_URL in the Vercel project settings. The fallback is only
- * used for local development.
+ * Set NEXT_PUBLIC_SITE_URL in the Vercel project settings to override it.
+ *
+ * The host must be the www one: the apex domain 308-redirects to www, so an apex
+ * canonical would point every page at a URL that redirects somewhere else.
  */
 export const siteConfig = {
     name: "Wild Poppy Films",
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wildpoppyfilms.com",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.wildpoppyfilms.com",
     description:
         "Wild Poppy Films is an independent film production company making short films and documentaries out of London and New York.",
     email: "contact@wildpoppyfilms.com",
