@@ -10,8 +10,13 @@ export function generateStaticParams() {
     return getAllFilmSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-    const film = getFilmBySlug(params.slug);
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const film = getFilmBySlug(slug);
 
     if (!film) return { title: "Film not found" };
 
@@ -40,8 +45,13 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     };
 }
 
-export default function IndividualFilmPage({ params }: { params: { slug: string } }) {
-    const film = getFilmBySlug(params.slug);
+export default async function IndividualFilmPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+    const film = getFilmBySlug(slug);
 
     if (!film) notFound();
 
